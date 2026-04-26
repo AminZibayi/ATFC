@@ -1,0 +1,16 @@
+rename_mapping:
+  Additive_manufaturing_with_Dominant_Topic-patent.xlsx: patents_with_dominant_topic.xlsx
+  bibliography-finalll.xlsx: wos_raw_bibliography.xlsx
+  dominant_topic_df-p.xlsx: patent_topic_document_distribution.xlsx
+  dominant_topic_df.xlsx: publication_topic_document_distribution.xlsx
+  filtered_data.xlsx: wos_filtered_bibliography.xlsx
+  mann_kendall_results_pymannkendall.xlsx: cross_technology_mann_kendall_trends.xlsx
+  MannKendall_Test_Results-p.xlsx: patent_topic_mann_kendall_results.xlsx
+  MannKendall_Test_Results.xlsx: publication_topic_mann_kendall_results.xlsx
+  subcategory_count1.xlsx: wos_category_counts.xlsx
+  text.json: publication_stemmed_tokens_for_lda.json
+  topic_trends_over_time.xlsx: publication_topic_proportions_by_year.xlsx
+  Topics-p.xlsx: patent_lda_topic_keywords.xlsx
+  Topics.xlsx: publication_lda_topic_keywords.xlsx
+  weighted_topics-p-year.xlsx: patent_topic_proportions_by_year_no_year_col.xlsx
+  weighted_topics-p-year(2).xlsx: patent_topic_proportions_by_year.xlsx
