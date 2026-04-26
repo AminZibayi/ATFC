@@ -26,29 +26,12 @@ Never place a script loose in `scripts/` — always nest it under a named subdir
 
 ```
 data_source/               # All source and derived datasets (DO NOT MODIFY)
-  wos_raw_bibliography.xlsx                    # 126K raw WoS export
-  wos_filtered_bibliography.xlsx               # 94K filtered WoS (post-2000)
-  patents_with_dominant_topic.xlsx             # 30K patents + NLP + LDA topics
-  publication_stemmed_tokens_for_lda.json      # Stemmed tokens for LDA input
-  publication_lda_topic_keywords.xlsx          # 25 pub topic keywords
-  patent_lda_topic_keywords.xlsx               # 14 patent topic keywords
-  publication_topic_document_distribution.xlsx # Doc count per pub topic
-  patent_topic_document_distribution.xlsx      # Doc count per patent topic
-  publication_topic_proportions_by_year.xlsx   # Pub topic trends over time
-  patent_topic_proportions_by_year.xlsx        # Patent topic trends over time
-  patent_topic_proportions_by_year_no_year_col.xlsx  # Same, no Year column
-  publication_topic_mann_kendall_results.xlsx  # MK test on 25 pub topics
-  patent_topic_mann_kendall_results.xlsx       # MK test on 14 patent topics
-  cross_technology_mann_kendall_trends.xlsx    # MK test on 30 technologies
-  wos_category_counts.xlsx                     # 222 WoS category frequencies
 scripts/                   # Analysis scripts (each in its own subdirectory)
   └─ <analysis_name>/      # e.g. topic_evolution/, citation_network/
 plots/                     # Generated visualizations (each in its own subdirectory)
   └─ <analysis_name>/      # e.g. topic_evolution/, citation_network/
 outputs/                   # Analysis outputs (each in its own subdirectory)
   └─ <analysis_name>/      # e.g. topic_evolution/, citation_network/
-visualize_networks_labeled.py  # Network visualization script (NetworkX)
-rename_mapping.yaml        # Original → renamed file mapping
 ```
 
 ## Tech Stack
@@ -77,10 +60,7 @@ Files with **no suffix** = publication/WoS data. Files with **"-p" suffix** (now
 
 ## Code Style
 
-- Follow existing patterns in `visualize_networks_labeled.py`
-- Use pandas for all data manipulation
 - Save outputs to `outputs/` or `plots/` — never to `data_source/`
-- Prefer xlsx for tabular outputs, png for plots (300 dpi)
 - Keep analysis notebooks/scripts self-contained with clear section headers
 
 ## Boundaries
