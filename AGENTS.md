@@ -26,6 +26,8 @@ subdirectory. Same for `plots/` and `outputs/`.
 Use atomic commits — every fix or feature gets its own commit. Never batch
 unrelated changes into a single commit.
 
+Avoid npm and npx, use pnpm and pnpm alternatives for npx.
+
 ## Project Structure
 
 ```

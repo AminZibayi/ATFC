@@ -33,9 +33,9 @@ export function createGraph(containerId: string, data: NetworkData, title: strin
       target: String(e.target),
       data: { weight: e.weight },
       style: {
-        lineWidth: e.width,
+        lineWidth: Math.max(e.width * 2, 1),
         stroke: e.color,
-        strokeOpacity: 0.3
+        strokeOpacity: 0.6
       }
     }))
   };
@@ -57,47 +57,54 @@ export function createGraph(containerId: string, data: NetworkData, title: strin
       }
     },
     edge: {
+      type: 'line',
+      style: {
+        strokeOpacity: 0.6
+      },
       state: {
         active: {
-          strokeOpacity: 0.8,
+          strokeOpacity: 1,
           lineWidth: (d: any) => (d.style?.lineWidth || 1) * 1.5
         },
         inactive: {
-          strokeOpacity: 0.05
+          strokeOpacity: 0.1
         }
       }
     },
-    layout: {
-      type: 'preset'
-    },
+    // No layout needed since nodes have x and y in style
     behaviors: [
       'drag-canvas',
       'zoom-canvas',
       'drag-element',
       {
-        type: 'tooltip',
+        type: 'hover-activate',
         enable: true,
+        degree: 1
+      }
+    ],
+    plugins: [
+      {
+        type: 'tooltip',
         trigger: 'hover',
-        formatText: (model: any) => {
-          const metrics = model.data || {};
+        getContent: (e: any, items: any) => {
           let html = `<div style="padding: 4px; background: white; border: 1px solid #ccc; border-radius: 4px;">`;
-          html += `<strong style="display:block; margin-bottom:4px; color: #333;">${model.id}</strong>`;
-          for (const [k, v] of Object.entries(metrics)) {
-            html += `<div style="font-size:12px; color: #555;"><b>${k}:</b> ${v}</div>`;
+          if (items && items.length > 0) {
+            const model = items[0];
+            const metrics = model.data || {};
+            html += `<strong style="display:block; margin-bottom:4px; color: #333;">${model.id}</strong>`;
+            for (const [k, v] of Object.entries(metrics)) {
+              html += `<div style="font-size:12px; color: #555;"><b>${k}:</b> ${v}</div>`;
+            }
           }
           html += `</div>`;
           return html;
         }
-      },
-      {
-        type: 'hover-activate',
-        enable: true,
-        degree: 1
       }
     ]
   });
 
   graph.render();
+  (window as any).__graph = graph;
   return graph;
 }
 

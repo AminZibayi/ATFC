@@ -5,6 +5,7 @@
 !requirements.txt
 /data_source/*
 !rename_mapping.yaml
+.playwright-mcp/
 
 # Python
 __pycache__/
