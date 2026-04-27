@@ -27,3 +27,5 @@ Thumbs.db
 .worktrees/
 outputs/
 plots/
+
+**/**/node_modules/
