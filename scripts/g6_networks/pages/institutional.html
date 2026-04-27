@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Institutional Collaboration Network</title>
+    <style>
+      body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
+      #container { width: 100vw; height: 100vh; background-color: #ffffff; }
+      .overlay { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+      h1 { margin: 0 0 10px 0; font-size: 16px; color: #333; }
+      .controls { margin-top: 10px; font-size: 14px; }
+      .controls a { color: #4cc9f0; text-decoration: none; font-weight: bold; }
+      .controls a:hover { text-decoration: underline; }
+      input, button { padding: 4px 8px; border: 1px solid #ccc; border-radius: 2px; }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div class="overlay">
+      <h1>Institutional Collaboration Network</h1>
+      <div class="controls">
+        <span>Institutional</span> |
+        <a href="funding.html">Funding</a> |
+        <a href="journal.html">Journal</a>
+      </div>
+      <div class="controls" style="margin-top: 10px;">
+        <input type="text" id="searchInput" placeholder="Search institution..." />
+        <button id="searchBtn">Find</button>
+      </div>
+    </div>
+    <script type="module" src="../src/networks/institutional.ts"></script>
+  </body>
+</html>
