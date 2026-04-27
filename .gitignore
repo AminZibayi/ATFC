@@ -2,6 +2,7 @@
 *.xlsx
 *.csv
 *.txt
+!requirements.txt
 /data_source/*
 !rename_mapping.yaml
 

@@ -1,0 +1,57 @@
+name: Run Analysis Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Bibliometric Networks Analysis
+        run: |
+          # Create directories if they don't exist
+          mkdir -p outputs/bibliometric_networks
+          mkdir -p plots/bibliometric_networks
+          
+          # Run scripts in order
+          python scripts/bibliometric_networks/01_extract_data.py
+          python scripts/bibliometric_networks/02_build_networks.py
+          python scripts/bibliometric_networks/03_visualize_networks.py
+
+      - name: Zip Artifacts
+        run: |
+          zip -r outputs.zip outputs/
+          zip -r plots.zip plots/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: run-${{ github.run_number }}
+          name: Analysis Outputs Run ${{ github.run_number }}
+          files: |
+            outputs.zip
+            plots.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
