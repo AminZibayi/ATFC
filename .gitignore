@@ -22,5 +22,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
 .worktrees/
-/outputs/
+outputs/
+plots/
