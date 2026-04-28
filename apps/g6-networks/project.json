@@ -1,0 +1,24 @@
+{
+  "name": "g6-networks",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/g6-networks/src",
+  "targets": {
+    "export-data": {
+      "command": "uv run python export_g6_data.py",
+      "dependsOn": ["bibliometric-pipeline:build"],
+      "options": { "cwd": "apps/g6-networks" }
+    },
+    "build": {
+      "executor": "@nx/vite:build",
+      "dependsOn": ["export-data"],
+      "options": {
+        "outputPath": "dist/apps/g6-networks"
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "dependsOn": ["export-data"]
+    }
+  }
+}

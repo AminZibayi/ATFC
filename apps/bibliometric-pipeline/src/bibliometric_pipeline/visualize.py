@@ -29,12 +29,14 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import plotly.graph_objects as go
 
+from shared_python.paths import get_output_path, get_plot_path
+
 # ---------------------------------------------------------------------------
 # CONFIGURABLE PARAMETERS -- edit these to adjust the visualizations
 # ---------------------------------------------------------------------------
 CONFIG = {
-    "output_dir": Path("../../outputs/bibliometric_networks"),
-    "plot_dir": Path("../../plots/bibliometric_networks"),
+    "output_dir": get_output_path("bibliometric_networks", "temp").parent,
+    "plot_dir": get_plot_path("bibliometric_networks", "temp").parent,
 
     "institutional": {
         "top_n_labels": 30,
@@ -71,14 +73,7 @@ CONFIG = {
     },
 }
 
-# ---------------------------------------------------------------------------
-# Resolve paths
-# ---------------------------------------------------------------------------
-SCRIPT_DIR = Path(__file__).resolve().parent
 
-CONFIG["output_dir"] = (SCRIPT_DIR / CONFIG["output_dir"]).resolve()
-CONFIG["plot_dir"] = (SCRIPT_DIR / CONFIG["plot_dir"]).resolve()
-CONFIG["plot_dir"].mkdir(parents=True, exist_ok=True)
 
 print("=" * 70)
 print(" PHASE 3: NETWORK VISUALIZATION")

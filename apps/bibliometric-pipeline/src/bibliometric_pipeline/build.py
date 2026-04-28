@@ -26,11 +26,13 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 
+from shared_python.paths import get_output_path
+
 # ---------------------------------------------------------------------------
 # CONFIGURABLE PARAMETERS -- edit these to adjust the analysis
 # ---------------------------------------------------------------------------
 CONFIG = {
-    "output_dir": Path("../../outputs/bibliometric_networks"),
+    "output_dir": get_output_path("bibliometric_networks", "temp").parent,
 
     "institutional": {
         "min_publications": 5,
@@ -46,16 +48,7 @@ CONFIG = {
     },
 }
 
-# ---------------------------------------------------------------------------
-# Resolve paths
-# ---------------------------------------------------------------------------
-SCRIPT_DIR = Path(__file__).resolve().parent
-_repo_root = SCRIPT_DIR
-while not (_repo_root / "data_source").exists() and _repo_root.parent != _repo_root:
-    _repo_root = _repo_root.parent
 
-CONFIG["output_dir"] = (SCRIPT_DIR / CONFIG["output_dir"]).resolve()
-CONFIG["output_dir"].mkdir(parents=True, exist_ok=True)
 
 print("=" * 70)
 print(" PHASE 2: NETWORK CONSTRUCTION")

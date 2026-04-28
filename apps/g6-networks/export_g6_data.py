@@ -15,8 +15,10 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
+from shared_python.paths import get_output_path
+
 SCRIPT_DIR = Path(__file__).resolve().parent
-INPUT_DIR = (SCRIPT_DIR / "../../outputs/bibliometric_networks").resolve()
+INPUT_DIR = get_output_path("bibliometric_networks", "temp").parent
 OUTPUT_DIR = (SCRIPT_DIR / "src/data").resolve()
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 

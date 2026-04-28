@@ -1,0 +1,2879 @@
+{
+  "nodes": [
+    {
+      "id": "ERDF A way of making Europe",
+      "x": -23.8455709860626,
+      "y": -11.154006445776522,
+      "size": 79.17171988845776,
+      "color": "#98df8a",
+      "group_label": "Community 6",
+      "metrics": {
+        "pub_count": 17.0,
+        "degree": 1.0,
+        "weighted_degree": 13.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.732497218879158e-10,
+        "clustering_coefficient": 0.0,
+        "community": 6.0
+      }
+    },
+    {
+      "id": "MCIN/AEI",
+      "x": -36.64948895480713,
+      "y": -4.661563878376068,
+      "size": 99.96613530525612,
+      "color": "#98df8a",
+      "group_label": "Community 6",
+      "metrics": {
+        "pub_count": 75.0,
+        "degree": 4.0,
+        "weighted_degree": 27.0,
+        "betweenness": 0.04173194701609457,
+        "eigenvector": 2.8454309258847806e-09,
+        "clustering_coefficient": 0.0,
+        "community": 6.0
+      }
+    },
+    {
+      "id": "Div Of Civil, Mechanical, & Manufact Inn",
+      "x": -118.61625433204182,
+      "y": 162.63959613675746,
+      "size": 58.3773044716594,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 23.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.6541020900496376e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "National Science Foundation",
+      "x": -100.8906912417632,
+      "y": 149.25327996213332,
+      "size": 158.1899867569124,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 1991.0,
+        "degree": 19.0,
+        "weighted_degree": 194.0,
+        "betweenness": 0.14371172197692636,
+        "eigenvector": 1.7989689112667426e-06,
+        "clustering_coefficient": 0.029239766081871343,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Australian Government",
+      "x": -154.83281993938988,
+      "y": 94.42744914040311,
+      "size": 65.91673732008658,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 30.0,
+        "degree": 1.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.6709180241425392e-09,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Australian Research Council",
+      "x": -141.97686828705173,
+      "y": 86.61216732471625,
+      "size": 89.87196820661973,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 407.0,
+        "degree": 4.0,
+        "weighted_degree": 19.0,
+        "betweenness": 0.021222048141290414,
+        "eigenvector": 1.3615119037751026e-08,
+        "clustering_coefficient": 0.16666666666666666,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "European Union",
+      "x": -75.78049696369725,
+      "y": 21.996413745980608,
+      "size": 130.31416265561052,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 792.0,
+        "degree": 14.0,
+        "weighted_degree": 76.0,
+        "betweenness": 0.1424298532972511,
+        "eigenvector": 2.9435707725936775e-08,
+        "clustering_coefficient": 0.04395604395604396,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "FESR",
+      "x": -72.86993292699154,
+      "y": 11.725100501243748,
+      "size": 71.93685818395112,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 1.0,
+        "weighted_degree": 10.0,
+        "betweenness": 0.0,
+        "eigenvector": 4.5138252573357814e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "x": -122.87904338110613,
+      "y": 31.809513299760553,
+      "size": 123.81403155135276,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 609.0,
+        "degree": 11.0,
+        "weighted_degree": 61.0,
+        "betweenness": 0.17290984190286282,
+        "eigenvector": 1.7869645867808756e-08,
+        "clustering_coefficient": 0.07272727272727272,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "University of Nottingham",
+      "x": -141.25240546078788,
+      "y": 17.79345664353334,
+      "size": 53.75278407684165,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 17.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3728023733508173e-09,
+        "clustering_coefficient": 0.0,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "Office of Naval Research",
+      "x": -87.12842905092334,
+      "y": 143.94840824802884,
+      "size": 83.17766166719343,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 63.0,
+        "degree": 2.0,
+        "weighted_degree": 15.0,
+        "betweenness": 0.0010682238997293833,
+        "eigenvector": 3.0701330087530537e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "FAPESP",
+      "x": -314.885030032923,
+      "y": -291.3028549903187,
+      "size": 107.5055681536833,
+      "color": "#2ca02c",
+      "group_label": "Community 5",
+      "metrics": {
+        "pub_count": 45.0,
+        "degree": 2.0,
+        "weighted_degree": 35.0,
+        "betweenness": 0.0,
+        "eigenvector": 0.25592489071511065,
+        "clustering_coefficient": 1.0,
+        "community": 5.0
+      }
+    },
+    {
+      "id": "National Council for Scientific and Technological Development (CNPq)",
+      "x": -310.6067843915525,
+      "y": -296.7972580300781,
+      "size": 145.79437213085015,
+      "color": "#2ca02c",
+      "group_label": "Community 5",
+      "metrics": {
+        "pub_count": 201.0,
+        "degree": 5.0,
+        "weighted_degree": 128.0,
+        "betweenness": 7.121492664862555e-05,
+        "eigenvector": 0.667495325457381,
+        "clustering_coefficient": 0.4,
+        "community": 5.0
+      }
+    },
+    {
+      "id": "U.S. Department of Energy",
+      "x": -107.6879642081511,
+      "y": 165.43348271643134,
+      "size": 115.50442805130176,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 332.0,
+        "degree": 4.0,
+        "weighted_degree": 46.0,
+        "betweenness": 0.021222048141290414,
+        "eigenvector": 9.464143592746502e-07,
+        "clustering_coefficient": 0.16666666666666666,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Coordination for the Improvement of Higher Education Personnel (CAPES)",
+      "x": -312.9731540242501,
+      "y": -299.62528639406077,
+      "size": 142.34796385089751,
+      "color": "#2ca02c",
+      "group_label": "Community 5",
+      "metrics": {
+        "pub_count": 147.0,
+        "degree": 5.0,
+        "weighted_degree": 114.0,
+        "betweenness": 0.0007833641931348811,
+        "eigenvector": 0.6465195968475749,
+        "clustering_coefficient": 0.4,
+        "community": 5.0
+      }
+    },
+    {
+      "id": "NSAF",
+      "x": -180.13457605098986,
+      "y": 40.977090859724825,
+      "size": 58.3773044716594,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.344133436251543e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "National Natural Science Foundation of China",
+      "x": -166.29937597190226,
+      "y": 57.94862398273523,
+      "size": 129.92200020858994,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 7298.0,
+        "degree": 11.0,
+        "weighted_degree": 75.0,
+        "betweenness": 0.10027061672126478,
+        "eigenvector": 2.547958631588475e-08,
+        "clustering_coefficient": 0.01818181818181818,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "Royal Society",
+      "x": -137.2729356443387,
+      "y": 29.245379403726623,
+      "size": 65.91673732008658,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 46.0,
+        "degree": 1.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.1964837973613077e-09,
+        "clustering_coefficient": 0.0,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "Academy of Finland",
+      "x": 261.91051271150883,
+      "y": -832.6397527619106,
+      "size": 48.28313737302301,
+      "color": "#8c564b",
+      "group_label": "Community 11",
+      "metrics": {
+        "pub_count": 80.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.99159245803348e-53,
+        "clustering_coefficient": 0.0,
+        "community": 11.0
+      }
+    },
+    {
+      "id": "Academy of Finland (AKA)",
+      "x": 265.06143648585476,
+      "y": -822.300135187668,
+      "size": 48.28313737302301,
+      "color": "#8c564b",
+      "group_label": "Community 11",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.99159245803348e-53,
+        "clustering_coefficient": 0.0,
+        "community": 11.0
+      }
+    },
+    {
+      "id": "Hong Kong",
+      "x": -201.7273320779022,
+      "y": 52.70644159833595,
+      "size": 41.58883083359672,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.1720667181257714e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "FAPEMIG",
+      "x": -304.0182239225562,
+      "y": -298.23103284960297,
+      "size": 105.79081573848485,
+      "color": "#2ca02c",
+      "group_label": "Community 5",
+      "metrics": {
+        "pub_count": 28.0,
+        "degree": 2.0,
+        "weighted_degree": 33.0,
+        "betweenness": 0.0,
+        "eigenvector": 0.24089714760755465,
+        "clustering_coefficient": 1.0,
+        "community": 5.0
+      }
+    },
+    {
+      "id": "American Heart Association",
+      "x": -76.42919482481717,
+      "y": 180.16424761183953,
+      "size": 53.75278407684165,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 15.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.648866317659932e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "National Institutes of Health",
+      "x": -95.49111919713985,
+      "y": 158.45698589562923,
+      "size": 124.76649250079015,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 487.0,
+        "degree": 6.0,
+        "weighted_degree": 63.0,
+        "betweenness": 0.049850448654037885,
+        "eigenvector": 1.2458283603756366e-06,
+        "clustering_coefficient": 0.26666666666666666,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "DARPA",
+      "x": -107.78179430365178,
+      "y": 156.31707155353456,
+      "size": 81.2415060330663,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 72.0,
+        "degree": 2.0,
+        "weighted_degree": 14.0,
+        "betweenness": 0.0,
+        "eigenvector": 3.5287461221621904e-07,
+        "clustering_coefficient": 1.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "AFOSR grant",
+      "x": -88.23439766663299,
+      "y": 163.89871132883155,
+      "size": 62.383246250395075,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 18.0,
+        "degree": 1.0,
+        "weighted_degree": 7.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.929785771724577e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Air Force Office of Scientific Research",
+      "x": -93.74037000911363,
+      "y": 133.110335866678,
+      "size": 108.32753737932673,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 91.0,
+        "degree": 5.0,
+        "weighted_degree": 36.0,
+        "betweenness": 0.07171343113516593,
+        "eigenvector": 6.832255369679318e-07,
+        "clustering_coefficient": 0.2,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "China Scholarship Council",
+      "x": -108.31202318528999,
+      "y": 83.45336708733781,
+      "size": 121.29153803503651,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 430.0,
+        "degree": 12.0,
+        "weighted_degree": 56.0,
+        "betweenness": 0.24718701039737928,
+        "eigenvector": 2.6846331287025066e-07,
+        "clustering_coefficient": 0.07575757575757576,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "111 Project",
+      "x": -196.5713393333868,
+      "y": 64.22943124220272,
+      "size": 71.93685818395112,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 18.0,
+        "degree": 2.0,
+        "weighted_degree": 10.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 2.740677854135168e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "American Heart",
+      "x": -94.05138504916751,
+      "y": 173.87937633959194,
+      "size": 71.93685818395112,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 2.0,
+        "weighted_degree": 10.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 2.1778923294972094e-07,
+        "clustering_coefficient": 1.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Zhejiang Provincial",
+      "x": -188.99263884011145,
+      "y": 49.00629043646096,
+      "size": 53.75278407684165,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.953444530209619e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "Coordenacao de",
+      "x": 627.2461971600221,
+      "y": -489.28865763482077,
+      "size": 53.75278407684165,
+      "color": "#8c564b",
+      "group_label": "Community 12",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.7622430216262336e-49,
+        "clustering_coefficient": 0.0,
+        "community": 12.0
+      }
+    },
+    {
+      "id": "Sao Paulo Research Foundation (FAPESP)",
+      "x": 616.6603485779909,
+      "y": -481.5147583349201,
+      "size": 53.75278407684165,
+      "color": "#8c564b",
+      "group_label": "Community 12",
+      "metrics": {
+        "pub_count": 43.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.7622430216262336e-49,
+        "clustering_coefficient": 0.0,
+        "community": 12.0
+      }
+    },
+    {
+      "id": "Army Research Office",
+      "x": -77.47671161486153,
+      "y": 157.18761500624214,
+      "size": 58.3773044716594,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 52.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.6541020900496376e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "CRUE-CSIC",
+      "x": 697.1994337444346,
+      "y": 311.8418882222267,
+      "size": 62.383246250395075,
+      "color": "#c49c94",
+      "group_label": "Community 13",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 1.0,
+        "weighted_degree": 7.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.3364365979134444e-44,
+        "clustering_coefficient": 0.0,
+        "community": 13.0
+      }
+    },
+    {
+      "id": "Springer Nature",
+      "x": 687.6500290182253,
+      "y": 306.91400098362226,
+      "size": 62.383246250395075,
+      "color": "#c49c94",
+      "group_label": "Community 13",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 1.0,
+        "weighted_degree": 7.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.3364365979134444e-44,
+        "clustering_coefficient": 0.0,
+        "community": 13.0
+      }
+    },
+    {
+      "id": "ARO",
+      "x": -73.6436976862909,
+      "y": 138.52901306410837,
+      "size": 65.91673732008658,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 2.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.008403361344537815,
+        "eigenvector": 6.137330038013039e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "CONACYT",
+      "x": 833.36684248988,
+      "y": -146.47568732026912,
+      "size": 41.58883083359672,
+      "color": "#e377c2",
+      "group_label": "Community 14",
+      "metrics": {
+        "pub_count": 31.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 14.0
+      }
+    },
+    {
+      "id": "Tecnologico de Monterrey",
+      "x": 848.0429342698669,
+      "y": -149.12552585214596,
+      "size": 41.58883083359672,
+      "color": "#e377c2",
+      "group_label": "Community 14",
+      "metrics": {
+        "pub_count": 16.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 14.0
+      }
+    },
+    {
+      "id": "University of Melbourne",
+      "x": -164.42542376769217,
+      "y": 100.52644280081371,
+      "size": 48.28313737302301,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 8.354590120712696e-10,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "U.S. Department of Defense",
+      "x": -113.82828731845183,
+      "y": 144.4384220214446,
+      "size": 69.07755278982138,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 50.0,
+        "degree": 1.0,
+        "weighted_degree": 9.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.4811531350744565e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "NSF CAREER",
+      "x": -66.21569267585248,
+      "y": 132.85607424506148,
+      "size": 48.28313737302301,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 20.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 4.2329386380450955e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Deutsche Forschungsgemeinschaft (DFG)",
+      "x": -71.86463165990675,
+      "y": -32.320192579383196,
+      "size": 48.28313737302301,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 92.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 3.1839081231546125e-10,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "German Research Foundation (DFG)",
+      "x": -76.93992619248768,
+      "y": -4.24204455025633,
+      "size": 99.96613530525612,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 541.0,
+        "degree": 4.0,
+        "weighted_degree": 27.0,
+        "betweenness": 0.021222048141290414,
+        "eigenvector": 5.14169141309656e-09,
+        "clustering_coefficient": 0.16666666666666666,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Ministry of Science and Higher",
+      "x": -59.16065117847836,
+      "y": 88.14259815104896,
+      "size": 71.93685818395112,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 13.0,
+        "degree": 1.0,
+        "weighted_degree": 10.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.6114136999806247e-09,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Russian Science Foundation",
+      "x": -75.12376753772531,
+      "y": 86.39936997572771,
+      "size": 81.2415060330663,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 420.0,
+        "degree": 2.0,
+        "weighted_degree": 14.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 1.7033824919002348e-08,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "National Key R&D",
+      "x": 501.3500493290858,
+      "y": 786.2238096362785,
+      "size": 41.58883083359672,
+      "color": "#c5b0d5",
+      "group_label": "Community 10",
+      "metrics": {
+        "pub_count": 13.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.951810089921973e-52,
+        "clustering_coefficient": 0.0,
+        "community": 10.0
+      }
+    },
+    {
+      "id": "National Nature Science Foundation of China",
+      "x": 488.63071848515534,
+      "y": 773.6899705574873,
+      "size": 58.3773044716594,
+      "color": "#c5b0d5",
+      "group_label": "Community 10",
+      "metrics": {
+        "pub_count": 152.0,
+        "degree": 2.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0001424298532972511,
+        "eigenvector": 8.41713055788937e-52,
+        "clustering_coefficient": 0.0,
+        "community": 10.0
+      }
+    },
+    {
+      "id": "BMBF",
+      "x": -65.1039796213272,
+      "y": -25.369724356204106,
+      "size": 53.75278407684165,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 3.9798851539432655e-10,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "ANID",
+      "x": -17.556885021494306,
+      "y": -19.989976567929233,
+      "size": 53.75278407684165,
+      "color": "#98df8a",
+      "group_label": "Community 6",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.20480662264583e-10,
+        "clustering_coefficient": 0.0,
+        "community": 6.0
+      }
+    },
+    {
+      "id": "European Research Council",
+      "x": -95.21680481673887,
+      "y": 0.7578000504078605,
+      "size": 103.01961613455438,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 191.0,
+        "degree": 6.0,
+        "weighted_degree": 30.0,
+        "betweenness": 0.0451502634952286,
+        "eigenvector": 4.671889400508599e-09,
+        "clustering_coefficient": 0.2,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Science Foundation Ireland",
+      "x": -84.89502178579372,
+      "y": -11.485534190164762,
+      "size": 81.2415060330663,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 129.0,
+        "degree": 3.0,
+        "weighted_degree": 14.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 2.2474304505774028e-09,
+        "clustering_coefficient": 0.3333333333333333,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "European Regional Development Fund",
+      "x": -52.51208564654818,
+      "y": 3.945269737376423,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 110.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3541475772007347e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Science Fund",
+      "x": -175.39007819935858,
+      "y": 66.59365294094243,
+      "size": 79.17171988845776,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 15.0,
+        "degree": 1.0,
+        "weighted_degree": 13.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.07895577854501e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "Xunta de Galicia",
+      "x": -59.25049152868019,
+      "y": 16.211672550223295,
+      "size": 53.75278407684165,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 17.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.2569126286678907e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Leverhulme Trust",
+      "x": -130.21642017319064,
+      "y": 10.083362002098102,
+      "size": 53.75278407684165,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 30.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3728023733508173e-09,
+        "clustering_coefficient": 0.0,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "Louisiana Board of Regents",
+      "x": -79.53272182838391,
+      "y": 167.4764011141826,
+      "size": 53.75278407684165,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 27.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3784184083746979e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Ministry of Higher Education",
+      "x": 431.8112675156205,
+      "y": 188.47561691869157,
+      "size": 69.07755278982138,
+      "color": "#f7b6d2",
+      "group_label": "Community 15",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 9.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.1971744175213574e-40,
+        "clustering_coefficient": 0.0,
+        "community": 15.0
+      }
+    },
+    {
+      "id": "Universiti Teknikal Malaysia Melaka (UTeM)",
+      "x": 441.1079608189963,
+      "y": 191.36951561545425,
+      "size": 69.07755278982138,
+      "color": "#f7b6d2",
+      "group_label": "Community 15",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 9.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.1971744175213574e-40,
+        "clustering_coefficient": 0.0,
+        "community": 15.0
+      }
+    },
+    {
+      "id": "National Science Centre, Poland",
+      "x": -45.97076666169689,
+      "y": 14.626871914860274,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 71.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3541475772007347e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "U.S. Army Research Office",
+      "x": -102.06575262926017,
+      "y": 197.82184828370455,
+      "size": 62.383246250395075,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 34.0,
+        "degree": 2.0,
+        "weighted_degree": 7.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 8.302041833327532e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Marie Curie Actions (MSCA)",
+      "x": -66.77732898011944,
+      "y": 27.50931475837602,
+      "size": 74.54719949364001,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 15.0,
+        "degree": 1.0,
+        "weighted_degree": 11.0,
+        "betweenness": 0.0,
+        "eigenvector": 4.96520778306936e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "FINEP",
+      "x": -323.28771876678553,
+      "y": -304.948996569717,
+      "size": 76.9484807238461,
+      "color": "#2ca02c",
+      "group_label": "Community 5",
+      "metrics": {
+        "pub_count": 13.0,
+        "degree": 2.0,
+        "weighted_degree": 12.0,
+        "betweenness": 0.0,
+        "eigenvector": 0.08715701675443269,
+        "clustering_coefficient": 1.0,
+        "community": 5.0
+      }
+    },
+    {
+      "id": "National Key R&D Program of China",
+      "x": 91.84685062424126,
+      "y": 952.6065265975369,
+      "size": 69.07755278982138,
+      "color": "#ff9896",
+      "group_label": "Community 8",
+      "metrics": {
+        "pub_count": 1826.0,
+        "degree": 2.0,
+        "weighted_degree": 9.0,
+        "betweenness": 0.0001424298532972511,
+        "eigenvector": 5.962606303558746e-45,
+        "clustering_coefficient": 0.0,
+        "community": 8.0
+      }
+    },
+    {
+      "id": "National Nature",
+      "x": 89.42495883140269,
+      "y": 933.5351687936001,
+      "size": 41.58883083359672,
+      "color": "#ff9896",
+      "group_label": "Community 8",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.6665551167579592e-45,
+        "clustering_coefficient": 0.0,
+        "community": 8.0
+      }
+    },
+    {
+      "id": "Key Laboratory",
+      "x": -173.09177825847775,
+      "y": 49.409928294589314,
+      "size": 81.2415060330663,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 14.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.469644684586933e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "Canada Research Chair",
+      "x": -496.06962020402807,
+      "y": -768.7718115578281,
+      "size": 48.28313737302301,
+      "color": "#7f7f7f",
+      "group_label": "Community 16",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.99159245803348e-53,
+        "clustering_coefficient": 0.0,
+        "community": 16.0
+      }
+    },
+    {
+      "id": "Natural Sciences and Engineering Research Council of Canada (NSERC)",
+      "x": -485.38715815559334,
+      "y": -770.5429504766062,
+      "size": 48.28313737302301,
+      "color": "#7f7f7f",
+      "group_label": "Community 16",
+      "metrics": {
+        "pub_count": 662.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.99159245803348e-53,
+        "clustering_coefficient": 0.0,
+        "community": 16.0
+      }
+    },
+    {
+      "id": "European Commission",
+      "x": -127.2726944334026,
+      "y": 63.1916010651314,
+      "size": 74.54719949364001,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 129.0,
+        "degree": 3.0,
+        "weighted_degree": 11.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.440548337327544e-08,
+        "clustering_coefficient": 0.6666666666666666,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Research Foundation Flanders (FWO)",
+      "x": -50.78075717556946,
+      "y": 33.76213988554929,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 21.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3541475772007347e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Research Council of Norway",
+      "x": -100.42924571453818,
+      "y": -30.054447413249065,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 39.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.1668128555124824e-10,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Ministry of Education",
+      "x": -161.45193869126322,
+      "y": -879.1500308473819,
+      "size": 41.58883083359672,
+      "color": "#d62728",
+      "group_label": "Community 7",
+      "metrics": {
+        "pub_count": 39.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.642693611013938e-36,
+        "clustering_coefficient": 0.0,
+        "community": 7.0
+      }
+    },
+    {
+      "id": "National Research Foundation of Korea",
+      "x": -164.1405221731108,
+      "y": -860.7755319757081,
+      "size": 86.71115273688494,
+      "color": "#d62728",
+      "group_label": "Community 7",
+      "metrics": {
+        "pub_count": 344.0,
+        "degree": 3.0,
+        "weighted_degree": 17.0,
+        "betweenness": 0.00042728955989175326,
+        "eigenvector": 6.457882485786606e-36,
+        "clustering_coefficient": 0.0,
+        "community": 7.0
+      }
+    },
+    {
+      "id": "National Research Foundation (NRF) Singapore",
+      "x": -178.37064549560262,
+      "y": -869.182440047013,
+      "size": 41.58883083359672,
+      "color": "#d62728",
+      "group_label": "Community 7",
+      "metrics": {
+        "pub_count": 15.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.642693611013938e-36,
+        "clustering_coefficient": 0.0,
+        "community": 7.0
+      }
+    },
+    {
+      "id": "EPSRC Funding Source:",
+      "x": -119.92853667725105,
+      "y": 18.60439965502174,
+      "size": 69.07755278982138,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 13.0,
+        "degree": 1.0,
+        "weighted_degree": 9.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.471044272031471e-09,
+        "clustering_coefficient": 0.0,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "National Aeronautics and Space Administration",
+      "x": -85.55118555434406,
+      "y": 152.8655487887444,
+      "size": 65.91673732008658,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 124.0,
+        "degree": 1.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.2054694533995168e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Wellcome Trust",
+      "x": -142.68004880242893,
+      "y": 4.9314718679981056,
+      "size": 41.58883083359672,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 26.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 8.236814240104903e-10,
+        "clustering_coefficient": 0.0,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "Basque Government",
+      "x": -2.9048340846025575,
+      "y": -28.94185149518877,
+      "size": 58.3773044716594,
+      "color": "#98df8a",
+      "group_label": "Community 6",
+      "metrics": {
+        "pub_count": 44.0,
+        "degree": 2.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 1.3257195137481227e-10,
+        "clustering_coefficient": 0.0,
+        "community": 6.0
+      }
+    },
+    {
+      "id": "Vinnova",
+      "x": 19.766571591237536,
+      "y": -45.69722683524267,
+      "size": 41.58883083359672,
+      "color": "#98df8a",
+      "group_label": "Community 6",
+      "metrics": {
+        "pub_count": 33.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 6.092349121832018e-12,
+        "clustering_coefficient": 0.0,
+        "community": 6.0
+      }
+    },
+    {
+      "id": "Army Research Laboratory",
+      "x": -87.76498979107392,
+      "y": 185.13845367908755,
+      "size": 69.07755278982138,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 76.0,
+        "degree": 2.0,
+        "weighted_degree": 9.0,
+        "betweenness": 0.010682238997293833,
+        "eigenvector": 1.3836736388879218e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Spanish Government",
+      "x": -44.39007348761909,
+      "y": 24.97537769448821,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 34.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3541475772007347e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "FAPERJ",
+      "x": -312.2394608355166,
+      "y": -311.64692123593676,
+      "size": 71.93685818395112,
+      "color": "#2ca02c",
+      "group_label": "Community 5",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 2.0,
+        "weighted_degree": 10.0,
+        "betweenness": 0.0001424298532972511,
+        "eigenvector": 0.0730552557671546,
+        "clustering_coefficient": 1.0,
+        "community": 5.0
+      }
+    },
+    {
+      "id": "National Institute of Health",
+      "x": -100.62745181184343,
+      "y": 166.65990955756132,
+      "size": 65.91673732008658,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 35.0,
+        "degree": 1.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.2054694533995168e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Grant Agency of the Czech Republic",
+      "x": -987.2845294086966,
+      "y": -293.3266474450703,
+      "size": 41.58883083359672,
+      "color": "#c7c7c7",
+      "group_label": "Community 17",
+      "metrics": {
+        "pub_count": 31.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 17.0
+      }
+    },
+    {
+      "id": "MEYS CR",
+      "x": -999.2167852842308,
+      "y": -293.32966678613707,
+      "size": 41.58883083359672,
+      "color": "#c7c7c7",
+      "group_label": "Community 17",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 17.0
+      }
+    },
+    {
+      "id": "SNF",
+      "x": 64.90406248603216,
+      "y": -927.4938207745923,
+      "size": 41.58883083359672,
+      "color": "#bcbd22",
+      "group_label": "Community 18",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 18.0
+      }
+    },
+    {
+      "id": "Swiss National Science Foundation (SNF)",
+      "x": 62.419245624210404,
+      "y": -911.0235654049033,
+      "size": 41.58883083359672,
+      "color": "#bcbd22",
+      "group_label": "Community 18",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 18.0
+      }
+    },
+    {
+      "id": "Max Planck Society",
+      "x": -110.19966530608585,
+      "y": -26.302026475477405,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 28.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.1668128555124824e-10,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "JSPS KAKENHI",
+      "x": 539.4138978798662,
+      "y": -680.0076114008881,
+      "size": 53.75278407684165,
+      "color": "#9467bd",
+      "group_label": "Community 9",
+      "metrics": {
+        "pub_count": 213.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 3.6551731480653373e-47,
+        "clustering_coefficient": 0.0,
+        "community": 9.0
+      }
+    },
+    {
+      "id": "Japan Society for the Promotion of Science",
+      "x": 545.4497972444861,
+      "y": -691.3845037561007,
+      "size": 65.91673732008658,
+      "color": "#9467bd",
+      "group_label": "Community 9",
+      "metrics": {
+        "pub_count": 174.0,
+        "degree": 2.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.0001424298532972511,
+        "eigenvector": 4.2626286660076313e-47,
+        "clustering_coefficient": 0.0,
+        "community": 9.0
+      }
+    },
+    {
+      "id": "Office of Naval",
+      "x": -122.31677140341266,
+      "y": 152.133698852653,
+      "size": 58.3773044716594,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 21.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.6541020900496376e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "UT-Battelle, LLC",
+      "x": -113.87633522751747,
+      "y": 186.92429581934437,
+      "size": 62.383246250395075,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 13.0,
+        "degree": 1.0,
+        "weighted_degree": 7.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0263698784744754e-07,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Region Grand Est (France)",
+      "x": -90.03808457971726,
+      "y": 90.2462005432994,
+      "size": 41.58883083359672,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.2471782462523515e-08,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Enterprise Ireland",
+      "x": -84.9669935718303,
+      "y": -40.52185785496573,
+      "size": 48.28313737302301,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3906863060801905e-10,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Agence Nationale de la",
+      "x": -92.17282602033713,
+      "y": 74.08303768536513,
+      "size": 41.58883083359672,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.2471782462523515e-08,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Young Elite",
+      "x": -179.2733349136061,
+      "y": 57.67656330660243,
+      "size": 74.54719949364001,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 16.0,
+        "degree": 1.0,
+        "weighted_degree": 11.0,
+        "betweenness": 0.0,
+        "eigenvector": 4.2975779664611615e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "Agence Nationale",
+      "x": 758.7539070303619,
+      "y": -317.8293655422951,
+      "size": 58.3773044716594,
+      "color": "#dbdb8d",
+      "group_label": "Community 19",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.792287917437842e-47,
+        "clustering_coefficient": 0.0,
+        "community": 19.0
+      }
+    },
+    {
+      "id": "French National Research Agency",
+      "x": 747.5547319180663,
+      "y": -312.7970426762001,
+      "size": 58.3773044716594,
+      "color": "#dbdb8d",
+      "group_label": "Community 19",
+      "metrics": {
+        "pub_count": 23.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.792287917437842e-47,
+        "clustering_coefficient": 0.0,
+        "community": 19.0
+      }
+    },
+    {
+      "id": "National Science Foundation of China",
+      "x": -228.172111255791,
+      "y": 67.35541113941335,
+      "size": 41.58883083359672,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 125.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.2742161883209903e-10,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "Innovate UK",
+      "x": -128.20686106257187,
+      "y": 24.16129551266376,
+      "size": 81.2415060330663,
+      "color": "#ffbb78",
+      "group_label": "Community 4",
+      "metrics": {
+        "pub_count": 43.0,
+        "degree": 1.0,
+        "weighted_degree": 14.0,
+        "betweenness": 0.0,
+        "eigenvector": 3.8438466453822885e-09,
+        "clustering_coefficient": 0.0,
+        "community": 4.0
+      }
+    },
+    {
+      "id": "JST SPRING",
+      "x": 546.0015830060601,
+      "y": -704.4996341463705,
+      "size": 41.58883083359672,
+      "color": "#9467bd",
+      "group_label": "Community 9",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.1931038888392024e-47,
+        "clustering_coefficient": 0.0,
+        "community": 9.0
+      }
+    },
+    {
+      "id": "Natural Sciences",
+      "x": 476.4404902116551,
+      "y": 778.3756388516977,
+      "size": 41.58883083359672,
+      "color": "#c5b0d5",
+      "group_label": "Community 10",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.951810089921973e-52,
+        "clustering_coefficient": 0.0,
+        "community": 10.0
+      }
+    },
+    {
+      "id": "Free State of Saxony",
+      "x": -61.41156103313744,
+      "y": -3.100732093955875,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 1",
+      "metrics": {
+        "pub_count": 11.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.3541475772007347e-09,
+        "clustering_coefficient": 0.0,
+        "community": 1.0
+      }
+    },
+    {
+      "id": "Air Force Research Laboratory",
+      "x": -122.8946266066404,
+      "y": 176.26598270729792,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 87.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 8.270510450248188e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "CAS",
+      "x": -188.27979471715236,
+      "y": 62.95718393344346,
+      "size": 53.75278407684165,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 16.0,
+        "degree": 1.0,
+        "weighted_degree": 5.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.953444530209619e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    },
+    {
+      "id": "FEDER",
+      "x": 816.7338460932311,
+      "y": 68.22499570288267,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 20",
+      "metrics": {
+        "pub_count": 43.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 20.0
+      }
+    },
+    {
+      "id": "Spanish Ministry of Science, Innovation and Universities",
+      "x": 833.2012411791754,
+      "y": 69.08062367841259,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 20",
+      "metrics": {
+        "pub_count": 21.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 20.0
+      }
+    },
+    {
+      "id": "University of Wollongong (UOW)",
+      "x": -108.1933744327603,
+      "y": 95.0927196120866,
+      "size": 62.383246250395075,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 14.0,
+        "degree": 1.0,
+        "weighted_degree": 7.0,
+        "betweenness": 0.0,
+        "eigenvector": 2.9100825745888198e-08,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Austrian Science Fund",
+      "x": -243.37890688738244,
+      "y": 988.5881914340573,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 21",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 21.0
+      }
+    },
+    {
+      "id": "Austrian Science Fund (FWF)",
+      "x": -239.928184779273,
+      "y": 999.9999999999999,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 21",
+      "metrics": {
+        "pub_count": 25.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.0624883534153216e-56,
+        "clustering_coefficient": 0.0,
+        "community": 21.0
+      }
+    },
+    {
+      "id": "China Postdoctoral",
+      "x": 93.46484764268683,
+      "y": 965.3484567638203,
+      "size": 58.3773044716594,
+      "color": "#ff9896",
+      "group_label": "Community 8",
+      "metrics": {
+        "pub_count": 25.0,
+        "degree": 1.0,
+        "weighted_degree": 6.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.3331102335159185e-45,
+        "clustering_coefficient": 0.0,
+        "community": 8.0
+      }
+    },
+    {
+      "id": "Murdock Charitable Trust",
+      "x": -123.27584975461295,
+      "y": 193.52406184091538,
+      "size": 48.28313737302301,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 12.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.8649707341398596e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "University of Wollongong",
+      "x": -119.10775326170508,
+      "y": 87.16961473357333,
+      "size": 65.91673732008658,
+      "color": "#ff7f0e",
+      "group_label": "Community 3",
+      "metrics": {
+        "pub_count": 16.0,
+        "degree": 1.0,
+        "weighted_degree": 8.0,
+        "betweenness": 0.0,
+        "eigenvector": 3.325808656672937e-08,
+        "clustering_coefficient": 0.0,
+        "community": 3.0
+      }
+    },
+    {
+      "id": "Korea government (MEST)",
+      "x": -158.50359334688343,
+      "y": -854.170784768469,
+      "size": 74.54719949364001,
+      "color": "#d62728",
+      "group_label": "Community 7",
+      "metrics": {
+        "pub_count": 16.0,
+        "degree": 1.0,
+        "weighted_degree": 11.0,
+        "betweenness": 0.0,
+        "eigenvector": 6.023209907051105e-36,
+        "clustering_coefficient": 0.0,
+        "community": 7.0
+      }
+    },
+    {
+      "id": "Lockheed Martin Corporation",
+      "x": 854.0419608954245,
+      "y": 320.4487582174517,
+      "size": 48.28313737302301,
+      "color": "#aec7e8",
+      "group_label": "Community 22",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.99159245803348e-53,
+        "clustering_coefficient": 0.0,
+        "community": 22.0
+      }
+    },
+    {
+      "id": "NASA Space Technology Research Fellowship",
+      "x": 840.1694911979502,
+      "y": 315.1322818937243,
+      "size": 48.28313737302301,
+      "color": "#aec7e8",
+      "group_label": "Community 22",
+      "metrics": {
+        "pub_count": 18.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 9.99159245803348e-53,
+        "clustering_coefficient": 0.0,
+        "community": 22.0
+      }
+    },
+    {
+      "id": "U.S. Army Research Laboratory",
+      "x": -103.64632848406553,
+      "y": 226.50514843852903,
+      "size": 48.28313737302301,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 27.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 5.149732895712129e-09,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "University of North Texas",
+      "x": -76.62969334496758,
+      "y": 211.94101021897683,
+      "size": 48.28313737302301,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 4.0,
+        "betweenness": 0.0,
+        "eigenvector": 8.582888159520213e-09,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "Defense Threat Reduction Agency",
+      "x": -131.63830054959607,
+      "y": 166.2560136773748,
+      "size": 41.58883083359672,
+      "color": "#1f77b4",
+      "group_label": "Community 0",
+      "metrics": {
+        "pub_count": 15.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 8.270510450248188e-08,
+        "clustering_coefficient": 0.0,
+        "community": 0.0
+      }
+    },
+    {
+      "id": "National High",
+      "x": -195.54552193486623,
+      "y": 38.198997584291334,
+      "size": 41.58883083359672,
+      "color": "#aec7e8",
+      "group_label": "Community 2",
+      "metrics": {
+        "pub_count": 10.0,
+        "degree": 1.0,
+        "weighted_degree": 3.0,
+        "betweenness": 0.0,
+        "eigenvector": 1.1720667181257714e-09,
+        "clustering_coefficient": 0.0,
+        "community": 2.0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "ERDF A way of making Europe",
+      "target": "MCIN/AEI",
+      "width": 2.111245863692207,
+      "color": "#f72585",
+      "weight": 13.0
+    },
+    {
+      "source": "MCIN/AEI",
+      "target": "European Union",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "MCIN/AEI",
+      "target": "ANID",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "MCIN/AEI",
+      "target": "Basque Government",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Div Of Civil, Mechanical, & Manufact Inn",
+      "target": "National Science Foundation",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Office of Naval Research",
+      "width": 1.9879253198304003,
+      "color": "#f72585",
+      "weight": 11.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "U.S. Department of Energy",
+      "width": 2.7725887222397816,
+      "color": "#f72585",
+      "weight": 31.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "DARPA",
+      "width": 1.9183162182386966,
+      "color": "#f72585",
+      "weight": 10.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "AFOSR grant",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Air Force Office of Scientific Research",
+      "width": 2.50839537274332,
+      "color": "#f72585",
+      "weight": 22.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "National Institutes of Health",
+      "width": 2.9708576533634465,
+      "color": "#f72585",
+      "weight": 40.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "American Heart",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Army Research Office",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "U.S. Department of Defense",
+      "width": 1.842068074395237,
+      "color": "#f72585",
+      "weight": 9.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Louisiana Board of Regents",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "U.S. Army Research Office",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "National Aeronautics and Space Administration",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Army Research Laboratory",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "China Scholarship Council",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "National Institute of Health",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Office of Naval",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Air Force Research Laboratory",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Science Foundation",
+      "target": "Defense Threat Reduction Agency",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Australian Government",
+      "target": "Australian Research Council",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "Australian Research Council",
+      "target": "University of Melbourne",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Australian Research Council",
+      "target": "China Scholarship Council",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Australian Research Council",
+      "target": "European Commission",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "European Union",
+      "target": "FESR",
+      "width": 1.9183162182386966,
+      "color": "#f72585",
+      "weight": 10.0
+    },
+    {
+      "source": "European Union",
+      "target": "European Regional Development Fund",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Union",
+      "target": "Science Foundation Ireland",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "European Union",
+      "target": "Xunta de Galicia",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "European Union",
+      "target": "National Science Centre, Poland",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Union",
+      "target": "Marie Curie Actions (MSCA)",
+      "width": 1.9879253198304003,
+      "color": "#f72585",
+      "weight": 11.0
+    },
+    {
+      "source": "European Union",
+      "target": "European Research Council",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "European Union",
+      "target": "Research Foundation Flanders (FWO)",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Union",
+      "target": "China Scholarship Council",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "European Union",
+      "target": "Spanish Government",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Union",
+      "target": "German Research Foundation (DFG)",
+      "width": 1.9183162182386966,
+      "color": "#f72585",
+      "weight": 10.0
+    },
+    {
+      "source": "European Union",
+      "target": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Union",
+      "target": "Free State of Saxony",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "University of Nottingham",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "Royal Society",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "China Scholarship Council",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "Leverhulme Trust",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "European Commission",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "EPSRC Funding Source:",
+      "width": 1.842068074395237,
+      "color": "#f72585",
+      "weight": 9.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "Wellcome Trust",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "European Research Council",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "National Natural Science Foundation of China",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Engineering and Physical Sciences Research Council (EPSRC)",
+      "target": "Innovate UK",
+      "width": 2.166440160881768,
+      "color": "#f72585",
+      "weight": 14.0
+    },
+    {
+      "source": "Office of Naval Research",
+      "target": "ARO",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "FAPESP",
+      "target": "National Council for Scientific and Technological Development (CNPq)",
+      "width": 2.50839537274332,
+      "color": "#f72585",
+      "weight": 22.0
+    },
+    {
+      "source": "FAPESP",
+      "target": "Coordination for the Improvement of Higher Education Personnel (CAPES)",
+      "width": 2.111245863692207,
+      "color": "#f72585",
+      "weight": 13.0
+    },
+    {
+      "source": "National Council for Scientific and Technological Development (CNPq)",
+      "target": "Coordination for the Improvement of Higher Education Personnel (CAPES)",
+      "width": 3.4750443374829474,
+      "color": "#f72585",
+      "weight": 76.0
+    },
+    {
+      "source": "National Council for Scientific and Technological Development (CNPq)",
+      "target": "FAPEMIG",
+      "width": 2.3965858188431928,
+      "color": "#f72585",
+      "weight": 19.0
+    },
+    {
+      "source": "National Council for Scientific and Technological Development (CNPq)",
+      "target": "FINEP",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Council for Scientific and Technological Development (CNPq)",
+      "target": "FAPERJ",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "U.S. Department of Energy",
+      "target": "National Institutes of Health",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "U.S. Department of Energy",
+      "target": "UT-Battelle, LLC",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "U.S. Department of Energy",
+      "target": "Murdock Charitable Trust",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Coordination for the Improvement of Higher Education Personnel (CAPES)",
+      "target": "FAPEMIG",
+      "width": 2.166440160881768,
+      "color": "#f72585",
+      "weight": 14.0
+    },
+    {
+      "source": "Coordination for the Improvement of Higher Education Personnel (CAPES)",
+      "target": "FINEP",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "Coordination for the Improvement of Higher Education Personnel (CAPES)",
+      "target": "FAPERJ",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "NSAF",
+      "target": "National Natural Science Foundation of China",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "Hong Kong",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "111 Project",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "Zhejiang Provincial",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "Science Fund",
+      "width": 2.111245863692207,
+      "color": "#f72585",
+      "weight": 13.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "Key Laboratory",
+      "width": 2.166440160881768,
+      "color": "#f72585",
+      "weight": 14.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "Young Elite",
+      "width": 1.9879253198304003,
+      "color": "#f72585",
+      "weight": 11.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "China Scholarship Council",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "CAS",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Natural Science Foundation of China",
+      "target": "National High",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Academy of Finland",
+      "target": "Academy of Finland (AKA)",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "American Heart Association",
+      "target": "National Institutes of Health",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "National Institutes of Health",
+      "target": "Air Force Office of Scientific Research",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Institutes of Health",
+      "target": "DARPA",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "National Institutes of Health",
+      "target": "American Heart",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "Air Force Office of Scientific Research",
+      "target": "ARO",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Air Force Office of Scientific Research",
+      "target": "NSF CAREER",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Air Force Office of Scientific Research",
+      "target": "China Scholarship Council",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "China Scholarship Council",
+      "target": "Region Grand Est (France)",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "China Scholarship Council",
+      "target": "Agence Nationale de la",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "China Scholarship Council",
+      "target": "European Commission",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "China Scholarship Council",
+      "target": "University of Wollongong (UOW)",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "China Scholarship Council",
+      "target": "University of Wollongong",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "China Scholarship Council",
+      "target": "Russian Science Foundation",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "111 Project",
+      "target": "National Science Foundation of China",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Coordenacao de",
+      "target": "Sao Paulo Research Foundation (FAPESP)",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "CRUE-CSIC",
+      "target": "Springer Nature",
+      "width": 1.6635532333438687,
+      "color": "#f72585",
+      "weight": 7.0
+    },
+    {
+      "source": "CONACYT",
+      "target": "Tecnologico de Monterrey",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Deutsche Forschungsgemeinschaft (DFG)",
+      "target": "German Research Foundation (DFG)",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "German Research Foundation (DFG)",
+      "target": "BMBF",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "German Research Foundation (DFG)",
+      "target": "European Research Council",
+      "width": 1.7577796618689758,
+      "color": "#f72585",
+      "weight": 8.0
+    },
+    {
+      "source": "Ministry of Science and Higher",
+      "target": "Russian Science Foundation",
+      "width": 1.9183162182386966,
+      "color": "#f72585",
+      "weight": 10.0
+    },
+    {
+      "source": "National Key R&D",
+      "target": "National Nature Science Foundation of China",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Nature Science Foundation of China",
+      "target": "Natural Sciences",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Research Council",
+      "target": "Science Foundation Ireland",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "European Research Council",
+      "target": "Research Council of Norway",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "European Research Council",
+      "target": "Max Planck Society",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Science Foundation Ireland",
+      "target": "Enterprise Ireland",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Ministry of Higher Education",
+      "target": "Universiti Teknikal Malaysia Melaka (UTeM)",
+      "width": 1.842068074395237,
+      "color": "#f72585",
+      "weight": 9.0
+    },
+    {
+      "source": "U.S. Army Research Office",
+      "target": "U.S. Army Research Laboratory",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "National Key R&D Program of China",
+      "target": "National Nature",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Key R&D Program of China",
+      "target": "China Postdoctoral",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "Canada Research Chair",
+      "target": "Natural Sciences and Engineering Research Council of Canada (NSERC)",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Ministry of Education",
+      "target": "National Research Foundation of Korea",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Research Foundation of Korea",
+      "target": "National Research Foundation (NRF) Singapore",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "National Research Foundation of Korea",
+      "target": "Korea government (MEST)",
+      "width": 1.9879253198304003,
+      "color": "#f72585",
+      "weight": 11.0
+    },
+    {
+      "source": "Basque Government",
+      "target": "Vinnova",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Army Research Laboratory",
+      "target": "University of North Texas",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    },
+    {
+      "source": "Grant Agency of the Czech Republic",
+      "target": "MEYS CR",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "SNF",
+      "target": "Swiss National Science Foundation (SNF)",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "JSPS KAKENHI",
+      "target": "Japan Society for the Promotion of Science",
+      "width": 1.433407575382444,
+      "color": "#f72585",
+      "weight": 5.0
+    },
+    {
+      "source": "Japan Society for the Promotion of Science",
+      "target": "JST SPRING",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Agence Nationale",
+      "target": "French National Research Agency",
+      "width": 1.5567281192442506,
+      "color": "#f72585",
+      "weight": 6.0
+    },
+    {
+      "source": "FEDER",
+      "target": "Spanish Ministry of Science, Innovation and Universities",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Austrian Science Fund",
+      "target": "Austrian Science Fund (FWF)",
+      "width": 1.1090354888959124,
+      "color": "#f72585",
+      "weight": 3.0
+    },
+    {
+      "source": "Lockheed Martin Corporation",
+      "target": "NASA Space Technology Research Fellowship",
+      "width": 1.2875503299472804,
+      "color": "#f72585",
+      "weight": 4.0
+    }
+  ]
+}

@@ -30,28 +30,15 @@ from pathlib import Path
 
 import pandas as pd
 
+from shared_python.paths import get_data_path, get_output_path
+
 # ---------------------------------------------------------------------------
 # CONFIGURABLE PARAMETERS
 # ---------------------------------------------------------------------------
 CONFIG = {
-    "data_path": Path("../../data_source/wos_filtered_bibliography.xlsx"),
-    "output_dir": Path("../../outputs/bibliometric_networks"),
+    "data_path": get_data_path("wos_filtered_bibliography.xlsx"),
+    "output_dir": get_output_path("bibliometric_networks", "temp").parent,
 }
-
-# ---------------------------------------------------------------------------
-# Resolve paths -- data_source/ lives in the main repo root (gitignored,
-# so it is NOT present in worktrees). Walk up from script to find root.
-# ---------------------------------------------------------------------------
-SCRIPT_DIR = Path(__file__).resolve().parent
-_repo_root = SCRIPT_DIR
-while not (_repo_root / "data_source").exists() and _repo_root.parent != _repo_root:
-    _repo_root = _repo_root.parent
-if not (_repo_root / "data_source").exists():
-    raise FileNotFoundError("Cannot locate data_source/ -- run from the main repo or a worktree that has access to it")
-
-CONFIG["data_path"] = (_repo_root / "data_source" / "wos_filtered_bibliography.xlsx").resolve()
-CONFIG["output_dir"] = (SCRIPT_DIR / CONFIG["output_dir"]).resolve()
-CONFIG["output_dir"].mkdir(parents=True, exist_ok=True)
 
 print("=" * 70)
 print(" PHASE 1: DATA EXTRACTION")
