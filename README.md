@@ -2,8 +2,68 @@
 
 Bibliometric analysis and technology forecasting of **Additive Manufacturing** using Web of Science publications and patent data. The pipeline covers data collection, NLP preprocessing, LDA topic modeling, trend analysis, and network visualization.
 
-## Repository Structure
+## Enterprise Nx Monorepo Architecture
 
+This project is structured as a strict **Nx Monorepo**, seamlessly combining Python data pipelines and a TypeScript/Vite frontend visualization app.
+
+- **Orchestrator:** Nx
+- **Package Managers:** `pnpm` (Node/TypeScript) and `uv` (Python)
+- **Data Locality:** Code and data are strictly separated. Raw data lives in `data_source/`, while all generated artifacts are cached and output to `dist/apps/<app-name>/`.
+
+```text
+Technology Forecasting/
+├── apps/
+│   ├── bibliometric-pipeline/    # Python pipeline (Data extraction, graph building, visualization)
+│   └── g6-networks/              # TS/Vite frontend (Interactive G6 network visualizations)
+├── libs/
+│   └── shared-python/            # Shared Python utilities (e.g., dynamic workspace path resolution)
+├── data_source/                  # Raw and derived input datasets (not committed by default)
+├── dist/                         # Generated artifacts and build outputs (gitignored)
+│   └── apps/
+│       ├── bibliometric-pipeline/
+│       │   ├── data/             # Generated CSV, JSON, GraphML, and Excel files
+│       │   └── plots/            # Generated static plots and network HTML files
+│       └── g6-networks/          # Compiled Vite frontend and exported G6 JSON data
+├── package.json                  # Root Node.js manifest and Nx plugins
+├── pnpm-workspace.yaml           # pnpm workspace definition
+└── nx.json                       # Nx configuration and caching rules
+```
+
+## Running the Pipeline
+
+All tasks must be run through Nx to ensure proper caching and dependency resolution. Do not run `uv` or `pnpm` directly inside the app directories.
+
+### Setup
+Install all dependencies (Node and Python) from the workspace root:
+```bash
+pnpm install
+```
+
+### Full Pipeline Execution
+Run the entire pipeline (Extract → Build Networks → Visualize → Export G6 Data → Build Vite App) in one command:
+```bash
+pnpm nx run-many -t extract build visualize export-data build
+```
+
+### Individual Targets
+```bash
+# 1. Extract raw WoS data into canonicalized CSVs
+pnpm nx run bibliometric-pipeline:extract
+
+# 2. Build institutional, funding, and journal graphs (GraphML, Excel metrics)
+pnpm nx run bibliometric-pipeline:build
+
+# 3. Generate static plots and interactive HTML networks
+pnpm nx run bibliometric-pipeline:visualize
+
+# 4. Export graph data to JSON for the G6 frontend
+pnpm nx run g6-networks:export-data
+
+# 5. Build the Vite frontend application
+pnpm nx run g6-networks:build
+
+# 6. Serve the interactive G6 visualization locally
+pnpm nx serve g6-networks
 ```
 .
 ├── data_source/                  # All source and derived datasets
