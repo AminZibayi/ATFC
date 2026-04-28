@@ -2,12 +2,10 @@
 
 Bibliometric analysis and technology forecasting of **Additive Manufacturing** using Web of Science publications and patent data. The pipeline covers data collection, NLP preprocessing, LDA topic modeling, trend analysis, and network visualization.
 
-## Enterprise Nx Monorepo Architecture
+## Monorepo Architecture
 
-This project is structured as a strict **Nx Monorepo**, seamlessly combining Python data pipelines and a TypeScript/Vite frontend visualization app.
+This project is structured as a strict **Monorepo**, seamlessly combining Python data pipelines and a TypeScript/Vite frontend visualization app.
 
-- **Orchestrator:** Nx
-- **Package Managers:** `pnpm` (Node/TypeScript) and `uv` (Python)
 - **Data Locality:** Code and data are strictly separated. Raw data lives in `data_source/`, while all generated artifacts are cached and output to `dist/apps/<app-name>/`.
 
 ```text
@@ -34,18 +32,23 @@ Technology Forecasting/
 All tasks must be run through Nx to ensure proper caching and dependency resolution. Do not run `uv` or `pnpm` directly inside the app directories.
 
 ### Setup
+
 Install all dependencies (Node and Python) from the workspace root:
+
 ```bash
 pnpm install
 ```
 
 ### Full Pipeline Execution
+
 Run the entire pipeline (Extract → Build Networks → Visualize → Export G6 Data → Build Vite App) in one command:
+
 ```bash
 pnpm nx run-many -t extract build visualize export-data build
 ```
 
 ### Individual Targets
+
 ```bash
 # 1. Extract raw WoS data into canonicalized CSVs
 pnpm nx run bibliometric-pipeline:extract
@@ -64,13 +67,6 @@ pnpm nx run g6-networks:build
 
 # 6. Serve the interactive G6 visualization locally
 pnpm nx serve g6-networks
-```
-.
-├── data_source/                  # All source and derived datasets
-│   ├── rename_mapping.yaml       # Original → renamed file mapping
-├── scripts/                      # Analysis scripts (placeholder)
-├── outputs/                      # Analysis outputs (placeholder)
-└──  plots/                        # Generated visualizations
 ```
 
 ## Datasets
@@ -98,10 +94,12 @@ All datasets reside in `data_source/`. The project uses **two parallel corpora**
 ## Analysis Pipeline
 
 ```
+
 WoS Search (126K) ──► Filter (94K) ──► NLP Preprocessing ──► LDA (25 topics) ──► Trend Computation ──► Mann-Kendall Test
 Patent Search (30K) ─────────────► NLP Preprocessing ──► LDA (14 topics) ──► Trend Computation ──► Mann-Kendall Test
-                                                                                                    │
-                                                                              Cross-technology MK test (30 technologies)
+│
+Cross-technology MK test (30 technologies)
+
 ```
 
 1. **Data Collection** — WoS search for Additive Manufacturing literature (126K records); patent database search (30K patents)
