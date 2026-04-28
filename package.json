@@ -1,7 +1,7 @@
 {
-  "name": "technology-forecasting-monorepo",
+  "name": "technology-forecasting",
   "version": "1.0.0",
-  "description": "Enterprise-grade monorepo for technology forecasting analysis",
+  "description": "Technology forecasting toolkit",
   "private": true,
   "scripts": {
     "test": "nx run-many -t test",

@@ -1,0 +1,50 @@
+{
+  "plugins": [
+    {
+      "plugin": "@nxlv/python",
+      "options": {
+        "packageManager": "uv"
+      }
+    },
+    {
+      "plugin": "@nx/vite"
+    }
+  ],
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*"
+    ],
+    "production": [
+      "!{projectRoot}/tests/**/*"
+    ]
+  },
+  "targetDefaults": {
+    "install": {
+      "inputs": [
+        "{projectRoot}/pyproject.toml"
+      ],
+      "outputs": [
+        "{projectRoot}/.venv"
+      ]
+    },
+    "lint": {
+      "inputs": [
+        "default"
+      ]
+    },
+    "test": {
+      "inputs": [
+        "default"
+      ],
+      "dependsOn": [
+        "install"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^install"
+      ]
+    }
+  },
+  "analytics": false
+}
