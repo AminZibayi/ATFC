@@ -30,3 +30,6 @@ outputs/
 plots/
 
 **/**/node_modules/
+.nx/polygraph
+.claude/worktrees
+.claude/settings.local.json
