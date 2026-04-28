@@ -13,18 +13,16 @@ def get_workspace_root() -> Path:
 
 WORKSPACE_ROOT = get_workspace_root()
 DATA_SOURCE_DIR = WORKSPACE_ROOT / "data_source"
-OUTPUTS_DIR = WORKSPACE_ROOT / "outputs"
-PLOTS_DIR = WORKSPACE_ROOT / "plots"
 
 def get_data_path(filename: str) -> Path:
     return DATA_SOURCE_DIR / filename
 
 def get_output_path(app_name: str, filename: str) -> Path:
-    out_dir = OUTPUTS_DIR / app_name
+    out_dir = WORKSPACE_ROOT / "dist" / "apps" / app_name / "data"
     out_dir.mkdir(parents=True, exist_ok=True)
     return out_dir / filename
 
 def get_plot_path(app_name: str, filename: str) -> Path:
-    plot_dir = PLOTS_DIR / app_name
+    plot_dir = WORKSPACE_ROOT / "dist" / "apps" / app_name / "plots"
     plot_dir.mkdir(parents=True, exist_ok=True)
     return plot_dir / filename
