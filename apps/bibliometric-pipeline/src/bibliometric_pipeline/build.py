@@ -32,7 +32,7 @@ from shared_python.paths import get_output_path
 # CONFIGURABLE PARAMETERS -- edit these to adjust the analysis
 # ---------------------------------------------------------------------------
 CONFIG = {
-    "output_dir": get_output_path("bibliometric_networks", "temp").parent,
+    "output_dir": get_output_path("bibliometric-pipeline", "temp").parent,
 
     "institutional": {
         "min_publications": 5,

@@ -37,7 +37,7 @@ from shared_python.paths import get_data_path, get_output_path
 # ---------------------------------------------------------------------------
 CONFIG = {
     "data_path": get_data_path("wos_filtered_bibliography.xlsx"),
-    "output_dir": get_output_path("bibliometric_networks", "temp").parent,
+    "output_dir": get_output_path("bibliometric-pipeline", "temp").parent,
 }
 
 print("=" * 70)
@@ -215,6 +215,8 @@ def is_generic(name: str) -> bool:
 
 
 def canonicalise_inst(name: str) -> str:
+    if not isinstance(name, str):
+        name = str(name)
     key = name.lower().strip()
     if key in _INST_CANONICAL:
         return _INST_CANONICAL[key]

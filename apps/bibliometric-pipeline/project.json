@@ -6,17 +6,23 @@
   "targets": {
     "extract": {
       "command": "uv run python -m bibliometric_pipeline.extract",
-      "options": { "cwd": "apps/bibliometric-pipeline" }
+      "options": { "cwd": "apps/bibliometric-pipeline" },
+      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/data"],
+      "cache": true
     },
     "build": {
       "command": "uv run python -m bibliometric_pipeline.build",
       "dependsOn": ["extract"],
-      "options": { "cwd": "apps/bibliometric-pipeline" }
+      "options": { "cwd": "apps/bibliometric-pipeline" },
+      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/data"],
+      "cache": true
     },
     "visualize": {
       "command": "uv run python -m bibliometric_pipeline.visualize",
       "dependsOn": ["build"],
-      "options": { "cwd": "apps/bibliometric-pipeline" }
+      "options": { "cwd": "apps/bibliometric-pipeline" },
+      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/plots"],
+      "cache": true
     }
   }
 }

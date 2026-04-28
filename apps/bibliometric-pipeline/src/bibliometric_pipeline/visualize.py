@@ -35,8 +35,8 @@ from shared_python.paths import get_output_path, get_plot_path
 # CONFIGURABLE PARAMETERS -- edit these to adjust the visualizations
 # ---------------------------------------------------------------------------
 CONFIG = {
-    "output_dir": get_output_path("bibliometric_networks", "temp").parent,
-    "plot_dir": get_plot_path("bibliometric_networks", "temp").parent,
+    "output_dir": get_output_path("bibliometric-pipeline", "temp").parent,
+    "plot_dir": get_plot_path("bibliometric-pipeline", "temp").parent,
 
     "institutional": {
         "top_n_labels": 30,
