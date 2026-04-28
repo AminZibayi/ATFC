@@ -18,8 +18,8 @@ import matplotlib.colors as mcolors
 from shared_python.paths import get_output_path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-INPUT_DIR = get_output_path("bibliometric_networks", "temp").parent
-OUTPUT_DIR = (SCRIPT_DIR / "src/data").resolve()
+INPUT_DIR = get_output_path("bibliometric-pipeline", "temp").parent
+OUTPUT_DIR = get_output_path("g6-networks", "")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Environment variables for pre-filtering

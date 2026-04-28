@@ -7,14 +7,19 @@
     "export-data": {
       "command": "uv run python export_g6_data.py",
       "dependsOn": ["bibliometric-pipeline:build"],
-      "options": { "cwd": "apps/g6-networks" }
+      "options": { "cwd": "apps/g6-networks" },
+      "inputs": ["{projectRoot}/export_g6_data.py", "{projectRoot}/**/*.py"],
+      "outputs": ["{workspaceRoot}/dist/apps/g6-networks/data"],
+      "cache": true
     },
     "build": {
       "executor": "@nx/vite:build",
       "dependsOn": ["export-data"],
       "options": {
         "outputPath": "dist/apps/g6-networks"
-      }
+      },
+      "outputs": ["{options.outputPath}"],
+      "cache": true
     },
     "serve": {
       "executor": "@nx/vite:dev-server",

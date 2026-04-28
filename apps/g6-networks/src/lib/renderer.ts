@@ -1,7 +1,7 @@
 import { Graph } from '@antv/g6';
 import type { NetworkData } from './types';
 
-export function createGraph(containerId: string, data: NetworkData, title: string) {
+export function createGraph(containerId: string, data: NetworkData, _title: string) {
   const container = document.getElementById(containerId);
   if (!container) throw new Error(`Container ${containerId} not found`);
 
@@ -22,7 +22,7 @@ export function createGraph(containerId: string, data: NetworkData, title: strin
         labelFill: '#333',
         labelBackgroundFill: 'rgba(255, 255, 255, 0.8)',
         labelBackgroundPadding: [2, 4],
-        labelPlacement: 'center',
+        labelPlacement: 'center' as const,
         lineWidth: 1,
         stroke: '#fff'
       }
@@ -86,7 +86,7 @@ export function createGraph(containerId: string, data: NetworkData, title: strin
       {
         type: 'tooltip',
         trigger: 'hover',
-        getContent: (e: any, items: any) => {
+        getContent: (_e: any, items: any) => {
           let html = `<div style="padding: 4px; background: white; border: 1px solid #ccc; border-radius: 4px;">`;
           if (items && items.length > 0) {
             const model = items[0];

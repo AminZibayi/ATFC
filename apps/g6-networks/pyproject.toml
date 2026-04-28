@@ -9,14 +9,14 @@ dependencies = [
     "networkx",
     "matplotlib",
     "shared-python",
+    "scipy>=1.17.1",
 ]
 
 [tool.uv.sources]
 shared-python = { path = "../../libs/shared-python", editable = true }
 
-[build-system]
-requires = ["uv_build>=0.8.9,<0.9.0"]
-build-backend = "uv_build"
+[tool.uv]
+package = false
 
 [tool.ruff]
 exclude = [".ruff_cache", ".venv", "dist"]

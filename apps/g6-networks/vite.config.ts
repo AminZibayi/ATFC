@@ -2,8 +2,13 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
+  root: __dirname,
+  resolve: {
+    alias: {
+      '@data': resolve(__dirname, '../../dist/apps/g6-networks/data')
+    }
+  },
   build: {
-    outDir: '../../plots/g6_networks',
     emptyOutDir: true,
     rollupOptions: {
       input: {
