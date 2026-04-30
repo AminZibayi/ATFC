@@ -4,7 +4,7 @@
 
 Bibliometric analysis and technology forecasting of Additive Manufacturing using Web of Science publications (126K) and patent data (30K). The pipeline: data collection → NLP preprocessing → LDA topic modeling → trend analysis → Mann-Kendall statistical testing.
 
-An **Enterprise Nx Monorepo** combining Python data pipelines (managed via `uv`) and TypeScript/Vite frontend visualization apps, orchestrated flawlessly by Nx.
+A **Monorepo** combining Python data pipelines (managed via `uv`) and TypeScript/Vite frontend visualization apps, orchestrated flawlessly by Nx.
 
 ## Monorepo Architecture
 
@@ -26,7 +26,11 @@ Technology Forecasting/
 2. **Data Locality**: Code does not live near data. Code lives in `apps/` and `libs/`. Data lives in `data/`.
 3. **No Relative Hacks**: Never use `../../data/` or `Path(__file__).parent.parent.parent` in code. Instead, `libs/shared-python` exposes a `get_workspace_root()` utility that dynamically locates the root `nx.json` or `.git` directory and computes absolute paths.
 4. **Atomic Targets**: Define every step of the pipeline as a cached Nx target in `project.json`. `build` should depend on `extract`.
-5. **No Loose Scripts**: A script must be a module inside an Nx project with a declared target in `project.json`.
+5. **No Loose Scripts**: A script must be a module inside an Nx project with a
+   declared target in `project.json`.
+6. **Use atomic commits**: Every fix or feature gets its own commit. Never batch
+   unrelated changes into a single commit.
+7. **Avoid npm and npx**: Use pnpm and pnpm alternatives for npx (dlx/exec).
 
 ## Tech Stack
 
