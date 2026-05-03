@@ -20,14 +20,13 @@ Plots -> plots/bibliometric_networks/*.png, *.html
 =============================================================================
 """
 
-from pathlib import Path
-
 import numpy as np
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import plotly.graph_objects as go
+from matplotlib.collections import LineCollection
 
 from shared_python.paths import get_output_path, get_plot_path
 
@@ -42,9 +41,9 @@ CONFIG = {
         "top_n_labels": 30,
         "top_n_bar": 20,
         "layout_seed": 42,
-        "layout_iterations": 150,
-        "figure_dpi": 200,
-        "figure_size": (22, 18),
+        "layout_iterations": 20,
+        "figure_dpi": 100,
+        "figure_size": (16, 12),
         "node_size_scale": 80,
         "edge_width_scale": 0.6,
         "max_edge_width": 6,
@@ -53,9 +52,9 @@ CONFIG = {
         "top_n_labels": 30,
         "top_n_bar": 20,
         "layout_seed": 42,
-        "layout_iterations": 150,
-        "figure_dpi": 200,
-        "figure_size": (22, 18),
+        "layout_iterations": 20,
+        "figure_dpi": 100,
+        "figure_size": (16, 12),
         "node_size_scale": 60,
         "edge_width_scale": 0.6,
         "max_edge_width": 6,
@@ -64,9 +63,9 @@ CONFIG = {
         "top_n_labels": 30,
         "top_n_bar": 30,
         "layout_seed": 42,
-        "layout_iterations": 150,
-        "figure_dpi": 200,
-        "figure_size": (22, 18),
+        "layout_iterations": 20,
+        "figure_dpi": 100,
+        "figure_size": (16, 12),
         "node_size_scale": 15,
         "edge_width_scale": 0.3,
         "max_edge_width": 5,
@@ -145,7 +144,8 @@ def make_static_network(
     else:
         node_colors = [comm_colors[0]] * G.number_of_nodes()
 
-    edge_weights = [G[u][v]["weight"] for u, v in G.edges()]
+    edge_list = list(G.edges())
+    edge_weights = [G[u][v]["weight"] for u, v in edge_list]
     max_w = max(edge_weights) if edge_weights else 1
     edge_widths = [
         min(np.log1p(w) * cfg["edge_width_scale"], cfg["max_edge_width"])
@@ -156,10 +156,15 @@ def make_static_network(
     ax.set_facecolor("#0e1117")
     fig.set_facecolor("#0e1117")
 
-    for (u, v), width in zip(G.edges(), edge_widths):
-        x0, y0 = pos[u]
-        x1, y1 = pos[v]
-        ax.plot([x0, x1], [y0, y1], color=edge_color, linewidth=width, alpha=0.3, zorder=1)
+    lines = [[pos[u], pos[v]] for u, v in edge_list]
+    lc = LineCollection(
+        lines,
+        linewidths=edge_widths,
+        colors=edge_color,
+        alpha=0.3,
+        zorder=1
+    )
+    ax.add_collection(lc)
 
     nx.draw_networkx_nodes(
         G, pos, ax=ax, node_size=node_sizes, node_color=node_colors,
@@ -225,18 +230,43 @@ def make_interactive_html(
     edge_weights = [G[u][v]["weight"] for u, v in G.edges()]
     max_w = max(edge_weights) if edge_weights else 1
 
+    # Group edges by weight bins to reduce the number of traces (performance)
+    n_bins = 5
+    if max_w > 1:
+        bins = np.linspace(min(edge_weights), max_w, n_bins + 1)
+    else:
+        bins = [0, 1]
+    
     edge_traces = []
-    for u, v in G.edges():
-        x0, y0 = pos[u]
-        x1, y1 = pos[v]
-        w = G[u][v]["weight"]
-        edge_traces.append(go.Scatter(
-            x=[x0, x1, None], y=[y0, y1, None],
-            mode="lines",
-            line=dict(width=max(np.log1p(w) * 0.5, 0.5), color=edge_color),
-            opacity=min(0.15 + 0.5 * w / max_w, 0.7),
-            hoverinfo="skip", showlegend=False,
-        ))
+    for i in range(len(bins)-1):
+        b_low = bins[i]
+        b_high = bins[i+1]
+        
+        edge_x = []
+        edge_y = []
+        count = 0
+        for u, v in G.edges():
+            w = G[u][v]["weight"]
+            if b_low <= w <= b_high:
+                x0, y0 = pos[u]
+                x1, y1 = pos[v]
+                edge_x.extend([x0, x1, None])
+                edge_y.extend([y0, y1, None])
+                count += 1
+        
+        if count > 0:
+            avg_w = (b_low + b_high) / 2
+            width = max(np.log1p(avg_w) * 0.5, 0.5)
+            opacity = min(0.15 + 0.5 * avg_w / max_w, 0.7)
+            
+            edge_traces.append(go.Scatter(
+                x=edge_x, y=edge_y,
+                line=dict(width=width, color=edge_color),
+                hoverinfo="skip",
+                mode="lines",
+                opacity=opacity,
+                showlegend=False
+            ))
 
     x_nodes = [pos[n][0] for n in G.nodes()]
     y_nodes = [pos[n][1] for n in G.nodes()]
