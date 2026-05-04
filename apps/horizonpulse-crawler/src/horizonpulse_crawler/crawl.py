@@ -1,5 +1,7 @@
 import asyncio
 import json
+import hashlib
+import re
 from datetime import datetime
 from urllib.parse import urlparse
 
@@ -9,34 +11,46 @@ from crawl4ai.deep_crawling.filters import FilterChain, DomainFilter, ContentTyp
 
 from horizonpulse_crawler.config import CONFIG
 
-def url_to_filename(url: str, ext: str) -> str:
+def url_to_filename(url: str) -> str:
     parsed = urlparse(url)
-    path = parsed.path.strip("/").replace("/", "__") or "index"
-    return f"{path}{ext}"
+    path_and_query = f"{parsed.path}?{parsed.query}" if parsed.query else parsed.path
+    # Use [^\w\-] to preserve Unicode characters (like Persian) while sanitizing
+    sanitized = re.sub(r'[^\w\-]', '_', path_and_query).strip('_')
+    sanitized = sanitized[:50] or "index"
+    url_hash = hashlib.md5(url.encode()).hexdigest()[:8]
+    return f"{sanitized}_{url_hash}"
 
 def save_result(result):
-    fname = url_to_filename(result.url, "")
-    
-    # Setup directories
-    pages_dir = CONFIG["OUTPUT_DIR"] / "pages"
-    html_dir = CONFIG["OUTPUT_DIR"] / "html"
-    pages_dir.mkdir(parents=True, exist_ok=True)
-    html_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        fname = url_to_filename(result.url)
+        
+        pages_dir = CONFIG["OUTPUT_DIR"] / "pages"
+        html_dir = CONFIG["OUTPUT_DIR"] / "html"
 
-    # Save Markdown
-    md_path = pages_dir / f"{fname}.md"
-    with open(md_path, "w", encoding="utf-8") as f:
-        f.write(f"# {result.url}\n\n")
-        f.write(result.markdown.fit_markdown or result.markdown.raw_markdown or "")
+        # Save Markdown
+        md_path = pages_dir / f"{fname}.md"
+        with open(md_path, "w", encoding="utf-8") as f:
+            f.write(f"# {result.url}\n\n")
+            if hasattr(result, 'markdown') and result.markdown:
+                md_content = getattr(result.markdown, 'fit_markdown', None) or getattr(result.markdown, 'raw_markdown', None) or ""
+                f.write(md_content)
 
-    # Save HTML
-    html_path = html_dir / f"{fname}.html"
-    with open(html_path, "w", encoding="utf-8") as f:
-        f.write(result.html or "")
+        # Save HTML
+        html_path = html_dir / f"{fname}.html"
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(result.html or "")
+            
+        return True, None
+    except Exception as e:
+        return False, str(e)
 
 async def main():
     print(f"Starting crawl of {CONFIG['BASE_URL']}")
     CONFIG["OUTPUT_DIR"].mkdir(parents=True, exist_ok=True)
+    
+    # Setup directories early to avoid concurrent mkdir race conditions
+    (CONFIG["OUTPUT_DIR"] / "pages").mkdir(parents=True, exist_ok=True)
+    (CONFIG["OUTPUT_DIR"] / "html").mkdir(parents=True, exist_ok=True)
 
     browser_config = BrowserConfig(
         browser_type="chromium",
@@ -74,12 +88,17 @@ async def main():
     failed_urls = []
 
     async with AsyncWebCrawler(config=browser_config) as crawler:
-        async for result in await crawler.arun(CONFIG["BASE_URL"], config=run_config):
+        async for result in crawler.arun(CONFIG["BASE_URL"], config=run_config):
             depth = result.metadata.get("depth", 0)
             if result.success:
-                save_result(result)
-                crawled_urls.append(result.url)
-                print(f"  ✓  [depth={depth}] {result.url}")
+                # Offload blocking I/O to a thread
+                success, error_msg = await asyncio.to_thread(save_result, result)
+                if success:
+                    crawled_urls.append(result.url)
+                    print(f"  ✓  [depth={depth}] {result.url}")
+                else:
+                    failed_urls.append(result.url)
+                    print(f"  ✗  [depth={depth}] {result.url} — Save Error: {error_msg}")
             else:
                 failed_urls.append(result.url)
                 print(f"  ✗  [depth={depth}] {result.url} — {result.error_message}")
