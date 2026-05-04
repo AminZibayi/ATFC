@@ -26,12 +26,12 @@ apps/horizonpulse-crawler/
 
 ## Configuration (`config.py`)
 
-| Constant | Value | Purpose |
-|----------|-------|---------|
-| `BASE_URL` | `"https://www.horizonpulse.ir"` | Start URL |
-| `MAX_DEPTH` | `5` | Link-hop depth limit |
-| `MAX_PAGES` | `200` | Hard cap on pages |
-| `WAIT_FOR_MS` | `2000` | Extra wait after page load for JS rendering |
+| Constant      | Value                           | Purpose                                     |
+| ------------- | ------------------------------- | ------------------------------------------- |
+| `BASE_URL`    | `"https://www.horizonpulse.ir"` | Start URL                                   |
+| `MAX_DEPTH`   | `10`                            | Link-hop depth limit                        |
+| `MAX_PAGES`   | `1000`                          | Hard cap on pages                           |
+| `WAIT_FOR_MS` | `2000`                          | Extra wait after page load for JS rendering |
 
 Output directory: `{workspaceRoot}/data/horizonpulse/`
 
@@ -47,9 +47,11 @@ dependencies = [
 ## Nx Targets
 
 ### `crawl`
+
 Runs the full BFS deep crawl of horizonpulse.ir, streaming results as pages complete. Saves Markdown to `data/horizonpulse/pages/` and HTML to `data/horizonpulse/html/`.
 
 ### `summarize`
+
 Reads the crawled pages and generates `data/horizonpulse/crawl_summary.json` with metadata.
 
 ## Data Flow

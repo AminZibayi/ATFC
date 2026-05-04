@@ -13,6 +13,7 @@
 ### Task 1: Scaffold Nx Application
 
 **Files:**
+
 - Create: `apps/horizonpulse-crawler/project.json`
 - Create: `apps/horizonpulse-crawler/pyproject.toml`
 - Create: `apps/horizonpulse-crawler/src/horizonpulse_crawler/__init__.py`
@@ -32,6 +33,7 @@ git commit -m "chore: scaffold horizonpulse-crawler app"
 ### Task 2: Configure Dependencies
 
 **Files:**
+
 - Modify: `apps/horizonpulse-crawler/pyproject.toml`
 
 - [ ] **Step 1: Update dependencies in pyproject.toml**
@@ -78,6 +80,7 @@ git commit -m "build: add crawl4ai and shared-python deps to crawler"
 ### Task 3: Create Configuration Module
 
 **Files:**
+
 - Create: `apps/horizonpulse-crawler/src/horizonpulse_crawler/config.py`
 
 - [ ] **Step 1: Write config.py**
@@ -91,8 +94,8 @@ WORKSPACE_ROOT = get_workspace_root()
 
 CONFIG = {
     "BASE_URL": "https://www.horizonpulse.ir",
-    "MAX_DEPTH": 5,
-    "MAX_PAGES": 200,
+    "MAX_DEPTH": 10,
+    "MAX_PAGES": 1000,
     "WAIT_FOR_MS": 2000,
     "OUTPUT_DIR": WORKSPACE_ROOT / "data" / "horizonpulse",
 }
@@ -108,6 +111,7 @@ git commit -m "feat: add crawler configuration"
 ### Task 4: Implement Crawl Logic
 
 **Files:**
+
 - Create: `apps/horizonpulse-crawler/src/horizonpulse_crawler/crawl.py`
 
 - [ ] **Step 1: Write crawl.py**
@@ -133,7 +137,7 @@ def url_to_filename(url: str, ext: str) -> str:
 
 def save_result(result):
     fname = url_to_filename(result.url, "")
-    
+
     # Setup directories
     pages_dir = CONFIG["OUTPUT_DIR"] / "pages"
     html_dir = CONFIG["OUTPUT_DIR"] / "html"
@@ -235,6 +239,7 @@ git commit -m "feat: implement AsyncWebCrawler logic"
 ### Task 5: Configure Nx Targets
 
 **Files:**
+
 - Modify: `apps/horizonpulse-crawler/project.json`
 
 - [ ] **Step 1: Update project.json targets**
@@ -253,9 +258,7 @@ Replace or add the `crawl` target in `apps/horizonpulse-crawler/project.json`:
       "options": {
         "cwd": "apps/horizonpulse-crawler"
       },
-      "outputs": [
-        "{workspaceRoot}/data/horizonpulse"
-      ],
+      "outputs": ["{workspaceRoot}/data/horizonpulse"],
       "cache": false
     }
   }
