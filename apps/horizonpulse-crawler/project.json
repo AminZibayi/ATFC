@@ -4,6 +4,16 @@
   "projectType": "application",
   "sourceRoot": "apps/horizonpulse-crawler/src",
   "targets": {
+    "crawl": {
+      "command": "uv run python -m horizonpulse_crawler.crawl",
+      "options": {
+        "cwd": "apps/horizonpulse-crawler"
+      },
+      "outputs": [
+        "{workspaceRoot}/data/horizonpulse"
+      ],
+      "cache": false
+    },
     "lock": {
       "executor": "@nxlv/python:lock",
       "options": {
