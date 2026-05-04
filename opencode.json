@@ -3,12 +3,21 @@
   "mcp": {
     "nx-mcp": {
       "type": "local",
-      "command": [
-        "npx",
-        "nx",
-        "mcp"
-      ],
+      "command": ["npx", "nx", "mcp"],
       "enabled": true
+    }
+  },
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "websearch": "allow",
+      "question": "allow",
+      "Stop-Process*": "ask",
+      "Kill-Process*": "ask",
+      "taskkill*": "ask",
+      "*-Force*": "ask",
+      "rm*": "ask",
+      "Get-Process*": "ask"
     }
   }
 }
