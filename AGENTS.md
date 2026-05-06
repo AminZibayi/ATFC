@@ -14,6 +14,8 @@ This project is a strict **Nx monorepo**: code is divided into apps (execution l
 Technology Forecasting/
 ├── apps/
 ├── libs/
+├── reports/                   # Test execution results (JUnit, HTML)
+├── coverage/                  # Code coverage reports (XML, HTML)
 ├── .github/                   # CI/CD workflows
 ├── package.json               # Root manifest, Nx configuration, dev tools
 ├── pnpm-workspace.yaml        # JS/TS workspace boundaries
@@ -23,7 +25,7 @@ Technology Forecasting/
 ## Core Tenets & Boundaries
 
 1. **Nx Everything**: Never run `uv` or `pnpm` directly for application scripts. ALWAYS use Nx targets: `pnpm nx run <project>:<target>` (e.g. `pnpm nx run bibliometric-pipeline:extract`).
-2. **Data Locality**: Code does not live near data. Code lives in `apps/` and `libs/`. Data lives in `data/`.
+2. **Data Locality**: Code does not live near data. Code lives in `apps/` and `libs/`. Data lives in `data/raw`, `data/intermediate`, and `data/outputs`.
 3. **No Relative Hacks**: Never use `../../data/` or `Path(__file__).parent.parent.parent` in code. Instead, `libs/shared-python` exposes a `get_workspace_root()` utility that dynamically locates the root `nx.json` or `.git` directory and computes absolute paths.
 4. **Atomic Targets**: Define every step of the pipeline as a cached Nx target in `project.json`. `build` should depend on `extract`.
 5. **No Loose Scripts**: A script must be a module inside an Nx project with a
@@ -31,6 +33,7 @@ Technology Forecasting/
 6. **Use atomic commits**: Every fix or feature gets its own commit. Never batch
    unrelated changes into a single commit.
 7. **Avoid npm and npx**: Use pnpm and pnpm alternatives for npx (dlx/exec).
+8. **QA Artifacts**: Test results (`reports/`) and code coverage (`coverage/`) are explicitly configured as project outputs in `project.json` and tool configs (e.g., `pyproject.toml`). They are aggregated at the workspace root for centralized CI/CD collection and Nx caching.
 
 ## Tech Stack
 
@@ -58,7 +61,7 @@ Files with **no suffix** = publication/WoS data. Files with **"-p" suffix** or s
 2. **Developing G6 Visualizations**:
    Add the JSON extraction target to `apps/g6-networks/project.json` and a `build` target executing Vite.
 3. **Accessing Data**:
-   Import `shared_python.paths` (from `libs/shared-python`) to fetch the path to `data/raw` or `data/outputs`.
+   Import `shared_python.paths` (from `libs/shared-python`) to fetch `get_raw_data_path()`, `get_intermediate_data_path()`, `get_output_path()`, and `get_plot_path()`.
 
 <!-- nx configuration start-->
 <!-- Leave the start & end comments to automatically receive updates. -->

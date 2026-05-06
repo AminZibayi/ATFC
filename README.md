@@ -6,7 +6,7 @@ Bibliometric analysis and technology forecasting of **Additive Manufacturing** u
 
 This project is structured as a strict **Monorepo**, seamlessly combining Python data pipelines and a TypeScript/Vite frontend visualization app.
 
-- **Data Locality:** Code and data are strictly separated. Raw data lives in `data_source/`, while all generated artifacts are cached and output to `dist/apps/<app-name>/`.
+- **Data Locality:** Code and data are strictly separated. Raw data lives in `data/raw`, intermediate artifacts live in `data/intermediate`, and final outputs live in `data/outputs`.
 
 ```text
 Technology Forecasting/
@@ -15,13 +15,12 @@ Technology Forecasting/
 │   └── g6-networks/              # TS/Vite frontend (Interactive G6 network visualizations)
 ├── libs/
 │   └── shared-python/            # Shared Python utilities (e.g., dynamic workspace path resolution)
-├── data_source/                  # Raw and derived input datasets (not committed by default)
-├── dist/                         # Generated artifacts and build outputs (gitignored)
-│   └── apps/
+├── data/
+│   ├── raw/                      # Immutable raw inputs and crawler HTML
+│   ├── intermediate/             # Cleaned, parsed, or staged pipeline outputs
+│   └── outputs/                  # Final aggregations, plots, and app exports
 │       ├── bibliometric-pipeline/
-│       │   ├── data/             # Generated CSV, JSON, GraphML, and Excel files
-│       │   └── plots/            # Generated static plots and network HTML files
-│       └── g6-networks/          # Compiled Vite frontend and exported G6 JSON data
+│       └── g6-networks/
 ├── package.json                  # Root Node.js manifest and Nx plugins
 ├── pnpm-workspace.yaml           # pnpm workspace definition
 └── nx.json                       # Nx configuration and caching rules
@@ -71,7 +70,7 @@ pnpm nx serve g6-networks
 
 ## Datasets
 
-All datasets reside in `data_source/`. The project uses **two parallel corpora** — academic publications (Web of Science) and patents — processed through the same topic modeling pipeline.
+All datasets reside in `data/` following the raw/intermediate/outputs layout. The project uses **two parallel corpora** — academic publications (Web of Science) and patents — processed through the same topic modeling pipeline.
 
 | File                                                | Description                                               | Rows                    | Key Columns                                                                                                                             |
 | --------------------------------------------------- | --------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
