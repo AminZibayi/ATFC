@@ -30,14 +30,14 @@ from pathlib import Path
 
 import pandas as pd
 
-from shared_python.paths import get_data_path, get_output_path
+from shared_python.paths import get_intermediate_data_path, get_raw_data_path
 
 # ---------------------------------------------------------------------------
 # CONFIGURABLE PARAMETERS
 # ---------------------------------------------------------------------------
 CONFIG = {
-    "data_path": get_data_path("wos_filtered_bibliography.xlsx"),
-    "output_dir": get_output_path("bibliometric-pipeline", "temp").parent,
+    "data_path": get_raw_data_path("wos_filtered_bibliography.xlsx"),
+    "output_dir": get_intermediate_data_path("bibliometric-pipeline", "temp").parent,
 }
 
 print("=" * 70)

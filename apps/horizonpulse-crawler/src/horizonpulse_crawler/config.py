@@ -7,5 +7,7 @@ CONFIG = {
     "MAX_DEPTH": 5,
     "MAX_PAGES": 200,
     "WAIT_FOR_MS": 2000,
-    "OUTPUT_DIR": WORKSPACE_ROOT / "data" / "horizonpulse",
+    "HTML_DIR": WORKSPACE_ROOT / "data" / "raw" / "horizonpulse_crawler" / "html",
+    "PAGES_DIR": WORKSPACE_ROOT / "data" / "intermediate" / "horizonpulse_crawler" / "pages",
+    "SUMMARY_PATH": WORKSPACE_ROOT / "data" / "outputs" / "horizonpulse_crawler" / "crawl_summary.json",
 }
