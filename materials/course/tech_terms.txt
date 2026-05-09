@@ -1,0 +1,1345 @@
+AI, Artificial Intelligence	AI
+ML, Machine Learning	AI
+Deep Learning	AI
+Neural Networks	AI
+Computer Vision	AI
+Natural Language Processing, NLP	AI
+Reinforcement Learning	AI
+Generative AI	AI
+Large Language Model, LLM	AI
+Foundation Models	AI
+Multimodal Models	AI
+Transformer	AI
+CNN, Convolutional Neural Network	AI
+RNN, Recurrent Neural Network	AI
+GAN, Generative Adversarial Network	AI
+BERT	AI
+GPT	AI
+LSTM, Long Short-Term Memory	AI
+Synthetic Data	AI
+AI Safety	AI
+AI Assurance	AI
+Sensory Perception and Recognition	AI
+Machine Perception	AI
+AI Planning	AI
+AI Reasoning	AI
+Decision Making Systems	AI
+AI Ethics	AI
+Explainable AI, XAI	AI
+Federated Learning	AI
+Transfer Learning	AI
+Meta-Learning	AI
+Few-Shot Learning	AI
+Zero-Shot Learning	AI
+Active Learning	AI
+Online Learning	AI
+Ensemble Learning	AI
+Adversarial Machine Learning	AI
+Neural Architecture Search, NAS	AI
+AutoML	AI
+Model Compression	AI
+Knowledge Distillation	AI
+Quantization	AI
+Pruning	AI
+Edge AI	AI
+Neuromorphic Computing	AI
+Spiking Neural Networks	AI
+Capsule Networks	AI
+Attention Mechanisms	AI
+Self-Attention	AI
+Cross-Attention	AI
+Embeddings	AI
+Word Embeddings	AI
+Sentence Embeddings	AI
+Vision Transformers, ViT	AI
+Diffusion Models	AI
+Variational Autoencoders, VAE	AI
+Normalizing Flows	AI
+Energy-Based Models	AI
+Contrastive Learning	AI
+Self-Supervised Learning	AI
+Semi-Supervised Learning	AI
+Weakly Supervised Learning	AI
+Multi-Task Learning	AI
+Curriculum Learning	AI
+Prompt Engineering	AI
+In-Context Learning	AI
+Chain-of-Thought	AI
+Retrieval-Augmented Generation, RAG	AI
+Fine-Tuning	AI
+Parameter-Efficient Fine-Tuning, PEFT	AI
+LoRA, Low-Rank Adaptation	AI
+Adapters	AI
+Instruction Tuning	AI
+RLHF, Reinforcement Learning from Human Feedback	AI
+Constitutional AI	AI
+Red Teaming	AI
+Alignment	AI
+AI Governance	AI
+Object Detection	AI
+Image Segmentation	AI
+Semantic Segmentation	AI
+Instance Segmentation	AI
+Panoptic Segmentation	AI
+Image Classification	AI
+Image Generation	AI
+Text-to-Image	AI
+Image-to-Image	AI
+Video Generation	AI
+Video Understanding	AI
+Action Recognition	AI
+Pose Estimation	AI
+Face Recognition	AI
+Facial Landmark Detection	AI
+Emotion Recognition	AI
+Gesture Recognition	AI
+Optical Character Recognition, OCR	AI
+Scene Understanding	AI
+3D Reconstruction	AI
+Depth Estimation	AI
+Simultaneous Localization and Mapping, SLAM	AI
+Visual SLAM	AI
+Point Cloud Processing	AI
+Speech Recognition	AI
+Speech Synthesis	AI
+Text-to-Speech, TTS	AI
+Voice Conversion	AI
+Speaker Recognition	AI
+Speaker Diarization	AI
+Automatic Speech Recognition, ASR	AI
+Speech Enhancement	AI
+Audio Generation	AI
+Music Generation	AI
+Named Entity Recognition, NER	AI
+Part-of-Speech Tagging, POS	AI
+Dependency Parsing	AI
+Semantic Parsing	AI
+Question Answering	AI
+Reading Comprehension	AI
+Text Summarization	AI
+Machine Translation	AI
+Neural Machine Translation	AI
+Sentiment Analysis	AI
+Text Classification	AI
+Text Generation	AI
+Language Modeling	AI
+Dialogue Systems	AI
+Conversational AI	AI
+Chatbots	AI
+Information Retrieval	AI
+Information Extraction	AI
+Relation Extraction	AI
+Coreference Resolution	AI
+Word Sense Disambiguation	AI
+Topic Modeling	AI
+Document Understanding	AI
+Code Generation	AI
+Program Synthesis	AI
+Automated Reasoning	AI
+Theorem Proving	AI
+Symbolic AI	AI
+Knowledge Graphs	AI
+Knowledge Representation	AI
+Ontologies	AI
+Semantic Web	AI
+Recommender Systems	AI
+Collaborative Filtering	AI
+Content-Based Filtering	AI
+Anomaly Detection	AI
+Fraud Detection	AI
+Predictive Maintenance	AI
+Time Series Forecasting	AI
+Causal Inference	AI
+Causal Discovery	AI
+Counterfactual Reasoning	AI
+Multi-Agent Systems	AI
+Swarm Intelligence	AI
+Evolutionary Algorithms	AI
+Genetic Algorithms	AI
+Genetic Programming	AI
+Particle Swarm Optimization	AI
+Ant Colony Optimization	AI
+Simulated Annealing	AI
+Bayesian Optimization	AI
+Hyperparameter Optimization	AI
+Neural ODEs	AI
+Graph Neural Networks, GNN	AI
+Graph Convolutional Networks	AI
+Message Passing Neural Networks	AI
+Attention Networks	AI
+Memory Networks	AI
+Neural Turing Machines	AI
+Differentiable Neural Computers	AI
+Liquid Neural Networks	AI
+Mixture of Experts, MoE	AI
+State Space Models, SSM	AI
+Direct Preference Optimization, DPO	AI
+Vector Databases	AI
+Graph RAG	AI
+Vision-Language Models, VLM	AI
+Small Language Models, SLM	AI
+Neural Radiance Fields, NeRF	AI
+Gaussian Splatting	AI
+Embodied AI	AI
+Federated Analytics	AI
+Synthetic Media	AI
+Voice Cloning	AI
+Deepfakes	AI
+Hallucination Detection	AI
+Model Monitoring	AI
+Feature Stores	AI
+MLOps	AI
+LLMOps	AI
+Agentic AI	AI
+IoT, Internet of Things	IoT
+Edge Computing	Computing
+Fog Computing	Computing
+MQTT	IoT
+CoAP	IoT
+Zigbee	IoT
+LoRaWAN	IoT
+Z-Wave	IoT
+Thread	IoT
+Matter	IoT
+BLE, Bluetooth Low Energy	IoT
+NFC, Near Field Communication	IoT
+RFID, Radio-Frequency Identification	IoT
+Sensor Networks	IoT
+Wireless Sensor Networks	IoT
+Smart Sensors	IoT
+Industrial IoT, IIoT	IoT
+Smart Cities	IoT
+Smart Homes	IoT
+Smart Grid	IoT
+Connected Vehicles	IoT
+Wearables	IoT
+Asset Tracking	IoT
+Environmental Monitoring	IoT
+AR, Augmented Reality	XR
+VR, Virtual Reality	XR
+Mixed Reality, MR	XR
+Extended Reality, XR	XR
+Holographic Displays	XR
+Spatial Audio	XR
+Haptic Feedback	XR
+Motion Tracking	XR
+Eye Tracking	XR
+Hand Tracking	XR
+Inside-Out Tracking	XR
+Outside-In Tracking	XR
+Simultaneous Localization and Mapping, SLAM	XR
+Markerless Tracking	XR
+6DOF, Six Degrees of Freedom	XR
+3DOF, Three Degrees of Freedom	XR
+Passthrough	XR
+Volumetric Video	XR
+Photogrammetry	XR
+3D Scanning	XR
+Virtual Worlds	XR
+Metaverse	XR
+Digital Twins	XR
+Quantum Computing	Quantum
+Quantum Sensing	Quantum
+Quantum Communications	Quantum
+Quantum Networking	Quantum
+Quantum Devices	Quantum
+Quantum Materials	Quantum
+Quantum Supremacy	Quantum
+Quantum Advantage	Quantum
+Quantum Algorithms	Quantum
+Quantum Annealing	Quantum
+Quantum Error Correction	Quantum
+Quantum Entanglement	Quantum
+Quantum Teleportation	Quantum
+Quantum Cryptography	Quantum
+Quantum Key Distribution, QKD	Quantum
+Quantum Random Number Generation	Quantum
+Quantum Simulation	Quantum
+Quantum Machine Learning	Quantum
+Variational Quantum Eigensolver, VQE	Quantum
+Quantum Approximate Optimization Algorithm, QAOA	Quantum
+Superconducting Qubits	Quantum
+Trapped Ion Qubits	Quantum
+Topological Qubits	Quantum
+Photonic Qubits	Quantum
+Quantum Dots	Quantum
+Quantum Wells	Quantum
+Quantum Coherence	Quantum
+Decoherence	Quantum
+5G	Network
+6G	Network
+LTE	Network
+4G	Network
+NR, New Radio	Network
+Millimeter Wave, mmWave	Network
+Sub-6 GHz	Network
+Massive MIMO	Network
+Beamforming	Network
+Network Slicing	Network
+Mobile Edge Computing, MEC	Network
+Ultra-Reliable Low-Latency Communications, URLLC	Network
+Enhanced Mobile Broadband, eMBB	Network
+Massive Machine-Type Communications, mMTC	Network
+Software-Defined Networking, SDN	Network
+Network Function Virtualization, NFV	Network
+Intent-Based Networking	Network
+Zero-Touch Networking	Network
+Self-Organizing Networks, SON	Network
+Cognitive Radio	Network
+Dynamic Spectrum Access	Network
+Spectrum Sharing	Network
+White Space Networks	Network
+Wi-Fi 6, 802.11ax	Network
+Wi-Fi 6E	Network
+Wi-Fi 7, 802.11be	Network
+Li-Fi	Network
+Visible Light Communication	Network
+Terahertz Communications	Network
+Free-Space Optical Communication	Network
+Satellite Internet	Network
+Low Earth Orbit Satellites, LEO	Network
+Geosynchronous Satellites, GEO	Network
+Medium Earth Orbit Satellites, MEO	Network
+Mesh Networks	Network
+Ad Hoc Networks	Network
+Vehicular Ad Hoc Networks, VANET	Network
+Flying Ad Hoc Networks, FANET	Network
+Underwater Acoustic Networks	Network
+Delay-Tolerant Networking	Network
+Opportunistic Networking	Network
+Named Data Networking	Network
+Content-Centric Networking	Network
+Information-Centric Networking	Network
+Supercomputing	Computing
+High-Performance Computing, HPC	Computing
+Parallel Computing	Computing
+Distributed Computing	Computing
+Grid Computing	Computing
+Cluster Computing	Computing
+Cloud Computing	Computing
+Hybrid Cloud	Computing
+Multi-Cloud	Computing
+Serverless Computing	Computing
+Function-as-a-Service, FaaS	Computing
+Platform-as-a-Service, PaaS	Computing
+Infrastructure-as-a-Service, IaaS	Computing
+Container-as-a-Service, CaaS	Computing
+Backend-as-a-Service, BaaS	Computing
+Data Centers	Computing
+Green Data Centers	Computing
+Modular Data Centers	Computing
+Hyperscale Data Centers	Computing
+Colocation	Computing
+Modeling and Simulation	Computing
+Computational Fluid Dynamics, CFD	Computing
+Finite Element Analysis, FEA	Computing
+Molecular Dynamics	Computing
+Monte Carlo Simulation	Computing
+Discrete Event Simulation	Computing
+Agent-Based Modeling	Computing
+System Dynamics	Computing
+Digital Twin	Computing
+Spatial Computing	Computing
+Neuromorphic Computing	Computing
+Non-Von Neumann Computing	Computing
+In-Memory Computing	Computing
+Processing-in-Memory, PIM	Computing
+Near-Memory Computing	Computing
+Compute-in-Storage	Computing
+Heterogeneous Computing	Computing
+Accelerated Computing	Computing
+GPU Computing	Computing
+FPGA Computing	Computing
+ASIC Computing	Computing
+Approximate Computing	Computing
+Probabilistic Computing	Computing
+Stochastic Computing	Computing
+Reversible Computing	Computing
+Adiabatic Computing	Computing
+Chiplets	Computing
+Gate-All-Around FET, GAAFET	Computing
+High Bandwidth Memory, HBM	Computing
+Compute Express Link, CXL	Computing
+Silicon Photonics	Computing
+Optical Interconnects	Computing
+Wafer-Scale Integration	Computing
+Back-Side Power Delivery Network, BSPDN	Computing
+System-in-Package, SiP	Computing
+Tensor Processing Unit, TPU	Computing
+Data Processing Unit, DPU	Computing
+Neural Processing Unit, NPU	Computing
+Intelligence Processing Unit, IPU	Computing
+RISC-V	Computing
+Zero-Knowledge Proofs, ZKP	Computing
+Homomorphic Encryption	Computing
+Multi-Party Computation, MPC	Computing
+Decentralized Identity, DID	Computing
+Materials by Design	Materials Science
+Material Genomics	Materials Science
+Computational Materials Science	Materials Science
+High-Throughput Materials Discovery	Materials Science
+Novel Materials	Materials Science
+Advanced Materials	Materials Science
+Smart Materials	Materials Science
+Functional Materials	Materials Science
+Structural Materials	Materials Science
+Metamaterials	Materials Science
+Photonic Metamaterials	Materials Science
+Acoustic Metamaterials	Materials Science
+Mechanical Metamaterials	Materials Science
+Nanomaterials	Materials Science
+Nanoparticles	Materials Science
+Nanotubes	Materials Science
+Graphene	Materials Science
+Carbon Nanotubes	Materials Science
+Fullerenes	Materials Science
+Quantum Dots	Materials Science
+2D Materials	Materials Science
+Transition Metal Dichalcogenides, TMDs	Materials Science
+MXenes	Materials Science
+Perovskites	Materials Science
+High-Entropy Alloys	Materials Science
+Shape Memory Alloys	Materials Science
+Superalloys	Materials Science
+Ceramics	Materials Science
+Advanced Ceramics	Materials Science
+Composites	Materials Science
+Carbon Fiber Composites	Materials Science
+Nanocomposites	Materials Science
+Polymer Composites	Materials Science
+Metal Matrix Composites	Materials Science
+Ceramic Matrix Composites	Materials Science
+Biomaterials	Materials Science
+Biocompatible Materials	Materials Science
+Biodegradable Materials	Materials Science
+Tissue Engineering Scaffolds	Materials Science
+Hydrogels	Materials Science
+Self-Healing Materials	Materials Science
+Piezoelectric Materials	Materials Science
+Thermoelectric Materials	Materials Science
+Ferroelectric Materials	Materials Science
+Magnetoelectric Materials	Materials Science
+Superconducting Materials	Materials Science
+High-Temperature Superconductors	Materials Science
+Topological Materials	Materials Science
+Topological Insulators	Materials Science
+Magnetic Materials	Materials Science
+Multiferroic Materials	Materials Science
+Phase Change Materials	Materials Science
+Electrochromic Materials	Materials Science
+Photochromic Materials	Materials Science
+Thermochromic Materials	Materials Science
+Energy Harvesting Materials	Materials Science
+Light-Emitting Materials	Materials Science
+Phosphorescent Materials	Materials Science
+Photoluminescent Materials	Materials Science
+Material Characterization	Materials Science
+X-Ray Diffraction, XRD	Materials Science
+Electron Microscopy	Materials Science
+Scanning Electron Microscopy, SEM	Materials Science
+Transmission Electron Microscopy, TEM	Materials Science
+Atomic Force Microscopy, AFM	Materials Science
+Scanning Tunneling Microscopy, STM	Materials Science
+X-Ray Photoelectron Spectroscopy, XPS	Materials Science
+Raman Spectroscopy	Materials Science
+Fourier Transform Infrared Spectroscopy, FTIR	Materials Science
+Nuclear Magnetic Resonance, NMR	Materials Science
+Mass Spectrometry	Materials Science
+Thermal Analysis	Materials Science
+Differential Scanning Calorimetry, DSC	Materials Science
+Thermogravimetric Analysis, TGA	Materials Science
+Mechanical Testing	Materials Science
+Nanoindentation	Materials Science
+Lifecycle Assessment, LCA	Materials Science
+Circular Economy	Materials Science
+Cradle-to-Cradle	Materials Science
+Aerospace	Aerospace
+Aeronautics	Aerospace
+Aviation	Aerospace
+Astronautics	Aerospace
+Space Exploration	Aerospace
+Propulsion Systems	Aerospace
+Jet Engines	Aerospace
+Turbofan Engines	Aerospace
+Turbojet Engines	Aerospace
+Turboprop Engines	Aerospace
+Ramjet Engines	Aerospace
+Scramjet Engines	Aerospace
+Rocket Engines	Aerospace
+Liquid Rocket Engines	Aerospace
+Solid Rocket Motors	Aerospace
+Hybrid Rocket Engines	Aerospace
+Electric Propulsion	Aerospace
+Ion Thrusters	Aerospace
+Hall Effect Thrusters	Aerospace
+Magnetoplasmadynamic Thrusters	Aerospace
+Nuclear Thermal Propulsion	Aerospace
+Nuclear Electric Propulsion	Aerospace
+Solar Sails	Aerospace
+Gas Turbine Engine	Aerospace
+Full-Authority Digital Engine Control, FADEC	Aerospace
+Hot-Section Manufacturing	Manufacturing
+Aerospace Manufacturing	Manufacturing
+Hypersonics	Aerospace
+Hypersonic Flight	Aerospace
+Hypersonic Propulsion	Aerospace
+Hypersonic Weapons	Aerospace
+Hypersonic Glide Vehicles	Aerospace
+Boost-Glide Systems	Aerospace
+Aerodynamics	Aerospace
+Computational Fluid Dynamics, CFD	Aerospace
+Supersonic Flow	Aerospace
+Transonic Flow	Aerospace
+Boundary Layer Control	Aerospace
+Flow Control	Aerospace
+Active Flow Control	Aerospace
+Plasma Actuators	Aerospace
+Synthetic Jets	Aerospace
+Vortex Generators	Aerospace
+Laminar Flow Control	Aerospace
+Drag Reduction	Aerospace
+Avionics	Aerospace
+Flight Control Systems	Aerospace
+Fly-by-Wire	Aerospace
+Fly-by-Light	Aerospace
+Autopilot	Aerospace
+Flight Management Systems	Aerospace
+Air Traffic Management	Aerospace
+Unmanned Aerial Vehicles, UAV	Aerospace
+Drones	Aerospace
+Uncrewed Aerial Systems, UAS	Aerospace
+Electric Aircraft	Aerospace
+Hybrid-Electric Aircraft	Aerospace
+eVTOL, Electric Vertical Takeoff and Landing	Aerospace
+Urban Air Mobility	Aerospace
+Advanced Air Mobility	Aerospace
+Stealth Technology	Aerospace
+Radar Cross Section Reduction	Aerospace
+Low Observable Technology	Aerospace
+Sensing	Sensing
+Sensors	Sensing
+Networked Sensing	Sensing
+Distributed Sensing	Sensing
+Sensor Fusion	Sensing
+Multi-Sensor Integration	Sensing
+Sensor Networks	Sensing
+Smart Sensors	Sensing
+Adaptive Sensors	Sensing
+Intelligent Sensors	Sensing
+Remote Sensing	Sensing
+Satellite Remote Sensing	Sensing
+Aerial Remote Sensing	Sensing
+LiDAR, Light Detection and Ranging	Sensing
+Radar, Radio Detection and Ranging	Sensing
+SAR, Synthetic Aperture Radar	Sensing
+InSAR, Interferometric SAR	Sensing
+Sonar, Sound Navigation and Ranging	Sensing
+Multispectral Imaging	Sensing
+Hyperspectral Imaging	Sensing
+Thermal Imaging	Sensing
+Infrared Imaging	Sensing
+Ultraviolet Imaging	Sensing
+Terahertz Imaging	Sensing
+Acoustic Sensing	Sensing
+Ultrasonic Sensing	Sensing
+Vibration Sensing	Sensing
+Seismic Sensing	Sensing
+Geophysical Sensing	Sensing
+Gravitational Sensing	Sensing
+Magnetic Sensing	Sensing
+Magnetometry	Sensing
+Electric Field Sensing	Sensing
+Chemical Sensing	Sensing
+Gas Sensing	Sensing
+Biosensing	Sensing
+Optical Sensing	Sensing
+Fiber Optic Sensing	Sensing
+Quantum Sensing	Sensing
+Adaptive Optics	Optics
+Active Optics	Optics
+Wavefront Sensing	Optics
+Deformable Mirrors	Optics
+Tip-Tilt Correction	Optics
+Atmospheric Turbulence Compensation	Optics
+Pathogen Detection	Biosecurity
+Biodetection	Biosecurity
+Biosurveillance	Biosecurity
+Biosensors	Biosecurity
+Immunoassays	Biosecurity
+PCR, Polymerase Chain Reaction	Biosecurity
+qPCR, Quantitative PCR	Biosecurity
+RT-PCR, Reverse Transcription PCR	Biosecurity
+LAMP, Loop-Mediated Isothermal Amplification	Biosecurity
+Next-Generation Sequencing, NGS	Biosecurity
+Whole Genome Sequencing	Biosecurity
+Metagenomics	Biosecurity
+Pathogen Genomics	Biosecurity
+Epidemiological Modeling	Biosecurity
+Disease Surveillance	Biosecurity
+CBRN Detection, Chemical Biological Radiological Nuclear	Defense
+CBRNE, CBRN and Explosives	Defense
+Chemical Detection	Defense
+Biological Detection	Defense
+Radiological Detection	Defense
+Nuclear Detection	Defense
+Explosives Detection	Defense
+Standoff Detection	Defense
+Point Detection	Defense
+Environmental Sensing	Sensing
+Air Quality Monitoring	Sensing
+Water Quality Monitoring	Sensing
+Soil Monitoring	Sensing
+Pollution Monitoring	Sensing
+Climate Monitoring	Sensing
+Weather Monitoring	Sensing
+Oceanographic Sensing	Sensing
+Transportation Sensing	Sensing
+Vehicle Sensors	Sensing
+Traffic Monitoring	Sensing
+Infrastructure Monitoring	Sensing
+Security Sensing	Sensing
+Surveillance Systems	Sensing
+Intrusion Detection	Sensing
+Perimeter Security	Sensing
+Access Control	Sensing
+Health Sensing	Sensing
+Medical Sensors	Sensing
+Wearable Health Sensors	Sensing
+Vital Signs Monitoring	Sensing
+Continuous Glucose Monitoring	Sensing
+Cardiac Monitoring	Sensing
+Neurological Monitoring	Sensing
+Energy Sensing	Sensing
+Power Monitoring	Sensing
+Energy Metering	Sensing
+Smart Meters	Sensing
+Manufacturing Sensing	Sensing
+Industrial Sensors	Sensing
+Process Monitoring	Sensing
+Quality Control Sensors	Sensing
+Predictive Maintenance Sensors	Sensing
+Building Sensing	Sensing
+Building Automation	Sensing
+Occupancy Sensing	Sensing
+HVAC Sensors	Sensing
+Lighting Control Sensors	Sensing
+Signature Management	Defense
+Radar Signature Reduction	Defense
+Infrared Signature Reduction	Defense
+Acoustic Signature Reduction	Defense
+Electromagnetic Signature Management	Defense
+Thermal Management	Defense
+Manufacturing	Manufacturing
+Advanced Manufacturing	Manufacturing
+Additive Manufacturing	Manufacturing
+3D Printing	Manufacturing
+Metal 3D Printing	Manufacturing
+Polymer 3D Printing	Manufacturing
+Ceramic 3D Printing	Manufacturing
+Bioprinting	Manufacturing
+Fused Deposition Modeling, FDM	Manufacturing
+Stereolithography, SLA	Manufacturing
+Selective Laser Sintering, SLS	Manufacturing
+Direct Metal Laser Sintering, DMLS	Manufacturing
+Electron Beam Melting, EBM	Manufacturing
+Binder Jetting	Manufacturing
+Material Jetting	Manufacturing
+Digital Light Processing, DLP	Manufacturing
+Multi-Jet Fusion	Manufacturing
+Continuous Liquid Interface Production, CLIP	Manufacturing
+Subtractive Manufacturing	Manufacturing
+CNC Machining	Manufacturing
+Milling	Manufacturing
+Turning	Manufacturing
+Drilling	Manufacturing
+Grinding	Manufacturing
+EDM, Electrical Discharge Machining	Manufacturing
+Wire EDM	Manufacturing
+Laser Cutting	Manufacturing
+Plasma Cutting	Manufacturing
+Waterjet Cutting	Manufacturing
+Hybrid Manufacturing	Manufacturing
+Clean Manufacturing	Manufacturing
+Green Manufacturing	Manufacturing
+Sustainable Manufacturing	Manufacturing
+Eco-Manufacturing	Manufacturing
+Smart Manufacturing	Manufacturing
+Industry 4.0	Manufacturing
+Smart Factory	Manufacturing
+Cyber-Physical Systems	Manufacturing
+Industrial Internet of Things, IIoT	Manufacturing
+Digital Manufacturing	Manufacturing
+Virtual Manufacturing	Manufacturing
+Computer-Aided Manufacturing, CAM	Manufacturing
+Computer-Aided Design, CAD	Manufacturing
+Computer-Aided Engineering, CAE	Manufacturing
+Product Lifecycle Management, PLM	Manufacturing
+Manufacturing Execution Systems, MES	Manufacturing
+Enterprise Resource Planning, ERP	Manufacturing
+Nanomanufacturing	Manufacturing
+Bottom-Up Nanofabrication	Manufacturing
+Top-Down Nanofabrication	Manufacturing
+Lithography	Manufacturing
+Photolithography	Manufacturing
+Electron Beam Lithography	Manufacturing
+Nanoimprint Lithography	Manufacturing
+Extreme Ultraviolet Lithography, EUV	Manufacturing
+Thin Film Deposition	Manufacturing
+Chemical Vapor Deposition, CVD	Manufacturing
+Physical Vapor Deposition, PVD	Manufacturing
+Atomic Layer Deposition, ALD	Manufacturing
+Molecular Beam Epitaxy, MBE	Manufacturing
+Etching	Manufacturing
+Dry Etching	Manufacturing
+Wet Etching	Manufacturing
+Plasma Etching	Manufacturing
+Reactive Ion Etching, RIE	Manufacturing
+Lightweight Metal Manufacturing	Manufacturing
+Aluminum Manufacturing	Manufacturing
+Titanium Manufacturing	Manufacturing
+Magnesium Manufacturing	Manufacturing
+Powder Metallurgy	Manufacturing
+Metal Injection Molding	Manufacturing
+Investment Casting	Manufacturing
+Die Casting	Manufacturing
+Forging	Manufacturing
+Extrusion	Manufacturing
+Rolling	Manufacturing
+Stamping	Manufacturing
+Sheet Metal Forming	Manufacturing
+Superplastic Forming	Manufacturing
+Hot Isostatic Pressing, HIP	Manufacturing
+Material Recovery	Manufacturing
+Product Recovery	Manufacturing
+Recycling	Manufacturing
+Upcycling	Manufacturing
+Remanufacturing	Manufacturing
+Refurbishing	Manufacturing
+Disassembly	Manufacturing
+Reverse Logistics	Manufacturing
+Waste-to-Energy	Manufacturing
+Industrial Symbiosis	Manufacturing
+Biomanufacturing	Biotechnology
+Bioprocessing	Biotechnology
+Fermentation	Biotechnology
+Cell Culture	Biotechnology
+Bioreactors	Biotechnology
+Upstream Processing	Biotechnology
+Downstream Processing	Biotechnology
+Purification	Biotechnology
+Chromatography	Biotechnology
+Filtration	Biotechnology
+Biotechnology	Biotechnology
+Synthetic Biology	Biotechnology
+Gene Editing	Biotechnology
+CRISPR	Biotechnology
+CRISPR-Cas9	Biotechnology
+CRISPR-Cas12	Biotechnology
+CRISPR-Cas13	Biotechnology
+Base Editing	Biotechnology
+Prime Editing	Biotechnology
+TALENs, Transcription Activator-Like Effector Nucleases	Biotechnology
+Zinc Finger Nucleases, ZFN	Biotechnology
+Meganucleases	Biotechnology
+Homologous Recombination	Biotechnology
+Gene Therapy	Biotechnology
+Gene Delivery	Biotechnology
+Viral Vectors	Biotechnology
+Adenoviral Vectors	Biotechnology
+Adeno-Associated Viral Vectors, AAV	Biotechnology
+Lentiviral Vectors	Biotechnology
+Retroviral Vectors	Biotechnology
+Non-Viral Vectors	Biotechnology
+Lipid Nanoparticles, LNP	Biotechnology
+Electroporation	Biotechnology
+Nucleic Acid Synthesis	Biotechnology
+DNA Synthesis	Biotechnology
+RNA Synthesis	Biotechnology
+Oligonucleotide Synthesis	Biotechnology
+Gene Synthesis	Biotechnology
+Genome Synthesis	Biotechnology
+Genome Engineering	Biotechnology
+Genome Editing	Biotechnology
+Genome Writing	Biotechnology
+Minimal Genomes	Biotechnology
+Synthetic Genomes	Biotechnology
+Epigenome Engineering	Biotechnology
+Epigenetic Editing	Biotechnology
+DNA Methylation	Biotechnology
+Histone Modification	Biotechnology
+Chromatin Remodeling	Biotechnology
+Protein Synthesis	Biotechnology
+Protein Engineering	Biotechnology
+Directed Evolution	Biotechnology
+Rational Design	Biotechnology
+De Novo Protein Design	Biotechnology
+Protein Expression	Biotechnology
+Recombinant Proteins	Biotechnology
+Antibody Engineering	Biotechnology
+Monoclonal Antibodies	Biotechnology
+Bispecific Antibodies	Biotechnology
+Antibody-Drug Conjugates	Biotechnology
+Nanobodies	Biotechnology
+Enzyme Engineering	Biotechnology
+Metabolic Engineering	Biotechnology
+Pathway Engineering	Biotechnology
+Strain Engineering	Biotechnology
+Microbial Engineering	Biotechnology
+Multi-Omics	Biotechnology
+Genomics	Biotechnology
+Transcriptomics	Biotechnology
+Proteomics	Biotechnology
+Metabolomics	Biotechnology
+Lipidomics	Biotechnology
+Glycomics	Biotechnology
+Epigenomics	Biotechnology
+Phenomics	Biotechnology
+Systems Biology	Biotechnology
+Biometrology	Biotechnology
+Bioinformatics	Biotechnology
+Computational Biology	Biotechnology
+Structural Biology	Biotechnology
+Molecular Modeling	Biotechnology
+Protein Structure Prediction	Biotechnology
+AlphaFold	Biotechnology
+Molecular Dynamics Simulations	Biotechnology
+Docking	Biotechnology
+Virtual Screening	Biotechnology
+Drug Discovery	Biotechnology
+Drug Design	Biotechnology
+Computer-Aided Drug Design, CADD	Biotechnology
+High-Throughput Screening	Biotechnology
+Fragment-Based Drug Discovery	Biotechnology
+Structure-Based Drug Design	Biotechnology
+Ligand-Based Drug Design	Biotechnology
+Phenotype Analysis	Biotechnology
+Phenotyping	Biotechnology
+High-Content Screening	Biotechnology
+Image-Based Phenotyping	Biotechnology
+Cell Engineering	Biotechnology
+Cellular Reprogramming	Biotechnology
+Induced Pluripotent Stem Cells, iPSC	Biotechnology
+Stem Cell Engineering	Biotechnology
+Cell Differentiation	Biotechnology
+Organoids	Biotechnology
+Tissue Engineering	Biotechnology
+Regenerative Medicine	Biotechnology
+Multicellular Systems Engineering	Biotechnology
+Synthetic Cells	Biotechnology
+Artificial Cells	Biotechnology
+Cell-Free Systems	Biotechnology
+Cell-Free Protein Synthesis	Biotechnology
+Cell-Free Metabolic Engineering	Biotechnology
+In Vitro Transcription-Translation	Biotechnology
+Viral Engineering	Biotechnology
+Virus-Like Particles	Biotechnology
+Oncolytic Viruses	Biotechnology
+Phage Engineering	Biotechnology
+Phage Therapy	Biotechnology
+Viral Delivery Systems	Biotechnology
+Biotic-Abiotic Interfaces	Biotechnology
+Bioelectronics	Biotechnology
+Bioelectrochemistry	Biotechnology
+Microbial Fuel Cells	Biotechnology
+Enzymatic Fuel Cells	Biotechnology
+Biosensors	Biotechnology
+Electrochemical Biosensors	Biotechnology
+Optical Biosensors	Biotechnology
+Piezoelectric Biosensors	Biotechnology
+Microfluidics	Biotechnology
+Lab-on-a-Chip	Biotechnology
+Organ-on-a-Chip	Biotechnology
+Point-of-Care Diagnostics	Biotechnology
+Renewable Generation	Energy
+Solar Energy	Energy
+Photovoltaics, PV	Energy
+Solar Cells	Energy
+Silicon Solar Cells	Energy
+Thin-Film Solar Cells	Energy
+Perovskite Solar Cells	Energy
+Organic Solar Cells	Energy
+Multi-Junction Solar Cells	Energy
+Concentrated Solar Power, CSP	Energy
+Solar Thermal	Energy
+Wind Turbines	Energy
+Onshore Wind	Energy
+Offshore Wind	Energy
+Floating Wind Turbines	Energy
+Vertical Axis Wind Turbines	Energy
+Hydroelectric Power	Energy
+Hydropower	Energy
+Pumped-Storage Hydropower	Energy
+Tidal Energy	Energy
+Wave Energy	Energy
+Ocean Thermal Energy Conversion, OTEC	Energy
+Geothermal Energy	Energy
+Enhanced Geothermal Systems	Energy
+Biomass Energy	Energy
+Bioenergy	Energy
+Biofuels	Energy
+Bioethanol	Energy
+Biodiesel	Energy
+Biogas	Energy
+Anaerobic Digestion	Energy
+Pyrolysis	Energy
+Gasification	Energy
+Torrefaction	Energy
+Hydrothermal Liquefaction	Energy
+Algae Biofuels	Energy
+Cellulosic Ethanol	Energy
+Sustainable Aviation Fuel, SAF	Energy
+Renewable Diesel	Energy
+Renewable Natural Gas, RNG	Energy
+Hydrogen Energy	Energy
+Green Hydrogen	Energy
+Blue Hydrogen	Energy
+Turquoise Hydrogen	Energy
+Hydrogen Production	Energy
+Water Electrolysis	Energy
+Proton Exchange Membrane Electrolysis, PEM	Energy
+Alkaline Electrolysis	Energy
+Solid Oxide Electrolysis	Energy
+Photoelectrochemical Water Splitting	Energy
+Hydrogen Storage	Energy
+Compressed Hydrogen Storage	Energy
+Liquid Hydrogen Storage	Energy
+Metal Hydride Storage	Energy
+Chemical Hydrogen Storage	Energy
+Hydrogen Fuel Cells	Energy
+Proton Exchange Membrane Fuel Cells, PEMFC	Energy
+Solid Oxide Fuel Cells, SOFC	Energy
+Molten Carbonate Fuel Cells, MCFC	Energy
+Phosphoric Acid Fuel Cells, PAFC	Energy
+Direct Methanol Fuel Cells, DMFC	Energy
+Ammonia	Energy
+Green Ammonia	Energy
+Ammonia Production	Energy
+Haber-Bosch Process	Energy
+Electrochemical Ammonia Synthesis	Energy
+Nuclear Energy	Energy
+Nuclear Power	Energy
+Nuclear Reactors	Energy
+Light Water Reactors	Energy
+Pressurized Water Reactors, PWR	Energy
+Boiling Water Reactors, BWR	Energy
+Heavy Water Reactors	Energy
+Advanced Reactors	Energy
+Generation IV Reactors	Energy
+Small Modular Reactors, SMR	Energy
+Microreactors	Energy
+Molten Salt Reactors	Energy
+Fast Reactors	Energy
+Breeder Reactors	Energy
+High-Temperature Gas-Cooled Reactors	Energy
+Nuclear Fusion	Energy
+Fusion Energy	Energy
+Magnetic Confinement Fusion	Energy
+Tokamak	Energy
+Stellarator	Energy
+Inertial Confinement Fusion, ICF	Energy
+Laser Fusion	Energy
+Magnetized Target Fusion	Energy
+Fusion Ignition	Energy
+Plasma Physics	Energy
+Energy Storage	Energy
+Battery Storage	Energy
+Electrochemical Energy Storage	Energy
+Batteries	Energy
+Advanced Batteries	Energy
+Lithium-Ion Batteries	Energy
+Lithium-Metal Batteries	Energy
+Solid-State Batteries	Energy
+Lithium-Sulfur Batteries	Energy
+Lithium-Air Batteries	Energy
+Open RAN, O-RAN	Network
+Reconfigurable Intelligent Surfaces, RIS	Network
+Non-Terrestrial Networks, NTN	Network
+Holographic Communications	Network
+Network Digital Twin	Network
+Private 5G	Network
+Neutral Atom Computing	Quantum
+Spin Qubits	Quantum
+Post-Quantum Cryptography, PQC	Quantum
+Quantum Memory	Quantum
+Quantum Repeaters	Quantum
+Boson Sampling	Quantum
+Topological Quantum Computing	Quantum
+Humanoid Robots	Robotics
+Collaborative Robots, Cobots	Robotics
+Soft Robotics	Robotics
+Exoskeletons	Robotics
+Swarm Robotics	Robotics
+Autonomous Mobile Robots, AMR	Robotics
+Telepresence Robots	Robotics
+Surgical Robotics	Robotics
+Nanorobotics	Robotics
+Molecular Robotics	Robotics
+Direct Air Capture, DAC	Energy
+Carbon Capture Utilization and Storage, CCUS	Energy
+Sodium-Ion Batteries	Energy
+Flow Batteries	Energy
+Vanadium Redox Flow Batteries	Energy
+Solid-State Hydrogen Storage	Energy
+Virtual Power Plants, VPP	Energy
+Vehicle-to-Grid, V2G	Energy
+Gravity Energy Storage	Energy
+Thermal Energy Storage, TES	Energy
+Perovskite Tandem Solar Cells	Energy
+Space-Based Solar Power, SBSP	Energy
+Supercapacitors	Energy
+Ultracapacitors	Energy
+Enhanced Rock Weathering	Energy
+Ocean Alkalinity Enhancement	Energy
+Green Propellants	Aerospace
+In-Situ Resource Utilization, ISRU	Aerospace
+Reusable Launch Vehicles, RLV	Aerospace
+Orbital Debris Removal	Aerospace
+Satellite Servicing	Aerospace
+Deep Space Optical Communications	Aerospace
+Electric Sails	Aerospace
+mRNA Therapeutics	Biotechnology
+PROTACs	Biotechnology
+Exosome Therapeutics	Biotechnology
+Spatial Biology	Biotechnology
+Brain-Computer Interfaces, BCI	Biotechnology
+Neural Dust	Biotechnology
+Optogenetics	Biotechnology
+Xenotransplantation	Biotechnology
+Digital Therapeutics, DTx	Biotechnology
+Electronic Skin, E-Skin	Biotechnology
+DNA Data Storage	Biotechnology
+Cellular Agriculture	Biotechnology
+Cultured Meat	Biotechnology
+Precision Fermentation	Biotechnology
+Aerogels	Materials Science
+Metallic Glass	Materials Science
+Self-Cleaning Surfaces	Materials Science
+Oleophobic Coatings	Materials Science
+Hydrophobic Coatings	Materials Science
+Rare-Earth-Free Magnets	Materials Science
+Transparent Aluminum, Alon	Materials Science
+Light Field Displays	XR
+Waveguide Optics	XR
+Foveated Rendering	XR
+Smart Contracts	Web3 & Blockchain
+DAO, Decentralized Autonomous Org	Web3 & Blockchain
+NFT, Non-Fungible Token	Web3 & Blockchain
+Layer 2 Scaling	Web3 & Blockchain
+ZK-Rollups, Zero-Knowledge Rollups	Web3 & Blockchain
+Optimistic Rollups	Web3 & Blockchain
+Distributed Ledger Technology, DLT	Web3 & Blockchain
+Oracle Networks	Web3 & Blockchain
+CBDC, Central Bank Digital Currency	Web3 & Blockchain
+Tokenization	Web3 & Blockchain
+Atomic Swaps	Web3 & Blockchain
+Crypto Wallets	Web3 & Blockchain
+DApps, Decentralized Applications	Web3 & Blockchain
+Consensus Algorithms	Web3 & Blockchain
+Zero Trust Architecture	Cybersecurity
+SASE, Secure Access Service Edge	Cybersecurity
+XDR, Extended Detection & Response	Cybersecurity
+SOAR, Security Orchestration & Response	Cybersecurity
+SIEM, Security Info & Event Mgmt	Cybersecurity
+IAM, Identity & Access Management	Cybersecurity
+CSPM, Cloud Security Posture Mgmt	Cybersecurity
+Penetration Testing, Automated	Cybersecurity
+Honeypots	Cybersecurity
+Moving Target Defense	Cybersecurity
+Runtime Application Self-Protection	Cybersecurity
+Digital Forensics	Cybersecurity
+Threat Intelligence Platforms	Cybersecurity
+Biometric Authentication	Cybersecurity
+Behavioral Analytics	Cybersecurity
+Vertical Farming	AgTech
+Precision Agriculture	AgTech
+Hydroponics	AgTech
+Aeroponics	AgTech
+Aquaponics	AgTech
+Agricultural Drones	AgTech
+Smart Irrigation Systems	AgTech
+Variable Rate Technology, VRT	AgTech
+Automated Harvesters	AgTech
+Soil Sensors	AgTech
+Livestock Monitoring	AgTech
+Digital Twin of Farm	AgTech
+Controlled Environment Agriculture	AgTech
+Algorithmic Trading	FinTech
+High-Frequency Trading, HFT	FinTech
+Robo-Advisors	FinTech
+Open Banking	FinTech
+RegTech, Regulatory Technology	FinTech
+InsurTech, Insurance Technology	FinTech
+Embedded Finance	FinTech
+P2P Lending Platforms	FinTech
+Mobile Wallets	FinTech
+Buy Now Pay Later, BNPL	FinTech
+Payment Gateways	FinTech
+SupTech, Supervisory Technology	FinTech
+Hyperloop	Mobility
+Robotaxis	Mobility
+Autonomous Trucking	Mobility
+Truck Platooning	Mobility
+Vehicle-to-Everything, V2X	Mobility
+Software-Defined Vehicles	Mobility
+MaaS, Mobility-as-a-Service	Mobility
+Battery Swapping Stations	Mobility
+Last-Mile Delivery Bots	Mobility
+Micromobility	Mobility
+Smart Traffic Management	Mobility
+CubeSats	Space Tech
+SmallSats	Space Tech
+Space Tourism	Space Tech
+Asteroid Mining	Space Tech
+In-Space Manufacturing	Space Tech
+Space Debris Removal	Space Tech
+Space Tug	Space Tech
+Lunar Landers	Space Tech
+Deep Space Habitats	Space Tech
+Solar Sails	Space Tech
+Carbon Credits, Digital	Climate Tech
+Geoengineering	Climate Tech
+Solar Geoengineering	Climate Tech
+Ocean Cleanup Tech	Climate Tech
+Desalination Technology	Climate Tech
+Wastewater Treatment Tech	Climate Tech
+Smart Waste Management	Climate Tech
+Bioplastics	Climate Tech
+Green Concrete	Climate Tech
+Circular Economy Platforms	Climate Tech
+Neuroprosthetics	Neurotech
+Deep Brain Stimulation	Neurotech
+Neurofeedback	Neurotech
+Brain Mapping	Neurotech
+Neural Implants	Neurotech
+Transcranial Magnetic Stimulation	Neurotech
+Neurostimulation	Neurotech
+Digital Biomarkers	Digital Health
+Remote Patient Monitoring, RPM	Digital Health
+Telemedicine Platforms	Digital Health
+E-Prescribing	Digital Health
+Clinical Decision Support Systems	Digital Health
+Robotic Process Automation, RPA	Enterprise Tech
+Process Mining	Enterprise Tech
+Low-Code/No-Code Platforms	Enterprise Tech
+Business Intelligence, BI	Enterprise Tech
+Agricultural robotics	AgTech
+Closed ecological systems	AgTech
+Cultured meat	Biotechnology
+Atmospheric water generator	Climate Tech
+Vertical farming	AgTech
+
+Active structure	Construction Tech
+Arcology	Construction Tech
+Domed city	Construction Tech
+Earthscraper	Construction Tech
+
+Cryptocurrency	Web3 & Blockchain
+Digital wallet	FinTech
+CBDC	Web3 & Blockchain
+
+6G cellular communications	Network
+Artificial general intelligence	AI
+Biometrics	Cybersecurity
+Blockchain	Web3 & Blockchain
+Carbon nanotube field-effect transistor	Computing
+Cashierless store	Enterprise Tech
+Civic technology	Enterprise Tech
+Digital scent technology	XR
+DNA digital data storage	Biotechnology
+Electronic nose	Sensing
+Emerging memory technologies	Computing
+Emerging magnetic data storage technologies	Computing
+5D optical data storage	Computing
+E-textiles	Materials Science
+Exascale computing	Computing
+Exocortex	Neurotech
+Flexible electronics	Materials Science
+Fourth-generation optical discs	Computing
+Li-Fi	Network
+Machine vision	AI
+Magnonics	Computing
+Memristor	Computing
+Metaverse	XR
+Molecular electronics	Materials Science
+Multimodal contactless biometric face/iris systems	Cybersecurity
+Nanoelectromechanical systems	Materials Science
+Nanoradio	Network
+Neuromorphic engineering	Computing
+Optical computing	Computing
+Quantum computing	Quantum
+Quantum cryptography	Quantum
+Quantum radar	Quantum
+Radio-frequency identification	IoT
+Software-defined radio	Network
+Solid-state transformer	Energy
+Speech recognition	AI
+Spintronics	Computing
+Subvocal recognition	AI
+Thermal copper pillar bump	Manufacturing
+Three-dimensional integrated circuit	Computing
+Twistronics	Materials Science
+
+4D Film	XR
+Cloud gaming	Computing
+Immersive virtual reality	XR
+Synthetic media	AI
+
+Laser video display	XR
+Holography (holographic display, computer-generated holography)	XR
+Optical transistor	Computing
+Screenless display (Virtual retinal display, Bionic contact lens, Augmented reality, Virtual reality)	XR
+Volumetric (3D) display	XR
+
+Airborne wind turbine	Energy
+Americium battery	Energy
+Artificial photosynthesis	Energy
+Concentrated solar power	Energy
+Double-layer capacitor	Energy
+Energy harvesting	Energy
+Flywheel energy storage	Energy
+Fusion power	Energy
+Generation IV nuclear reactor	Energy
+Gravity battery	Energy
+Home fuel cell	Energy
+Lithium–air battery	Energy
+Lithium iron phosphate battery	Energy
+Lithium–sulfur battery	Energy
+Magnesium battery	Energy
+Molten salt reactor	Energy
+Nanowire battery	Energy
+Nantenna	Energy
+Ocean thermal energy conversion	Energy
+Solid-state battery	Energy
+Smart grid	Energy
+Space-based solar power	Energy
+Thorium nuclear fuel cycle	Energy
+Vortex engine	Energy
+Wireless energy transfer	Energy
+Zero-energy building	Energy
+
+4D printing	Manufacturing
+Aerogel	Materials Science
+Amorphous metal	Materials Science
+Bioplastic	Materials Science
+Conductive polymers	Materials Science
+Cryogenic treatment	Manufacturing
+Edible packaging	Climate Tech
+Electric armour	Defense
+Fullerene	Materials Science
+Graphene	Materials Science
+Lab-on-a-chip	Biotechnology
+High-temperature superconductivity	Materials Science
+Magnetic nanoparticles	Biotechnology
+Magnetorheological fluid	Materials Science
+Microfluidics	Biotechnology
+High-temperature superfluidity	Materials Science
+Metamaterials	Materials Science
+Metal foam	Materials Science
+Multi-function structures	Materials Science
+Nanomaterials: carbon nanotubes	Materials Science
+Quantum dot	Materials Science
+Self-healing materials	Materials Science
+Silicene	Materials Science
+Superalloy	Materials Science
+Synthetic diamond	Materials Science
+Time crystal	Quantum
+Translucent concrete	Construction Tech
+
+Artificial uterus	Biotechnology
+Body implant, prosthesis	Biotechnology
+Cryonics	Biotechnology
+De-extinction	Biotechnology
+Electronic medical records	Digital Health
+Human DNA vaccination and mRNA vaccination	Biotechnology
+Enzybiotics	Biotechnology
+Genetic engineering of organisms and viruses	Biotechnology
+Hibernation or suspended animation	Biotechnology
+Life extension, strategies for engineered negligible senescence	Biotechnology
+Nanomedicine	Biotechnology
+Nanosensors	Biotechnology
+Omni Processor	Climate Tech
+Oncolytic virus	Biotechnology
+Personalized medicine, full genome sequencing	Digital Health
+Phage therapy	Biotechnology
+Plantibody	Biotechnology
+Regenerative medicine	Biotechnology
+Robotic surgery	Digital Health
+Senolytic	Biotechnology
+Stem cell treatments	Biotechnology
+Synthetic biology, synthetic genomics	Biotechnology
+Tissue engineering	Biotechnology
+Tricorder	Digital Health
+Virotherapy	Biotechnology
+Vitrification or cryoprotectant	Biotechnology
+
+Artificial brain	Neurotech
+Brain–computer interface	Neurotech
+Brain-reading, neuroinformatics	Neurotech
+Electroencephalography	Neurotech
+Head transplant	Biotechnology
+Memory erasure	Neurotech
+Neuroprosthetics	Neurotech
+Wetware computer	Neurotech
+
+Caseless ammunition	Defense
+Cloaking device	Defense
+Directed-energy weapon	Defense
+Electrolaser	Defense
+Electrothermal-chemical technology	Defense
+Force field	Defense
+Green bullet	Defense
+Hypersonic cruise missile	Defense
+Laser weapon	Defense
+MAHEM	Defense
+Precision-guided firearm	Defense
+Railgun	Defense
+Stealth technology	Defense
+Telescoped ammunition	Defense
+Lightweight Small Arms Technologies	Defense
+
+Artificial gravity	Space Tech
+Asteroid mining	Space Tech
+Field propulsion	Space Tech
+Inflatable space habitat	Space Tech
+Reusable launch vehicle	Space Tech
+Starshot	Space Tech
+Stasis chamber	Space Tech
+
+Android, gynoid	Robotics
+Gastrobot	Robotics
+Molecular nanotechnology, nanorobotics	Robotics
+Powered exoskeleton	Robotics
+Self-reconfiguring modular robot	Robotics
+Swarm robotics	Robotics
+Uncrewed vehicle	Robotics
+
+Airless tire	Mobility
+Atmospheric satellite	Aerospace
+Autonomous Rail Rapid Transit	Mobility
+Flexible wings (X-53 Active Aeroelastic Wing, Adaptive Compliant Wing), fluidic flight controls	Aerospace
+Distributed propulsion	Aerospace
+eVTOL	Aerospace
+Flying car	Mobility
+Fusion rocket	Aerospace
+Ground-level power supply	Mobility
+Hoverbike	Mobility
+Hovertrain, Ground effect train, Ground effect vehicle	Mobility
+Hybrid airship	Aerospace
+Ion-propelled aircraft	Aerospace
+Jet pack or backpack helicopter	Aerospace
+Maglev train	Mobility
+Magnetic levitation	Mobility
+Magnetohydrodynamic drive	Aerospace
+Mass driver	Space Tech
+Orbital propellant depot	Space Tech
+Personal rapid transit	Mobility
+Physical Internet	Mobility
+Scooter-sharing system	Mobility
+Vactrain	Mobility
+Plasma propulsion	Space Tech
+Pulse detonation engine	Aerospace
+Quiet Supersonic Technology	Aerospace
+Self-driving car	Mobility
+Space elevator	Space Tech
+Spaceplane	Aerospace
+Vehicular communication systems	Network
