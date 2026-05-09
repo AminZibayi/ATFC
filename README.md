@@ -70,13 +70,13 @@ pnpm nx serve g6-networks
 
 ## Datasets
 
-All datasets reside in `data/` following the raw/intermediate/outputs layout. 
+All datasets reside in `data/` following the raw/intermediate/outputs layout. Due to their size, the raw datasets are hosted on GitHub Releases and are not tracked in the git repository. You must download the required dataset and place it in the `data/raw/` directory before running the pipeline.
 
-| File                                                | Description                                               |
-| --------------------------------------------------- | --------------------------------------------------------- |
-| `wos_dataset_blockchain_AI.txt`                     | Raw WoS export of Blockchain and AI literature            |
+| File                                                | Description                                               | Download Link |
+| --------------------------------------------------- | --------------------------------------------------------- | ------------- |
+| `wos_dataset_blockchain_AI.txt`                     | Raw WoS export of Blockchain and AI literature            | [Download](https://github.com/AminZibayi/ATFC/releases/download/v0.2.0/wos_dataset_blockchain_AI.txt) |
 
-**Note:** The obsolete Additive Manufacturing dataset has been archived to `data/raw/additive_manufacturing_dataset-obsolete.rar`. The last commit hash utilizing this legacy dataset and the previous LDA topic modeling pipeline is `0f461ee`.
+**Note:** The obsolete Additive Manufacturing dataset has been archived to a legacy release. The last commit hash utilizing this legacy dataset and the previous LDA topic modeling pipeline is `0f461ee` (Release `v0.1.0`). You can download it here: [additive_manufacturing_dataset-obsolete.rar](https://github.com/AminZibayi/ATFC/releases/download/v0.1.0/additive_manufacturing_dataset-obsolete.rar).
 
 ## Analysis Pipeline
 

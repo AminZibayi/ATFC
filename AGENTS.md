@@ -4,7 +4,7 @@
 
 Bibliometric analysis and technology forecasting of Blockchain and AI using Web of Science publications.
 
-> **Legacy Data Note:** The previous Additive Manufacturing dataset has been archived at `data/raw/additive_manufacturing_dataset-obsolete.rar`. The last commit utilizing this legacy data and the prior LDA topic modeling pipeline is `0f461ee`.
+> **Legacy Data Note:** The previous Additive Manufacturing dataset has been archived to GitHub Releases. The last commit utilizing this legacy data and the prior LDA topic modeling pipeline is `0f461ee` (Release `v0.1.0`). The datasets are not tracked in the git repository; they must be downloaded from the Releases page and placed in `data/raw/`.
 
 A **Monorepo** combining Python data pipelines (managed via `uv`) and TypeScript/Vite frontend visualization apps, orchestrated flawlessly by Nx.
 
