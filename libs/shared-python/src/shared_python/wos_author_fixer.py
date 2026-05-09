@@ -6,7 +6,7 @@ Combines pattern matching, lowercase-rejection, and smart deduplication.
 import pandas as pd
 import re
 import sys
-from shared_python.paths import get_data_path
+from shared_python.paths import get_raw_data_path, get_intermediate_data_path
 
 def normalize_name(name: str) -> str:
     """Normalize names for better deduplication (e.g. 'Smith, J.P.' -> 'smith,jp')"""
@@ -71,8 +71,8 @@ def combine_and_deduplicate(primary: str, extra: list) -> str:
 def run_fix():
     sys.stdout.reconfigure(encoding='utf-8')
 
-    input_file = get_data_path('wos_raw_bibliography.xlsx')
-    output_file = get_data_path('wos_raw_bibliography_fixed.xlsx')
+    input_file = get_raw_data_path('wos_raw_bibliography.xlsx')
+    output_file = get_intermediate_data_path('wos_author_fixer', 'wos_raw_bibliography_fixed.xlsx')
 
     author_pattern = re.compile(r'^[A-Z][a-zA-ZÀ-ÿ\s\-\']+,[\s]+[A-Z][a-zA-ZÀ-ÿ\s\.\-\']*$')
 

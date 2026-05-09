@@ -10,7 +10,9 @@
         "cwd": "apps/horizonpulse-crawler"
       },
       "outputs": [
-        "{workspaceRoot}/data/horizonpulse"
+        "{workspaceRoot}/data/raw/horizonpulse_crawler/html",
+        "{workspaceRoot}/data/intermediate/horizonpulse_crawler/pages",
+        "{workspaceRoot}/data/outputs/horizonpulse_crawler/crawl_summary.json"
       ],
       "cache": false
     },

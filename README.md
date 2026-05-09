@@ -1,12 +1,12 @@
-# Technology Forecasting — Additive Manufacturing
+# Technology Forecasting — Blockchain and AI
 
-Bibliometric analysis and technology forecasting of **Additive Manufacturing** using Web of Science publications and patent data. The pipeline covers data collection, NLP preprocessing, LDA topic modeling, trend analysis, and network visualization.
+Bibliometric analysis and technology forecasting of **Blockchain and AI** using Web of Science publications. The pipeline covers data collection, entity extraction, bibliometric network analysis, and interactive visualization.
 
 ## Monorepo Architecture
 
 This project is structured as a strict **Monorepo**, seamlessly combining Python data pipelines and a TypeScript/Vite frontend visualization app.
 
-- **Data Locality:** Code and data are strictly separated. Raw data lives in `data_source/`, while all generated artifacts are cached and output to `dist/apps/<app-name>/`.
+- **Data Locality:** Code and data are strictly separated. Raw data lives in `data/raw`, intermediate artifacts live in `data/intermediate`, and final outputs live in `data/outputs`.
 
 ```text
 Technology Forecasting/
@@ -15,13 +15,12 @@ Technology Forecasting/
 │   └── g6-networks/              # TS/Vite frontend (Interactive G6 network visualizations)
 ├── libs/
 │   └── shared-python/            # Shared Python utilities (e.g., dynamic workspace path resolution)
-├── data_source/                  # Raw and derived input datasets (not committed by default)
-├── dist/                         # Generated artifacts and build outputs (gitignored)
-│   └── apps/
+├── data/
+│   ├── raw/                      # Immutable raw inputs and crawler HTML
+│   ├── intermediate/             # Cleaned, parsed, or staged pipeline outputs
+│   └── outputs/                  # Final aggregations, plots, and app exports
 │       ├── bibliometric-pipeline/
-│       │   ├── data/             # Generated CSV, JSON, GraphML, and Excel files
-│       │   └── plots/            # Generated static plots and network HTML files
-│       └── g6-networks/          # Compiled Vite frontend and exported G6 JSON data
+│       └── g6-networks/
 ├── package.json                  # Root Node.js manifest and Nx plugins
 ├── pnpm-workspace.yaml           # pnpm workspace definition
 └── nx.json                       # Nx configuration and caching rules
@@ -71,77 +70,70 @@ pnpm nx serve g6-networks
 
 ## Datasets
 
-All datasets reside in `data_source/`. The project uses **two parallel corpora** — academic publications (Web of Science) and patents — processed through the same topic modeling pipeline.
+All datasets reside in `data/` following the raw/intermediate/outputs layout. Due to their size, the raw datasets are hosted on GitHub Releases and are not tracked in the git repository. You must download the required dataset and place it in the `data/raw/` directory before running the pipeline.
 
-| File                                                | Description                                               | Rows                    | Key Columns                                                                                                                             |
-| --------------------------------------------------- | --------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `wos_raw_bibliography.xlsx`                         | Raw WoS export                                            | 126,001                 | Authors, Article Title, Abstract, Cited References, Times Cited, Publication Year, Keywords, Affiliations, Funding Orgs, WoS Categories |
-| `wos_filtered_bibliography.xlsx`                    | Filtered WoS subset (post-2000, with abstracts)           | 93,937                  | Same 73 columns as raw                                                                                                                  |
-| `patents_with_dominant_topic.xlsx`                  | Patent abstracts with NLP columns + LDA topic assignments | 30,281                  | abstract_text, year, clean_text, tokens, bigrams, lemmatized, stemmed, Dominant_Topic, Contribution %                                   |
-| `publication_stemmed_tokens_for_lda.json`           | Stemmed token lists (LDA input for publications)          | 68,867 docs             | List of token lists                                                                                                                     |
-| `publication_lda_topic_keywords.xlsx`               | Top 25 keywords per publication topic (25 topics)         | 25 keywords × 25 topics | Topic 1…Topic 25                                                                                                                        |
-| `patent_lda_topic_keywords.xlsx`                    | Top 25 keywords per patent topic (14 topics)              | 25 keywords × 14 topics | Topic 1…Topic 14                                                                                                                        |
-| `publication_topic_document_distribution.xlsx`      | Document count & percentage per publication topic         | 25                      | Dominant Topic, Doc_Count, Total_Docs_Perc                                                                                              |
-| `patent_topic_document_distribution.xlsx`           | Document count & percentage per patent topic              | 14                      | Dominant Topic, Doc_Count, Total_Docs_Perc                                                                                              |
-| `publication_topic_proportions_by_year.xlsx`        | Publication topic proportions over time                   | 25 years                | Year, Topic 1…Topic 25                                                                                                                  |
-| `patent_topic_proportions_by_year.xlsx`             | Patent topic proportions over time                        | 54 years                | Year, Topic 1…Topic 14                                                                                                                  |
-| `patent_topic_proportions_by_year_no_year_col.xlsx` | Same as above, without Year column                        | 54 rows                 | Topic 1…Topic 14                                                                                                                        |
-| `publication_topic_mann_kendall_results.xlsx`       | Mann-Kendall trend test on 25 publication topics          | 26                      | Variable, Trend, h, p-value, Z, Tau, S, Var(S), Sen's Slope, Intercept                                                                  |
-| `patent_topic_mann_kendall_results.xlsx`            | Mann-Kendall trend test on 14 patent topics               | 15                      | Same columns as above                                                                                                                   |
-| `cross_technology_mann_kendall_trends.xlsx`         | MK trend test across 30 technologies                      | 30                      | Technology, Trend, p-value, Slope                                                                                                       |
-| `wos_category_counts.xlsx`                          | WoS category frequency distribution                       | 222                     | Category, Count                                                                                                                         |
+| File                                                | Description                                               | Download Link |
+| --------------------------------------------------- | --------------------------------------------------------- | ------------- |
+| `wos_dataset_blockchain_AI.txt`                     | Raw WoS export of Blockchain and AI literature            | [Download](https://github.com/AminZibayi/ATFC/releases/download/v0.2.0/wos_dataset_blockchain_AI.txt) |
+
+**Note:** The obsolete Additive Manufacturing dataset has been archived to a legacy release. The last commit hash utilizing this legacy dataset and the previous LDA topic modeling pipeline is `0f461ee` (Release `v0.1.0`). You can download it here: [additive_manufacturing_dataset-obsolete.rar](https://github.com/AminZibayi/ATFC/releases/download/v0.1.0/additive_manufacturing_dataset-obsolete.rar).
+
+### Data Collection Methodology
+
+The recent dataset on Blockchain and Artificial Intelligence was prepared following a structured approach:
+
+1. **Emerging Technologies Analysis:** Based on recent research analyzing the "Emerging Technologies" page on Wikipedia, a crawl up to a specific depth yielded about 50,000 articles. After tagging, roughly 20,000 pages were identified as technologies, leading to the creation of the "momentum 100" list of top emerging technologies.
+2. **Domain Selection:** Referencing this research, Machine Learning and Blockchain were identified as the hottest fields, with Reinforcement Learning (RL) and Blockchain ranking first and second, respectively.
+3. **Query Formulation:** A highly optimized search string was formulated to maximize both accuracy and comprehensiveness. 
+4. **Filtering & Extraction:** The query initially returned about 8,500 articles. After applying specific filters, the final dataset was narrowed down to approximately 6,500 records.
+
+**Web of Science Search Query:**
+
+```text
+TS=(
+  (
+    (
+      "blockchain" OR "distributed ledger*" OR "distributed ledger technolog*" OR DLT OR "smart contract*" OR Web3 OR "decentralized finance" OR DeFi OR "decentralized autonomous organization*" OR DAO* OR "decentralized identity" OR "self-sovereign identity" OR SSI OR "verifiable credential*" OR "soulbound token*"
+    )
+    AND
+    (
+      "artificial intelligence" OR "machine learning" OR "deep learning" OR "reinforcement learning" OR "federated learning" OR "large language model*" OR LLM* OR "AI agent*" OR "autonomous agent*" OR "agentic AI" OR "multi-agent system*" OR "neural network*" OR "knowledge graph*"
+    )
+  )
+  OR
+  (
+    "blockchain-enabled federated learning" OR "blockchain federated learning" OR "decentralized federated learning" OR "decentralized AI" OR "verifiable AI" OR "on-chain AI" OR zkML OR opML OR "optimistic machine learning" OR "zero-knowledge machine learning" OR "Web3 AI agent*" OR "blockchain autonomous agent*" OR "smart contract agent*"
+  )
+)
+```
+
+**Applied Filters:**
+- **Document Type:** Article or Early Access
+- **Web of Science Index:** SCI-EXPANDED
+- **Date:** 2017-2026
+- **Language:** English
 
 ## Analysis Pipeline
 
 ```
 
-WoS Search (126K) ──► Filter (94K) ──► NLP Preprocessing ──► LDA (25 topics) ──► Trend Computation ──► Mann-Kendall Test
-Patent Search (30K) ─────────────► NLP Preprocessing ──► LDA (14 topics) ──► Trend Computation ──► Mann-Kendall Test
-│
-Cross-technology MK test (30 technologies)
+WoS Search ──► Data Extraction ──► Network Graph Building ──► Visualization
 
 ```
 
-1. **Data Collection** — WoS search for Additive Manufacturing literature (126K records); patent database search (30K patents)
-2. **Filtering** — Removed pre-2000 records, documents without abstracts, non-article types → 94K records
-3. **NLP Preprocessing** — Text cleaning, tokenization, bigram extraction, lemmatization, stemming
-4. **LDA Topic Modeling** — 25 publication topics, 14 patent topics (Gensim)
-5. **Topic Assignment** — Each document assigned a dominant topic + contribution percentage
-6. **Trend Computation** — Topic proportions calculated by year for both corpora
-7. **Statistical Testing** — Mann-Kendall trend test with Sen's Slope on all topic time series
-
-## Key Findings (from Mann-Kendall Tests)
-
-| Dimension         | Publications (WoS)      | Patents |
-| ----------------- | ----------------------- | ------- |
-| Increasing topics | 9 of 25                 | 6 of 14 |
-| Decreasing topics | 6 of 25                 | 1 of 14 |
-| No trend          | 10 of 25                | 7 of 14 |
-| Top WoS category  | Materials Science (29K) | N/A     |
-
-All 30 cross-technology trends show "decreasing" patterns, consistent with post-peak Hype Cycle behavior.
-
-## Topic Themes
-
-### Publication Topics (25)
-
-Medical/surgical AM, lattice/metamaterial design, microfluidics, bioprinting/hydrogel, WAAM/laser metal, directed energy deposition, FDM/PLA, powder bed fusion/ceramic, flexible electronics, tissue engineering scaffolds, and more.
-
-### Patent Topics (14)
-
-Metal powder/sintering, FDM nozzle/extruder, medical/bone fabrication, general layer deposition, SLM/SLS laser, structural/cavity/scaffold, microfluidics, and more.
+1. **Data Collection** — WoS search for Blockchain and AI literature
+2. **Data Extraction** — Cleaned entity lists extracted for institutions, funding organizations, and journals
+3. **Graph Building** — Creation of institutional collaboration networks, funding co-occurrence networks, and journal relationship networks
+4. **Visualization** — Generation of static plots and interactive G6-based HTML networks
 
 ## Available Analyses
 
-With these datasets, the following analyses are supported:
+With this pipeline, the following analyses are supported:
 
-- **Topic evolution visualization** — Stacked area charts / streamgraphs from topic proportion time series
-- **Emerging vs. declining topic identification** — From Mann-Kendall results + Sen's Slope magnitude
-- **Science-technology linkage** — Compare publication vs. patent topic landscapes
-- **Technology life cycle modeling** — S-curve, logistic, or Bass diffusion fitting
-- **Citation analysis** — Times Cited, Cited References, Cited Reference Count available
-- **Co-authorship / collaboration networks** — From Authors, Addresses, Affiliations fields
-- **Keyword co-occurrence networks** — Author Keywords + Keywords Plus for 108K/83K records
-- **Interdisciplinary analysis** — Cross-tabulate topics with 222 WoS categories
-- **Funding landscape mapping** — Funding Orgs available for ~71K records
-- **Hype Cycle positioning** — Cross-technology MK results for 30 technologies
+- **Institutional collaboration networks** — Maps academic relationships and central hubs
+- **Funding landscape mapping** — Identifies major funding organizations and co-funding structures
+- **Journal relationship networks** — Tracks where the research is primarily published
+- **Citation analysis** — Using Times Cited, Cited References, and Cited Reference Count metrics
+- **Co-authorship networks** — From Authors, Addresses, and Affiliations fields
+- **Keyword co-occurrence networks** — Based on Author Keywords and Keywords Plus
+- **Interdisciplinary analysis** — Cross-tabulate research with WoS categories

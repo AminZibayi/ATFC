@@ -2,8 +2,12 @@ import asyncio
 import json
 import hashlib
 import re
+import sys
 from datetime import datetime
 from urllib.parse import urlparse
+
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
 
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, BrowserConfig, CacheMode
 from crawl4ai.deep_crawling import BFSDeepCrawlStrategy
@@ -23,9 +27,9 @@ def url_to_filename(url: str) -> str:
 def save_result(result):
     try:
         fname = url_to_filename(result.url)
-        
-        pages_dir = CONFIG["OUTPUT_DIR"] / "pages"
-        html_dir = CONFIG["OUTPUT_DIR"] / "html"
+
+        pages_dir = CONFIG["PAGES_DIR"]
+        html_dir = CONFIG["HTML_DIR"]
 
         # Save Markdown
         md_path = pages_dir / f"{fname}.md"
@@ -46,14 +50,13 @@ def save_result(result):
 
 async def main():
     print(f"Starting crawl of {CONFIG['BASE_URL']}")
-    CONFIG["OUTPUT_DIR"].mkdir(parents=True, exist_ok=True)
-    
-    # Setup directories early to avoid concurrent mkdir race conditions
-    (CONFIG["OUTPUT_DIR"] / "pages").mkdir(parents=True, exist_ok=True)
-    (CONFIG["OUTPUT_DIR"] / "html").mkdir(parents=True, exist_ok=True)
+    CONFIG["PAGES_DIR"].mkdir(parents=True, exist_ok=True)
+    CONFIG["HTML_DIR"].mkdir(parents=True, exist_ok=True)
+    CONFIG["SUMMARY_PATH"].parent.mkdir(parents=True, exist_ok=True)
 
     browser_config = BrowserConfig(
         browser_type="chromium",
+        chrome_channel="chrome",
         headless=True,
         verbose=False,
         accept_downloads=False,
@@ -88,20 +91,20 @@ async def main():
     failed_urls = []
 
     async with AsyncWebCrawler(config=browser_config) as crawler:
-        async for result in crawler.arun(CONFIG["BASE_URL"], config=run_config):
+        async for result in await crawler.arun(CONFIG["BASE_URL"], config=run_config):
             depth = result.metadata.get("depth", 0)
             if result.success:
                 # Offload blocking I/O to a thread
                 success, error_msg = await asyncio.to_thread(save_result, result)
                 if success:
                     crawled_urls.append(result.url)
-                    print(f"  ✓  [depth={depth}] {result.url}")
+                    print(f"  [OK]   [depth={depth}] {result.url}")
                 else:
                     failed_urls.append(result.url)
-                    print(f"  ✗  [depth={depth}] {result.url} — Save Error: {error_msg}")
+                    print(f"  [FAIL] [depth={depth}] {result.url} - Save Error: {error_msg}")
             else:
                 failed_urls.append(result.url)
-                print(f"  ✗  [depth={depth}] {result.url} — {result.error_message}")
+                print(f"  [FAIL] [depth={depth}] {result.url} - {result.error_message}")
 
     summary = {
         "crawled_at": datetime.now().isoformat(),
@@ -112,8 +115,7 @@ async def main():
         "failed_urls": failed_urls,
     }
 
-    summary_path = CONFIG["OUTPUT_DIR"] / "crawl_summary.json"
-    with open(summary_path, "w", encoding="utf-8") as f:
+    with open(CONFIG["SUMMARY_PATH"], "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
 
     print(f"Done! Saved {len(crawled_urls)} pages.")

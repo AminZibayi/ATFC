@@ -26,12 +26,13 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 
-from shared_python.paths import get_output_path
+from shared_python.paths import get_intermediate_data_path, get_output_path
 
 # ---------------------------------------------------------------------------
 # CONFIGURABLE PARAMETERS -- edit these to adjust the analysis
 # ---------------------------------------------------------------------------
 CONFIG = {
+    "input_dir": get_intermediate_data_path("bibliometric-pipeline", "temp").parent,
     "output_dir": get_output_path("bibliometric-pipeline", "temp").parent,
 
     "institutional": {
@@ -39,8 +40,8 @@ CONFIG = {
         "min_edge_weight": 3,
     },
     "funding": {
-        "min_publications": 10,
-        "min_edge_weight": 3,
+        "min_publications": 2,
+        "min_edge_weight": 2,
     },
     "journal": {
         "min_publications": 50,
@@ -58,7 +59,7 @@ print("=" * 70)
 # 1. LOAD EXTRACTED DATA
 # ---------------------------------------------------------------------------
 print("\n[1/4] Loading extracted data ...")
-df = pd.read_csv(CONFIG["output_dir"] / "01_papers_extracted.csv")
+df = pd.read_csv(CONFIG["input_dir"] / "01_papers_extracted.csv")
 
 # Deserialise list columns from semicolon-joined strings
 df["inst_list"] = df["inst_list"].apply(
