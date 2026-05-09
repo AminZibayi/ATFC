@@ -19,8 +19,9 @@ Thumbs.db
 .idea/
 
 .worktrees/
-outputs/
-plots/
+data/raw/*
+data/intermediate/*
+data/outputs/*
 
 **/**/node_modules/
 .nx/polygraph
