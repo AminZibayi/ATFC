@@ -13,7 +13,7 @@ def write_csvs(G: nx.Graph, nodes_path: Path, edges_path: Path):
     # Write nodes
     nodes_data = []
     for n, attrs in G.nodes(data=True):
-        row = {'id': n, 'label': attrs.get('label', n)}
+        row = {'id': n}
         row.update(attrs)
         nodes_data.append(row)
         

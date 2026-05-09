@@ -17,10 +17,7 @@ def process_and_load_graph(name: str):
     print(f"\nProcessing {name} graph...")
     edges_df = pd.read_parquet(in_path)
     
-    G = nx.Graph()
-    # Add weighted edges
-    for _, row in edges_df.iterrows():
-        G.add_edge(row['source'], row['target'], weight=row['weight'])
+    G = nx.from_pandas_edgelist(edges_df, 'source', 'target', edge_attr='weight')
         
     # Remove isolates
     isolates = list(nx.isolates(G))
@@ -39,7 +36,7 @@ def process_and_load_graph(name: str):
     print("  Computing betweenness centrality...")
     # Use k=min(500, len(G)) for faster approximation if graph is large
     k_val = min(500, len(G))
-    betweenness = nx.betweenness_centrality(G, weight='weight', k=k_val)
+    betweenness = nx.betweenness_centrality(G, weight='weight', k=k_val, seed=42)
     
     print("  Computing Louvain communities...")
     partition = community_louvain.best_partition(G, weight='weight')
