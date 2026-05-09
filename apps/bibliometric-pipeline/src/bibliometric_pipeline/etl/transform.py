@@ -9,7 +9,7 @@ from bibliometric_pipeline.graphs.builders import (
     build_wos_categories_edges,
 )
 
-def transform_graph(df: pd.DataFrame, builder_fn, name: str, min_weight: int = 1):
+def transform_graph(df: pd.DataFrame, builder_fn, name: str, min_weight: int = 2):
     print(f"Building {name} edges...")
     edges = builder_fn(df)
     if not edges.empty:
