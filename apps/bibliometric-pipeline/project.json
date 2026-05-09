@@ -5,24 +5,45 @@
   "sourceRoot": "apps/bibliometric-pipeline/src",
   "targets": {
     "extract": {
-      "command": "uv run python -m bibliometric_pipeline.extract",
+      "command": "uv run python -m bibliometric_pipeline.etl.extract",
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/data"],
+      "inputs": [
+        "{workspaceRoot}/data/raw/**"
+      ],
+      "outputs": [
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline"
+      ],
       "cache": true
     },
-    "build": {
-      "command": "uv run python -m bibliometric_pipeline.build",
+    "transform": {
+      "command": "uv run python -m bibliometric_pipeline.etl.transform",
       "dependsOn": ["extract"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/data"],
+      "inputs": [
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet"
+      ],
+      "outputs": [
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline"
+      ],
       "cache": true
     },
-    "visualize": {
-      "command": "uv run python -m bibliometric_pipeline.visualize",
-      "dependsOn": ["build"],
+    "load": {
+      "command": "uv run python -m bibliometric_pipeline.etl.load",
+      "dependsOn": ["transform"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/plots"],
+      "inputs": [
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline"
+      ],
+      "outputs": [
+        "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"
+      ],
       "cache": true
+    },
+    "run": {
+      "command": "uv run python -m bibliometric_pipeline.main",
+      "dependsOn": ["load"],
+      "options": { "cwd": "apps/bibliometric-pipeline" },
+      "cache": false
     }
   }
 }
