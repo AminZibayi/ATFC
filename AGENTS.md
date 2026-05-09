@@ -1,8 +1,10 @@
-# AGENTS.md — Technology Forecasting: Additive Manufacturing
+# AGENTS.md — Technology Forecasting: Blockchain and AI
 
 ## Project Overview
 
-Bibliometric analysis and technology forecasting of Additive Manufacturing using Web of Science publications (126K) and patent data (30K). The pipeline: data collection → NLP preprocessing → LDA topic modeling → trend analysis → Mann-Kendall statistical testing.
+Bibliometric analysis and technology forecasting of Blockchain and AI using Web of Science publications.
+
+> **Legacy Data Note:** The previous Additive Manufacturing dataset has been archived at `data/raw/additive_manufacturing_dataset-obsolete.rar`. The last commit utilizing this legacy data and the prior LDA topic modeling pipeline is `0f461ee`.
 
 A **Monorepo** combining Python data pipelines (managed via `uv`) and TypeScript/Vite frontend visualization apps, orchestrated flawlessly by Nx.
 
@@ -40,19 +42,8 @@ Technology Forecasting/
 - **Orchestrator**: Nx (@nx/js, @nxlv/python, @nx/vite)
 - **Languages**: Python 3.11+, TypeScript 5.6+
 - **Package Managers**: pnpm (Node/TS), uv (Python)
-- **Data & Stats**: pandas, openpyxl, pymannkendall, networkx
-- **NLP**: gensim (LDA), NLTK
+- **Data & Stats**: pandas, openpyxl, networkx
 - **Visualization**: Plotly, Matplotlib, G6 (TypeScript/Vite)
-
-## Two Corpora Convention
-
-Files with **no suffix** = publication/WoS data. Files with **"-p" suffix** or starting with `patent_` = patent data.
-
-| Dimension  | Publications (WoS)              | Patents   |
-| ---------- | ------------------------------- | --------- |
-| Records    | 126K raw / 94K filtered         | 30,281    |
-| Year range | 1986–2025 (filtered: 2000–2025) | 1972–2025 |
-| LDA Topics | 25                              | 14        |
 
 ## Workflow Guidance
 
