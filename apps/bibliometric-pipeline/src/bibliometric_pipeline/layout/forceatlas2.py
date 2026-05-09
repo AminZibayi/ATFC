@@ -1,7 +1,8 @@
+import math
 import networkx as nx
 from fa2_modified import ForceAtlas2
 
-def compute_forceatlas2_layout(G: nx.Graph, iterations: int = 500) -> None:
+def compute_forceatlas2_layout(G: nx.Graph, iterations: int = 2000) -> None:
     """Computes layout using ForceAtlas2 and adds 'x', 'y' node attributes."""
     if len(G) == 0:
         return
@@ -25,8 +26,7 @@ def compute_forceatlas2_layout(G: nx.Graph, iterations: int = 500) -> None:
     positions = fa2.forceatlas2_networkx_layout(G, pos=None, iterations=iterations)
     
     for node, (x, y) in positions.items():
-        # Fallback for NaN coords which can happen in disconnected subgraphs sometimes
-        if x != x: x = 0.0
-        if y != y: y = 0.0
+        if math.isnan(x): x = 0.0
+        if math.isnan(y): y = 0.0
         G.nodes[node]['x'] = float(x)
         G.nodes[node]['y'] = float(y)
