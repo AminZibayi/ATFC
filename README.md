@@ -78,6 +78,41 @@ All datasets reside in `data/` following the raw/intermediate/outputs layout. Du
 
 **Note:** The obsolete Additive Manufacturing dataset has been archived to a legacy release. The last commit hash utilizing this legacy dataset and the previous LDA topic modeling pipeline is `0f461ee` (Release `v0.1.0`). You can download it here: [additive_manufacturing_dataset-obsolete.rar](https://github.com/AminZibayi/ATFC/releases/download/v0.1.0/additive_manufacturing_dataset-obsolete.rar).
 
+### Data Collection Methodology
+
+The recent dataset on Blockchain and Artificial Intelligence was prepared following a structured approach:
+
+1. **Emerging Technologies Analysis:** Based on recent research analyzing the "Emerging Technologies" page on Wikipedia, a crawl up to a specific depth yielded about 50,000 articles. After tagging, roughly 20,000 pages were identified as technologies, leading to the creation of the "momentum 100" list of top emerging technologies.
+2. **Domain Selection:** Referencing this research, Machine Learning and Blockchain were identified as the hottest fields, with Reinforcement Learning (RL) and Blockchain ranking first and second, respectively.
+3. **Query Formulation:** A highly optimized search string was formulated to maximize both accuracy and comprehensiveness. 
+4. **Filtering & Extraction:** The query initially returned about 8,500 articles. After applying specific filters, the final dataset was narrowed down to approximately 6,500 records.
+
+**Web of Science Search Query:**
+
+```text
+TS=(
+  (
+    (
+      "blockchain" OR "distributed ledger*" OR "distributed ledger technolog*" OR DLT OR "smart contract*" OR Web3 OR "decentralized finance" OR DeFi OR "decentralized autonomous organization*" OR DAO* OR "decentralized identity" OR "self-sovereign identity" OR SSI OR "verifiable credential*" OR "soulbound token*"
+    )
+    AND
+    (
+      "artificial intelligence" OR "machine learning" OR "deep learning" OR "reinforcement learning" OR "federated learning" OR "large language model*" OR LLM* OR "AI agent*" OR "autonomous agent*" OR "agentic AI" OR "multi-agent system*" OR "neural network*" OR "knowledge graph*"
+    )
+  )
+  OR
+  (
+    "blockchain-enabled federated learning" OR "blockchain federated learning" OR "decentralized federated learning" OR "decentralized AI" OR "verifiable AI" OR "on-chain AI" OR zkML OR opML OR "optimistic machine learning" OR "zero-knowledge machine learning" OR "Web3 AI agent*" OR "blockchain autonomous agent*" OR "smart contract agent*"
+  )
+)
+```
+
+**Applied Filters:**
+- **Document Type:** Article or Early Access
+- **Web of Science Index:** SCI-EXPANDED
+- **Date:** 2017-2026
+- **Language:** English
+
 ## Analysis Pipeline
 
 ```
