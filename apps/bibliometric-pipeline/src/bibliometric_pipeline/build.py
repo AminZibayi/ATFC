@@ -40,8 +40,8 @@ CONFIG = {
         "min_edge_weight": 3,
     },
     "funding": {
-        "min_publications": 0,
-        "min_edge_weight": 0,
+        "min_publications": 2,
+        "min_edge_weight": 2,
     },
     "journal": {
         "min_publications": 50,
