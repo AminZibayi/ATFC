@@ -147,6 +147,10 @@ def clean_funding_org(raw: str) -> str | None:
 # --- Edge Builders ---
 def build_generic_edges(df: pd.DataFrame, source_col: str) -> pd.DataFrame:
     """Builds edges directly from a list column."""
+    if source_col not in df.columns:
+        raise KeyError(
+            f"Column '{source_col}' not found in DataFrame. Available: {list(df.columns)}"
+        )
     pairs = []
     for _, row in df.iterrows():
         items = row.get(source_col, [])
@@ -196,7 +200,18 @@ def build_author_keywords_edges(df: pd.DataFrame) -> pd.DataFrame:
 
 def build_wos_categories_edges(df: pd.DataFrame) -> pd.DataFrame:
     """Uses WC (WoS Categories)"""
-    return build_generic_edges(df, "WC")
+    df_temp = df.copy()
+    
+    def clean_wc(items):
+        if items is None:
+            return []
+        try:
+            return [str(i).strip().upper() for i in items if str(i).strip()]
+        except TypeError:
+            return []
+            
+    df_temp["WC_CLEAN"] = df_temp["WC"].apply(clean_wc)
+    return build_generic_edges(df_temp, "WC_CLEAN")
 
 
 def build_co_affiliation_edges(df: pd.DataFrame) -> pd.DataFrame:
