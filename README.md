@@ -40,32 +40,23 @@ pnpm install
 
 ### Full Pipeline Execution
 
-Run the entire pipeline (Extract → Build Networks → Visualize → Export G6 Data → Build Vite App) in one command:
+Run the entire ETL pipeline:
 
 ```bash
-pnpm nx run-many -t extract build visualize export-data build
+pnpm nx run bibliometric-pipeline:run
 ```
 
 ### Individual Targets
 
 ```bash
-# 1. Extract raw WoS data into canonicalized CSVs
+# 1. Extract raw WoS plain-text into Parquet format
 pnpm nx run bibliometric-pipeline:extract
 
-# 2. Build institutional, funding, and journal graphs (GraphML, Excel metrics)
-pnpm nx run bibliometric-pipeline:build
+# 2. Build 5 graph types from extracted records
+pnpm nx run bibliometric-pipeline:transform
 
-# 3. Generate static plots and interactive HTML networks
-pnpm nx run bibliometric-pipeline:visualize
-
-# 4. Export graph data to JSON for the G6 frontend
-pnpm nx run g6-networks:export-data
-
-# 5. Build the Vite frontend application
-pnpm nx run g6-networks:build
-
-# 6. Serve the interactive G6 visualization locally
-pnpm nx serve g6-networks
+# 3. Apply Louvain communities and ForceAtlas2 layout, then export to GraphML and CSV
+pnpm nx run bibliometric-pipeline:load
 ```
 
 ## Datasets
@@ -116,24 +107,19 @@ TS=(
 ## Analysis Pipeline
 
 ```
-
-WoS Search ──► Data Extraction ──► Network Graph Building ──► Visualization
-
+WoS Plain-Text Export ──► EXTRACT (Parquet) ──► TRANSFORM (Edge Building) ──► LOAD (GraphML & CSV)
 ```
 
-1. **Data Collection** — WoS search for Blockchain and AI literature
-2. **Data Extraction** — Cleaned entity lists extracted for institutions, funding organizations, and journals
-3. **Graph Building** — Creation of institutional collaboration networks, funding co-occurrence networks, and journal relationship networks
-4. **Visualization** — Generation of static plots and interactive G6-based HTML networks
+1. **Extract** — Parse raw WOS plain-text export into structured records (handling continuation lines and split fields).
+2. **Transform** — Build edge pairs for five distinct graph types (co-author, co-funding, co-affiliation, author keywords, wos categories).
+3. **Load** — Construct NetworkX graphs, compute centrality and community metrics, apply ForceAtlas2 layout, and write output files.
 
 ## Available Analyses
 
 With this pipeline, the following analyses are supported:
 
-- **Institutional collaboration networks** — Maps academic relationships and central hubs
-- **Funding landscape mapping** — Identifies major funding organizations and co-funding structures
-- **Journal relationship networks** — Tracks where the research is primarily published
-- **Citation analysis** — Using Times Cited, Cited References, and Cited Reference Count metrics
-- **Co-authorship networks** — From Authors, Addresses, and Affiliations fields
-- **Keyword co-occurrence networks** — Based on Author Keywords and Keywords Plus
-- **Interdisciplinary analysis** — Cross-tabulate research with WoS categories
+- **Co-authorship networks** (`co_author`)
+- **Funding landscape mapping** (`co_funding`)
+- **Institutional collaboration networks** (`co_affiliation`)
+- **Keyword co-occurrence networks** (`author_keywords`)
+- **Interdisciplinary analysis** (`wos_categories`)
