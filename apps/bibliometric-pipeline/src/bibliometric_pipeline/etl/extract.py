@@ -1,6 +1,6 @@
 import pandas as pd
 from pathlib import Path
-from shared_python.paths import get_raw_data_path, get_intermediate_data_path
+from shared_python.paths import get_raw_data_path, get_intermediate_data_path, get_raw_dir
 
 def parse_wos_text_file(filepath: Path) -> pd.DataFrame:
     records = []
@@ -16,15 +16,15 @@ def parse_wos_text_file(filepath: Path) -> pd.DataFrame:
             if not line:
                 continue
                 
-            if line == 'ER':
+            if line.strip() == 'ER':
                 if 'UT' in current_record:
                     records.append(current_record)
                 current_record = {}
                 current_tag = None
                 continue
                 
-            # Check if continuation line (starts with space)
-            if line.startswith('  '): # usually 2 or 3 spaces
+            # Check if continuation line (WOS continuation: exactly 3 spaces)
+            if line.startswith('   '):
                 val = line.strip()
                 if current_tag and val:
                     if current_tag in line_list_tags:
@@ -43,6 +43,9 @@ def parse_wos_text_file(filepath: Path) -> pd.DataFrame:
                     current_record[tag] = [val] if val else []
                 else:
                     current_record[tag] = val
+
+    if current_record and 'UT' in current_record:
+        records.append(current_record)
 
     df = pd.DataFrame(records)
     
@@ -76,8 +79,7 @@ def run():
     print("=" * 70)
     
     # Locate data/raw folder
-    # Assuming get_raw_data_path("wos_dataset_blockchain_AI.txt") returns the file
-    raw_dir = get_raw_data_path("dummy").parent
+    raw_dir = get_raw_dir()
     wos_files = list(raw_dir.glob("wos_*.txt"))
     if not wos_files:
         raise FileNotFoundError(f"No WOS text file found in {raw_dir}")
