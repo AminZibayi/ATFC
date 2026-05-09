@@ -31,5 +31,7 @@ data/outputs/*
 **/**/reports
 **/**/coverage
 
+/materials/course/book
+
 .nx
 dist
