@@ -38,5 +38,12 @@ def get_plot_path(app_name: str, filename: str) -> Path:
     return plot_dir / filename
 
 
+import warnings
+
 def get_data_path(filename: str) -> Path:
+    warnings.warn(
+        "get_data_path is deprecated and ambiguous. Use get_raw_data_path, get_intermediate_data_path, or get_output_path instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
     return get_raw_data_path(filename)
