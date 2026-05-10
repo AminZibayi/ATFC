@@ -35,7 +35,12 @@ Technology Forecasting/
 6. **Use atomic commits**: Every fix or feature gets its own commit. Never batch
    unrelated changes into a single commit.
 7. **Avoid npm and npx**: Use pnpm and pnpm alternatives for npx (dlx/exec).
-8. **QA Artifacts**: Test results (`reports/`) and code coverage (`coverage/`) are explicitly configured as project outputs in `project.json` and tool configs (e.g., `pyproject.toml`). They are aggregated at the workspace root for centralized CI/CD collection and Nx caching.
+8. **QA Artifacts**: Test results (`reports/`) and code coverage (`coverage/`)
+   are explicitly configured as project outputs in `project.json` and tool
+   configs (e.g., `pyproject.toml`). They are aggregated at the workspace root
+   for centralized CI/CD collection and Nx caching.
+9. **Document Scientific Changes**: Any updates to scientific methods,
+   algorithms, or analysis workflows must be reflected in `README.md`.
 
 ## Tech Stack
 
