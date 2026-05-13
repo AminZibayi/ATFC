@@ -130,7 +130,12 @@ WoS Plain-Text Export ──► EXTRACT (Parquet) ──► BUILD GRAPHS (GraphM
 
 1. **Extract** — Parse raw WOS plain-text export into structured records (handling continuation lines and split fields).
 2. **Build Graphs** — Fast, vectorized extraction of nodes (including `paper_count`) and edge pairs (filtered by minimum weight) for five distinct graph types. Construct NetworkX graphs, compute centrality and Louvain community metrics, and write structural data to GraphML and rich metadata to Parquet.
-3. **Apply Layout** — Isolate the heavy layout computation. Computes physical coordinates using either ForceAtlas2 (`pyforceatlas2` / `fa2`) or Graphviz's SFDP / Yifan Hu algorithm. Configurable via `config.toml` (with full IDE JSON-schema support). Updates the generated GraphML and Parquet files with `x` and `y` coordinates.
+3. **Apply Layout** — Isolate the heavy layout computation. Computes physical coordinates using either ForceAtlas2 (`pyforceatlas2` / `fa2`) or Graphviz's SFDP / Yifan Hu algorithm. Configurable via `config.toml` (with full IDE JSON-schema support).
+   - **Dynamic Iterations:** Automatically scales iteration count based on graph size if not explicitly set.
+   - **Warm Starts:** Loads existing coordinates from previous runs as a starting position to accelerate convergence by up to 10x.
+   - **Isolate Handling:** Strips disconnected nodes before layout to optimize performance and reattaches them at fixed positions afterward.
+   - **Per-Graph Overrides:** Allows independent algorithm and iteration settings for each graph type.
+   - Updates the generated GraphML and Parquet files with `x` and `y` coordinates.
 
 ## Available Analyses
 
