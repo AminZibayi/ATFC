@@ -44,8 +44,7 @@
   },
   "properties": {
     "default": {
-      "$ref": "#/definitions/graph_config",
-      "description": "Default graph settings"
+      "$ref": "#/definitions/graph_config"
     },
     "co_author": {
       "$ref": "#/definitions/graph_config"
