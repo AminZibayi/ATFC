@@ -52,11 +52,11 @@ pnpm nx run bibliometric-pipeline:run
 # 1. Extract raw WoS plain-text into Parquet format
 pnpm nx run bibliometric-pipeline:extract
 
-# 2. Build 5 graph types from extracted records
-pnpm nx run bibliometric-pipeline:transform
+# 2. Build 5 graph types, compute metrics, and export GraphML/Parquet
+pnpm nx run bibliometric-pipeline:build-graphs
 
-# 3. Apply Louvain communities and ForceAtlas2 layout, then export to GraphML and CSV
-pnpm nx run bibliometric-pipeline:load
+# 3. Apply ForceAtlas2 layout to the generated graphs
+pnpm nx run bibliometric-pipeline:apply-layout
 ```
 
 ## Datasets
@@ -107,12 +107,12 @@ TS=(
 ## Analysis Pipeline
 
 ```
-WoS Plain-Text Export ──► EXTRACT (Parquet) ──► TRANSFORM (Edge Building) ──► LOAD (GraphML & CSV)
+WoS Plain-Text Export ──► EXTRACT (Parquet) ──► BUILD GRAPHS (GraphML & Parquet) ──► APPLY LAYOUT (ForceAtlas2)
 ```
 
 1. **Extract** — Parse raw WOS plain-text export into structured records (handling continuation lines and split fields).
-2. **Transform** — Build edge pairs for five distinct graph types (co-author, co-funding, co-affiliation, author keywords, wos categories).
-3. **Load** — Construct NetworkX graphs, compute centrality and community metrics, apply ForceAtlas2 layout, and write output files.
+2. **Build Graphs** — Fast, vectorized extraction of nodes (including `paper_count`) and edge pairs (filtered by minimum weight) for five distinct graph types. Construct NetworkX graphs, compute centrality and Louvain community metrics, and write structural data to GraphML and rich metadata to Parquet.
+3. **Apply Layout** — Isolate the heavy ForceAtlas2 layout computation. Update the generated GraphML and Parquet files with `x` and `y` coordinates.
 
 ## Available Analyses
 
