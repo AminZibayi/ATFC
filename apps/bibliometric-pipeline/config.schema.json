@@ -48,16 +48,38 @@
       "description": "Default graph settings",
       "properties": {
         "min_weight": {
-          "type": "integer"
+          "type": "integer",
+          "description": "The minimum weight (co-occurrence count) an edge must have to be kept.",
+          "default": 1
         },
         "remove_isolates": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether to remove nodes that have no connecting edges after pruning.",
+          "default": false
         },
         "layout": {
-          "type": "object"
+          "type": "object",
+          "description": "Optional layout configuration for global defaults.",
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": [
+                "pyforceatlas2",
+                "fa2",
+                "sfdp",
+                "yifan_hu"
+              ],
+              "description": "Override the global layout algorithm."
+            },
+            "iterations": {
+              "type": "integer",
+              "description": "Override the global iteration count."
+            }
+          },
+          "additionalProperties": true
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "co_author": {
       "$ref": "#/definitions/graph_config"
