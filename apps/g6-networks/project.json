@@ -9,7 +9,7 @@
       "dependsOn": ["bibliometric-pipeline:apply-layout"],
       "options": { "cwd": "apps/g6-networks" },
       "inputs": ["{projectRoot}/export_g6_data.py", "{projectRoot}/**/*.py"],
-      "outputs": ["{workspaceRoot}/dist/apps/g6-networks/data"],
+      "outputs": ["{workspaceRoot}/data/outputs/g6-networks"],
       "cache": true
     },
     "build": {
