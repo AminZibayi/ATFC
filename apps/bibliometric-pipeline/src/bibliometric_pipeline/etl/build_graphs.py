@@ -1,10 +1,10 @@
-import os
+import tomllib
 import networkx as nx
 import pandas as pd
 import community as community_louvain
 from pathlib import Path
 
-from shared_python.paths import get_intermediate_data_path, get_output_path
+from shared_python.paths import get_intermediate_data_path, get_output_path, get_workspace_root
 from bibliometric_pipeline.graphs.builders import (
     build_co_author_edges,
     build_co_funding_edges,
@@ -92,9 +92,22 @@ def run():
     print(" ETL STAGE 2: BUILD GRAPHS")
     print("=" * 70)
     
-    min_weight = int(os.environ.get("GRAPH_MIN_WEIGHT", 1))
-    remove_isolates = os.environ.get("GRAPH_REMOVE_ISOLATES", "true").lower() in ("true", "1", "yes", "t")
-    print(f"Config: min_weight={min_weight}, remove_isolates={remove_isolates}")
+    config_path = get_workspace_root() / "apps" / "bibliometric-pipeline" / "config.toml"
+    if config_path.exists():
+        with open(config_path, "rb") as f:
+            config = tomllib.load(f)
+    else:
+        print(f"Warning: Config file not found at {config_path}. Using defaults.")
+        config = {}
+        
+    default_config = config.get("default", {"min_weight": 1, "remove_isolates": True})
+    
+    def get_cfg(name):
+        c = config.get(name, {})
+        min_weight = c.get("min_weight", default_config.get("min_weight", 1))
+        remove_isolates = c.get("remove_isolates", default_config.get("remove_isolates", True))
+        print(f"[{name}] min_weight={min_weight}, remove_isolates={remove_isolates}")
+        return {"min_weight": min_weight, "remove_isolates": remove_isolates}
     
     in_dir = get_intermediate_data_path("bibliometric-pipeline", "")
     in_path = in_dir / "records.parquet"
@@ -103,11 +116,11 @@ def run():
         
     df = pd.read_parquet(in_path)
     
-    process_and_build_graph(df, build_co_author_edges, "co_author", min_weight=min_weight, remove_isolates=remove_isolates)
-    process_and_build_graph(df, build_co_funding_edges, "co_funding", min_weight=min_weight, remove_isolates=remove_isolates)
-    process_and_build_graph(df, build_co_affiliation_edges, "co_affiliation", min_weight=min_weight, remove_isolates=remove_isolates)
-    process_and_build_graph(df, build_author_keywords_edges, "author_keywords", min_weight=min_weight, remove_isolates=remove_isolates)
-    process_and_build_graph(df, build_wos_categories_edges, "wos_categories", min_weight=min_weight, remove_isolates=remove_isolates)
+    process_and_build_graph(df, build_co_author_edges, "co_author", **get_cfg("co_author"))
+    process_and_build_graph(df, build_co_funding_edges, "co_funding", **get_cfg("co_funding"))
+    process_and_build_graph(df, build_co_affiliation_edges, "co_affiliation", **get_cfg("co_affiliation"))
+    process_and_build_graph(df, build_author_keywords_edges, "author_keywords", **get_cfg("author_keywords"))
+    process_and_build_graph(df, build_wos_categories_edges, "wos_categories", **get_cfg("wos_categories"))
 
 if __name__ == "__main__":
     run()

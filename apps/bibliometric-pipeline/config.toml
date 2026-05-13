@@ -1,0 +1,28 @@
+# Pipeline Configuration for Graph Building
+# This file allows you to configure filtering thresholds independently for each graph type.
+# min_weight: The minimum weight (co-occurrence count) an edge must have to be kept.
+# remove_isolates: Whether to remove nodes that have no connecting edges after pruning.
+
+[default]
+min_weight = 1
+remove_isolates = true
+
+[co_author]
+min_weight = 2
+remove_isolates = true
+
+[co_funding]
+min_weight = 1
+remove_isolates = true
+
+[co_affiliation]
+min_weight = 2
+remove_isolates = true
+
+[author_keywords]
+min_weight = 2
+remove_isolates = true
+
+[wos_categories]
+min_weight = 1
+remove_isolates = true

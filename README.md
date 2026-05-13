@@ -53,6 +53,8 @@ pnpm nx run bibliometric-pipeline:run
 pnpm nx run bibliometric-pipeline:extract
 
 # 2. Build 5 graph types, compute metrics, and export GraphML/Parquet
+# You can configure graph pruning via apps/bibliometric-pipeline/config.toml
+# You can adjust min_weight and remove_isolates for each graph independently in that file.
 pnpm nx run bibliometric-pipeline:build-graphs
 
 # 3. Apply ForceAtlas2 layout to the generated graphs
