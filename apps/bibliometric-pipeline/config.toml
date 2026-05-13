@@ -7,28 +7,28 @@
 
 [default]
 min_weight = 1
-remove_isolates = true
-layout = { algorithm = "pyforceatlas2" }
+remove_isolates = false
+layout = { algorithm = "fa2", iterations = 100 }
 
 [co_author]
 min_weight = 2
-remove_isolates = true
+remove_isolates = false
 
 [co_funding]
 min_weight = 1
-remove_isolates = true
+remove_isolates = false
 
 [co_affiliation]
 min_weight = 2
-remove_isolates = true
+remove_isolates = false
 
 [author_keywords]
 min_weight = 2
-remove_isolates = true
+remove_isolates = false
 
 [wos_categories]
 min_weight = 1
-remove_isolates = true
+remove_isolates = false
 layout = { algorithm = "sfdp", iterations = 50 }
 
 [layout]

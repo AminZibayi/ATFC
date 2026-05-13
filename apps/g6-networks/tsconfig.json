@@ -16,7 +16,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@data/*": ["../../dist/apps/g6-networks/data/*"]
+      "@data/*": ["../../data/outputs/g6-networks/*"]
     }
   },
   "include": ["src"]

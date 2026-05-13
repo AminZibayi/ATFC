@@ -1,7 +1,8 @@
 import { Graph } from '@antv/g6';
-import type { NetworkData } from './types';
+import { Renderer as WebGLRenderer } from '@antv/g-webgl';
+import type { NetworkData, GraphConfig } from './types';
 
-export function createGraph(containerId: string, data: NetworkData, _title: string) {
+export function createGraph(containerId: string, data: NetworkData, config: GraphConfig) {
   const container = document.getElementById(containerId);
   if (!container) throw new Error(`Container ${containerId} not found`);
 
@@ -20,9 +21,11 @@ export function createGraph(containerId: string, data: NetworkData, _title: stri
         fill: n.color,
         labelText: String(n.id),
         labelFill: '#333',
-        labelBackgroundFill: 'rgba(255, 255, 255, 0.8)',
-        labelBackgroundPadding: [2, 4],
-        labelPlacement: 'center' as const,
+        labelPlacement: 'bottom' as const,
+        labelOffsetY: 4,
+        labelMaxWidth: 120,               // truncate long names
+        labelWordWrap: false,
+        labelVisibility: 'visible' as any,
         lineWidth: 1,
         stroke: '#fff'
       }
@@ -40,8 +43,64 @@ export function createGraph(containerId: string, data: NetworkData, _title: stri
     }))
   };
 
+  const plugins: any[] = [
+    {
+      type: 'tooltip',
+      trigger: 'hover',
+      getContent: (_e: any, items: any) => {
+        let html = `<div style="padding: 4px; background: white; border: 1px solid #ccc; border-radius: 4px;">`;
+        if (items && items.length > 0) {
+          const model = items[0];
+          const metrics = model.data || {};
+          html += `<strong style="display:block; margin-bottom:4px; color: #333;">${model.id}</strong>`;
+          for (const [k, v] of Object.entries(metrics)) {
+            html += `<div style="font-size:12px; color: #555;"><b>${k}:</b> ${v}</div>`;
+          }
+        }
+        html += `</div>`;
+        return html;
+      }
+    },
+    {
+      type: 'legend',
+      key: 'legend',
+      nodeField: 'group_label',
+      position: 'bottom-right',
+      layout: 'flex-wrap',
+      itemSpacing: 8,
+      titleText: 'Communities',
+    }
+  ];
+
+  if (config.hullEnabled) {
+    plugins.push({
+      type: 'hull',
+      key: 'community-hull',
+      members: (d: any) => d.data?.group_label,  // group by community label
+      style: {
+        fillOpacity: 0.08,
+        strokeOpacity: 0.3,
+        lineWidth: 1.5,
+      }
+    });
+  }
+
+  if (config.minimapEnabled) {
+    plugins.push({
+      type: 'minimap',
+      key: 'minimap',
+      size: [180, 120],
+      position: 'bottom-left',
+      containerStyle: {
+        background: '#f8f8f8',
+        border: '1px solid #ddd',
+      }
+    });
+  }
+
   const graph = new Graph({
     container: containerId,
+    renderer: () => new WebGLRenderer(),
     autoFit: 'view',
     data: graphData,
     node: {
@@ -55,6 +114,11 @@ export function createGraph(containerId: string, data: NetworkData, _title: stri
           labelOpacity: 0.2
         }
       }
+      /* lodLevels: [
+        { zoomRange: [0, config.lodThreshold / 2], primary: true },
+        { zoomRange: [config.lodThreshold / 2, config.lodThreshold], primary: false },
+        { zoomRange: [config.lodThreshold, Infinity], primary: false }
+      ] as any */
     },
     edge: {
       type: 'line',
@@ -71,39 +135,40 @@ export function createGraph(containerId: string, data: NetworkData, _title: stri
         }
       }
     },
-    // No layout needed since nodes have x and y in style
     behaviors: [
       'drag-canvas',
-      'zoom-canvas',
+      {
+        type: 'zoom-canvas',
+        sensitivity: 0.5,    // slower zoom = more control on big graphs
+      },
       'drag-element',
       {
         type: 'hover-activate',
         enable: true,
-        degree: 1
+        degree: 1,        // highlight 1-hop neighborhood
+        inactiveState: 'inactive',
+        activeState: 'active',
+      },
+      {
+        type: 'click-select',
+        multiple: true,   // Ctrl+click for multi-select
+      },
+      {
+        type: 'brush-select',
+        trigger: 'shift',
       }
     ],
-    plugins: [
-      {
-        type: 'tooltip',
-        trigger: 'hover',
-        getContent: (_e: any, items: any) => {
-          let html = `<div style="padding: 4px; background: white; border: 1px solid #ccc; border-radius: 4px;">`;
-          if (items && items.length > 0) {
-            const model = items[0];
-            const metrics = model.data || {};
-            html += `<strong style="display:block; margin-bottom:4px; color: #333;">${model.id}</strong>`;
-            for (const [k, v] of Object.entries(metrics)) {
-              html += `<div style="font-size:12px; color: #555;"><b>${k}:</b> ${v}</div>`;
-            }
-          }
-          html += `</div>`;
-          return html;
-        }
-      }
-    ]
+    plugins: plugins
   });
 
   graph.render();
+  
+  // Set the title
+  const titleEl = document.getElementById('network-title');
+  if (titleEl) {
+    titleEl.textContent = config.title;
+  }
+  
   (window as any).__graph = graph;
   return graph;
 }
@@ -115,9 +180,7 @@ export function setupSearch(graph: Graph, inputId: string, btnId: string) {
 
   btn.addEventListener('click', () => {
     const val = input.value.toLowerCase().trim();
-    if (!val) {
-        return;
-    }
+    if (!val) return;
     
     const nodeData = graph.getNodeData();
     const target = nodeData.find(n => String(n.id).toLowerCase().includes(val));
@@ -125,6 +188,26 @@ export function setupSearch(graph: Graph, inputId: string, btnId: string) {
       graph.focusElement(target.id, true);
     } else {
       alert('Node not found');
+    }
+  });
+}
+
+export function setupExport(graph: Graph, btnId: string, filename: string) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    if (typeof (graph as any).downloadFullImage === 'function') {
+      (graph as any).downloadFullImage(filename, 'image/png', {
+        backgroundColor: '#ffffff',
+        padding: 30,
+      });
+    } else if (typeof (graph as any).toDataURL === 'function') {
+        (graph as any).toDataURL().then((url: string) => {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+        });
     }
   });
 }

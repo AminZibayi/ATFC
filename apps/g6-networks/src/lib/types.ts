@@ -20,3 +20,13 @@ export interface NetworkData {
   nodes: NodeData[];
   edges: EdgeData[];
 }
+
+export interface GraphConfig {
+  title: string;
+  nodeField: 'paper_count' | 'weighted_degree' | 'betweenness';
+  lodThreshold: number;        // zoom level where labels appear
+  maxDisplayNodes?: number;    // optional cap for WebGL memory
+  hullEnabled: boolean;
+  minimapEnabled: boolean;
+}
+

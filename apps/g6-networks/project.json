@@ -23,7 +23,10 @@
     },
     "serve": {
       "executor": "@nx/vite:dev-server",
-      "dependsOn": ["export-data"]
+      "dependsOn": ["export-data"],
+      "options": {
+        "buildTarget": "g6-networks:build"
+      }
     }
   }
 }

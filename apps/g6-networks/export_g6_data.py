@@ -7,13 +7,12 @@ Pre-filtering is supported via environment variables:
 """
 import os
 import json
+import colorsys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import networkx as nx
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
 
 from shared_python.paths import get_output_path
 
@@ -32,8 +31,16 @@ if MAX_NODES: print(f"  Filtering: Max Nodes = {MAX_NODES}")
 if MIN_EDGE_WEIGHT > 0: print(f"  Filtering: Min Edge Weight = {MIN_EDGE_WEIGHT}")
 print("=" * 70)
 
-def hex_color(color_tuple, alpha=1.0):
-    return mcolors.to_hex(color_tuple)
+def generate_community_colors(n: int) -> dict:
+    """Generate n perceptually distinct colors using HSL golden ratio spacing."""
+    colors = {}
+    golden = 0.618033988749895
+    h = 0.1
+    for i in range(n):
+        h = (h + golden) % 1.0
+        r, g, b = colorsys.hls_to_rgb(h, 0.55, 0.75)
+        colors[i] = '#{:02x}{:02x}{:02x}'.format(int(r*255), int(g*255), int(b*255))
+    return colors
 
 def process_network(name, color_by="community"):
     print(f"\nProcessing {name} network...")
@@ -85,8 +92,7 @@ def process_network(name, color_by="community"):
     if color_by == "community":
         comm_values = nodes_df['community'].fillna(0).astype(float).astype(int).tolist()
         n_comm = max(max(comm_values) + 1, 1) if comm_values else 1
-        comm_colors = plt.cm.tab20(np.linspace(0, 1, max(n_comm, 1)))
-        color_map = {c: hex_color(comm_colors[c % 20]) for c in set(comm_values)}
+        color_map = generate_community_colors(n_comm)
     else:
         color_map = {}
         
@@ -96,6 +102,8 @@ def process_network(name, color_by="community"):
     # Base size scales
     size_scale, edge_scale, max_edge_w = 15, 0.8, 8
     
+    community_map = dict(zip(nodes_df['id'].astype(str), nodes_df['community'].fillna(0).astype(int)))
+
     for _, row in nodes_df.iterrows():
         node_id = str(row['id'])
         # In case node isn't in graph due to filtering
@@ -146,11 +154,16 @@ def process_network(name, color_by="community"):
         width = min(np.log1p(weight) * edge_scale, max_edge_w)
         width = max(width, 0.5)
         
-        # Use different colors for different graphs just for aesthetics
-        if name == "co_affiliation": edge_color = "#4cc9f0"
-        elif name == "co_funding": edge_color = "#f72585"
-        elif name == "co_author": edge_color = "#4361ee"
-        else: edge_color = "#b5179e"
+        comm_u = community_map.get(str(u), -1)
+        comm_v = community_map.get(str(v), -1)
+        
+        if comm_u == comm_v:
+            # Intra-community: use muted version of community color
+            base = color_map.get(comm_u, "#cccccc")
+            edge_color = base + "99"   # 60% opacity hex
+        else:
+            # Inter-community: neutral grey
+            edge_color = "#cccccc55"
         
         g6_data["edges"].append({
             "source": str(u),

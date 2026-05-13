@@ -19,6 +19,8 @@
     "vite": "^8.0.10"
   },
   "dependencies": {
+    "@antv/g-plugin-rough-canvas-renderer": "^2.1.1",
+    "@antv/g-webgl": "^2.1.1",
     "@antv/g6": "^5.1.0"
   }
 }
