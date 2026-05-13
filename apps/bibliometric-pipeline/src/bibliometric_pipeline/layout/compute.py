@@ -3,7 +3,7 @@ import os
 import sys
 import networkx as nx
 
-def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None) -> None:
+def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None, **kwargs) -> None:
     """Computes layout using the specified algorithm and adds 'x', 'y' node attributes."""
     if len(G) == 0:
         return
@@ -19,18 +19,20 @@ def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None) -
     if algorithm == "pyforceatlas2":
         try:
             from pyforceatlas2 import ForceAtlas2
-            fa2 = ForceAtlas2(
-                outbound_attraction_distribution=True,
-                lin_log_mode=False,
-                edge_weight_influence=1.0,
-                jitter_tolerance=1.0,
-                barnes_hut_optimize=True,
-                barnes_hut_theta=1.2,
-                scaling_ratio=2.0,
-                strong_gravity_mode=False,
-                gravity=1.0,
-                verbose=False
-            )
+            
+            fa2_kwargs = {
+                "outbound_attraction_distribution": kwargs.get("outbound_attraction_distribution", True),
+                "lin_log_mode": kwargs.get("lin_log_mode", False),
+                "edge_weight_influence": kwargs.get("edge_weight_influence", 1.0),
+                "jitter_tolerance": kwargs.get("jitter_tolerance", 1.0),
+                "barnes_hut_optimize": kwargs.get("barnes_hut_optimize", True),
+                "barnes_hut_theta": kwargs.get("barnes_hut_theta", 1.2),
+                "scaling_ratio": kwargs.get("scaling_ratio", 2.0),
+                "strong_gravity_mode": kwargs.get("strong_gravity_mode", False),
+                "gravity": kwargs.get("gravity", 1.0),
+                "verbose": False
+            }
+            fa2 = ForceAtlas2(**fa2_kwargs)
             positions = fa2.forceatlas2_networkx_layout(G, pos=None, iterations=iterations)
         except ImportError:
             print("  pyforceatlas2 not found. Falling back to fa2-modified.")
@@ -38,20 +40,21 @@ def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None) -
             
     if algorithm == "fa2":
         from fa2_modified import ForceAtlas2
-        fa2 = ForceAtlas2(
-            outboundAttractionDistribution=True,
-            linLogMode=False,
-            adjustSizes=False,
-            edgeWeightInfluence=1.0,
-            jitterTolerance=1.0,
-            barnesHutOptimize=True,
-            barnesHutTheta=1.2,
-            multiThreaded=False,
-            scalingRatio=2.0,
-            strongGravityMode=False,
-            gravity=1.0,
-            verbose=False,
-        )
+        fa2_kwargs = {
+            "outboundAttractionDistribution": kwargs.get("outbound_attraction_distribution", True),
+            "linLogMode": kwargs.get("lin_log_mode", False),
+            "adjustSizes": kwargs.get("adjust_sizes", False),
+            "edgeWeightInfluence": kwargs.get("edge_weight_influence", 1.0),
+            "jitterTolerance": kwargs.get("jitter_tolerance", 1.0),
+            "barnesHutOptimize": kwargs.get("barnes_hut_optimize", True),
+            "barnesHutTheta": kwargs.get("barnes_hut_theta", 1.2),
+            "multiThreaded": kwargs.get("multi_threaded", False),
+            "scalingRatio": kwargs.get("scaling_ratio", 2.0),
+            "strongGravityMode": kwargs.get("strong_gravity_mode", False),
+            "gravity": kwargs.get("gravity", 1.0),
+            "verbose": False,
+        }
+        fa2 = ForceAtlas2(**fa2_kwargs)
         positions = fa2.forceatlas2_networkx_layout(G, pos=None, iterations=iterations)
         
     elif algorithm == "sfdp" or algorithm == "yifan_hu":
@@ -60,6 +63,12 @@ def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None) -
         try:
             # Create a clean graph with ASCII-safe node names to avoid encoding errors
             G_clean = nx.Graph()
+            
+            # Map SFDP kwargs onto the Graph attributes so Graphviz reads them
+            G_clean.graph['maxiter'] = iterations
+            for k, v in kwargs.items():
+                G_clean.graph[k] = v
+                
             node_map = {}
             for i, node in enumerate(G.nodes()):
                 safe_name = f"n{i}"

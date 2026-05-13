@@ -8,7 +8,7 @@ from shared_python.paths import get_output_path, get_workspace_root
 from bibliometric_pipeline.layout.compute import compute_layout
 from bibliometric_pipeline.io.writers import write_graphml
 
-def process_and_apply_layout(name: str, algorithm: str = None, iterations: int = None):
+def process_and_apply_layout(name: str, algorithm: str = None, iterations: int = None, **kwargs):
     print(f"\nApplying layout to {name} graph...")
     out_dir = get_output_path("bibliometric-pipeline", "graphs")
     
@@ -22,7 +22,7 @@ def process_and_apply_layout(name: str, algorithm: str = None, iterations: int =
     G = nx.read_graphml(graphml_path)
     
     print("  Computing layout...")
-    compute_layout(G, algorithm=algorithm, iterations=iterations)
+    compute_layout(G, algorithm=algorithm, iterations=iterations, **kwargs)
     
     # Save the updated GraphML with x and y coordinates
     layout_graphml_path = out_dir / f"{name}_layout.graphml"
@@ -52,6 +52,7 @@ def run():
     config_path = get_workspace_root() / "apps" / "bibliometric-pipeline" / "config.toml"
     default_algo = "pyforceatlas2"
     default_iters = 2000
+    engine_kwargs = {}
     
     if config_path.exists():
         with open(config_path, "rb") as f:
@@ -59,6 +60,12 @@ def run():
             layout_config = config.get("layout", {})
             default_algo = layout_config.get("algorithm", default_algo)
             default_iters = layout_config.get("iterations", default_iters)
+            
+            # Pass algorithm-specific kwargs
+            if default_algo in ["pyforceatlas2", "fa2"]:
+                engine_kwargs = layout_config.get("forceatlas2", {})
+            elif default_algo in ["sfdp", "yifan_hu"]:
+                engine_kwargs = layout_config.get("sfdp", {})
 
     parser = argparse.ArgumentParser(description="Apply layout to bibliometric graphs.")
     parser.add_argument("--algorithm", type=str, default=default_algo, choices=["pyforceatlas2", "fa2", "sfdp", "yifan_hu"], help=f"Layout algorithm to use (default: {default_algo})")
@@ -79,7 +86,7 @@ def run():
     ]
     
     for g in graphs:
-        process_and_apply_layout(g, algorithm=args.algorithm, iterations=args.iterations)
+        process_and_apply_layout(g, algorithm=args.algorithm, iterations=args.iterations, **engine_kwargs)
 
 if __name__ == "__main__":
     run()
