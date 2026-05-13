@@ -26,3 +26,7 @@ remove_isolates = false
 [wos_categories]
 min_weight = 1
 remove_isolates = false
+
+[layout]
+algorithm = "pyforceatlas2"
+iterations = 2000

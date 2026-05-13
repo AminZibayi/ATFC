@@ -1,9 +1,10 @@
 import networkx as nx
 import pandas as pd
 import argparse
+import tomllib
 from pathlib import Path
 
-from shared_python.paths import get_output_path
+from shared_python.paths import get_output_path, get_workspace_root
 from bibliometric_pipeline.layout.compute import compute_layout
 from bibliometric_pipeline.io.writers import write_graphml
 
@@ -47,9 +48,21 @@ def process_and_apply_layout(name: str, algorithm: str = None, iterations: int =
         print(f"  Warning: Parquet file not found for {name}, couldn't update coordinates.")
 
 def run():
+    # Load config defaults
+    config_path = get_workspace_root() / "apps" / "bibliometric-pipeline" / "config.toml"
+    default_algo = "pyforceatlas2"
+    default_iters = 2000
+    
+    if config_path.exists():
+        with open(config_path, "rb") as f:
+            config = tomllib.load(f)
+            layout_config = config.get("layout", {})
+            default_algo = layout_config.get("algorithm", default_algo)
+            default_iters = layout_config.get("iterations", default_iters)
+
     parser = argparse.ArgumentParser(description="Apply layout to bibliometric graphs.")
-    parser.add_argument("--algorithm", type=str, default="pyforceatlas2", choices=["pyforceatlas2", "fa2", "sfdp", "yifan_hu"], help="Layout algorithm to use (default: pyforceatlas2)")
-    parser.add_argument("--iterations", type=int, default=2000, help="Number of iterations for the layout algorithm (default: 2000)")
+    parser.add_argument("--algorithm", type=str, default=default_algo, choices=["pyforceatlas2", "fa2", "sfdp", "yifan_hu"], help=f"Layout algorithm to use (default: {default_algo})")
+    parser.add_argument("--iterations", type=int, default=default_iters, help=f"Number of iterations for the layout algorithm (default: {default_iters})")
     args = parser.parse_args()
 
     print("=" * 70)
