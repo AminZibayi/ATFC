@@ -57,7 +57,9 @@ pnpm nx run bibliometric-pipeline:extract
 # You can adjust min_weight and remove_isolates for each graph independently in that file.
 pnpm nx run bibliometric-pipeline:build-graphs
 
-# 3. Apply ForceAtlas2 layout to the generated graphs
+# 3. Apply graph layout (ForceAtlas2 or Yifan Hu / SFDP)
+# You can customize the engine (pyforceatlas2, sfdp, etc) and iterations
+# via apps/bibliometric-pipeline/config.toml
 pnpm nx run bibliometric-pipeline:apply-layout
 ```
 
@@ -109,12 +111,12 @@ TS=(
 ## Analysis Pipeline
 
 ```
-WoS Plain-Text Export ──► EXTRACT (Parquet) ──► BUILD GRAPHS (GraphML & Parquet) ──► APPLY LAYOUT (ForceAtlas2)
+WoS Plain-Text Export ──► EXTRACT (Parquet) ──► BUILD GRAPHS (GraphML & Parquet) ──► APPLY LAYOUT (ForceAtlas2/SFDP)
 ```
 
 1. **Extract** — Parse raw WOS plain-text export into structured records (handling continuation lines and split fields).
 2. **Build Graphs** — Fast, vectorized extraction of nodes (including `paper_count`) and edge pairs (filtered by minimum weight) for five distinct graph types. Construct NetworkX graphs, compute centrality and Louvain community metrics, and write structural data to GraphML and rich metadata to Parquet.
-3. **Apply Layout** — Isolate the heavy ForceAtlas2 layout computation. Update the generated GraphML and Parquet files with `x` and `y` coordinates.
+3. **Apply Layout** — Isolate the heavy layout computation. Computes physical coordinates using either ForceAtlas2 (`pyforceatlas2` / `fa2`) or Graphviz's SFDP / Yifan Hu algorithm. Configurable via `config.toml` (with full IDE JSON-schema support). Updates the generated GraphML and Parquet files with `x` and `y` coordinates.
 
 ## Available Analyses
 
