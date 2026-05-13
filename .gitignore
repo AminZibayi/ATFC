@@ -36,3 +36,4 @@ data/outputs/*
 
 .nx
 dist
+.env
