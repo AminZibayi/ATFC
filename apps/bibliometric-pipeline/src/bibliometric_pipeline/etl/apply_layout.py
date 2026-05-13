@@ -68,11 +68,13 @@ def run():
     default_algo = "pyforceatlas2"
     default_iters = None
     layout_config = {}
+    default_config = {}
     graph_configs = {}
     
     if config_path.exists():
         with open(config_path, "rb") as f:
             config = tomllib.load(f)
+            default_config = config.get("default", {})
             layout_config = config.get("layout", {})
             default_algo = layout_config.get("algorithm", default_algo)
             default_iters = layout_config.get("iterations", default_iters)
@@ -100,22 +102,33 @@ def run():
     for g in graphs:
         graph_cfg = graph_configs.get(g, {})
         graph_layout = graph_cfg.get("layout", {})
+        default_layout = default_config.get("layout", {})
         
-        # Resolve algorithm: per-graph > CLI > global default
-        g_algo = graph_layout.get("algorithm") or args.algorithm or default_algo
-        # Resolve iterations: per-graph > CLI > global default > auto (None)
+        # Resolve algorithm: per-graph > CLI > [default].layout > global default
+        g_algo = graph_layout.get("algorithm") or args.algorithm or default_layout.get("algorithm") or default_algo
+        
+        # Resolve iterations: per-graph > CLI > [default].layout > global default > auto (None)
         g_iters = graph_layout.get("iterations")
         if g_iters is None:
             g_iters = args.iterations
         if g_iters is None:
+            g_iters = default_layout.get("iterations")
+        if g_iters is None:
             g_iters = default_iters
         
-        # Select kwargs based on the resolved algorithm
+        # Select base engine kwargs based on the resolved algorithm
         algo_key = "forceatlas2" if g_algo in ["pyforceatlas2", "fa2"] else "sfdp"
         base_kwargs = layout_config.get(algo_key, {})
-        # Per-graph layout overrides for kwargs (filter out algo/iters)
-        override_kwargs = {k: v for k, v in graph_layout.items() if k not in ("algorithm", "iterations")}
-        g_kwargs = {**base_kwargs, **override_kwargs}
+        
+        # Merge kwargs: global engine defaults < [default].layout < [graph].layout
+        def filter_layout_keys(d):
+            return {k: v for k, v in d.items() if k not in ("algorithm", "iterations")}
+            
+        g_kwargs = {
+            **base_kwargs,
+            **filter_layout_keys(default_layout),
+            **filter_layout_keys(graph_layout)
+        }
         
         print(f"\n-> {g}: algorithm={g_algo}, iterations={g_iters or 'auto'}")
         process_and_apply_layout(g, algorithm=g_algo, iterations=g_iters, **g_kwargs)
