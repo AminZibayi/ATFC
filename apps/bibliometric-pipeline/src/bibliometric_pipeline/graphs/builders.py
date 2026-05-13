@@ -145,42 +145,72 @@ def clean_funding_org(raw: str) -> str | None:
 
 
 # --- Edge Builders ---
-def build_generic_edges(df: pd.DataFrame, source_col: str) -> pd.DataFrame:
-    """Builds edges directly from a list column."""
+def build_generic_edges(df: pd.DataFrame, source_col: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Builds nodes and edges from a list column."""
     if source_col not in df.columns:
         raise KeyError(
             f"Column '{source_col}' not found in DataFrame. Available: {list(df.columns)}"
         )
-    pairs = []
-    for _, row in df.iterrows():
-        items = row.get(source_col, [])
-        if items is None:
-            continue
-        try:
-            items = sorted(list(set(i.strip() for i in items if str(i).strip())))
-        except TypeError:
-            continue
-        if len(items) >= 2:
-            pairs.extend(combinations(items, 2))
+        
+    df_temp = df.copy()
+    df_temp["_paper_id"] = range(len(df_temp))
+
+    # Explode the list column
+    exploded = df_temp[["_paper_id", source_col]].explode(source_col)
     
-    if not pairs:
-        return pd.DataFrame(columns=["source", "target", "weight"])
+    # Drop nulls
+    exploded = exploded.dropna(subset=[source_col])
+    
+    # Convert to string and strip
+    exploded[source_col] = exploded[source_col].astype(str).str.strip()
+    
+    # Drop empty strings
+    exploded = exploded[exploded[source_col] != ""]
+    
+    # Drop duplicate items per paper
+    exploded = exploded.drop_duplicates(subset=["_paper_id", source_col])
 
-    edge_df = (
-        pd.DataFrame(pairs, columns=["source", "target"])
-        .groupby(["source", "target"])
+    if exploded.empty:
+        return pd.DataFrame(columns=["id", "paper_count"]), pd.DataFrame(columns=["source", "target", "weight"])
+
+    # Nodes: count unique papers per item
+    nodes_df = (
+        exploded.groupby(source_col)
         .size()
-        .reset_index(name="weight")
+        .reset_index(name="paper_count")
+        .rename(columns={source_col: "id"})
     )
-    return edge_df
+
+    # Edges: self-merge to find co-occurrences
+    merged = pd.merge(exploded, exploded, on="_paper_id", suffixes=("_source", "_target"))
+    
+    # Keep only source < target to avoid duplicates and self-loops
+    merged = merged[merged[f"{source_col}_source"] < merged[f"{source_col}_target"]]
+    
+    if merged.empty:
+        edges_df = pd.DataFrame(columns=["source", "target", "weight"])
+    else:
+        edges_df = (
+            merged.groupby([f"{source_col}_source", f"{source_col}_target"])
+            .size()
+            .reset_index(name="weight")
+            .rename(
+                columns={
+                    f"{source_col}_source": "source",
+                    f"{source_col}_target": "target",
+                }
+            )
+        )
+        
+    return nodes_df, edges_df
 
 
-def build_co_author_edges(df: pd.DataFrame) -> pd.DataFrame:
+def build_co_author_edges(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Uses AU (Authors)"""
     return build_generic_edges(df, "AU")
 
 
-def build_author_keywords_edges(df: pd.DataFrame) -> pd.DataFrame:
+def build_author_keywords_edges(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Uses DE (Author Keywords)"""
     # Keywords are already parsed as list in DE
     # But let's uppercase them to avoid case issues
@@ -198,7 +228,7 @@ def build_author_keywords_edges(df: pd.DataFrame) -> pd.DataFrame:
     return build_generic_edges(df_temp, "DE_CLEAN")
 
 
-def build_wos_categories_edges(df: pd.DataFrame) -> pd.DataFrame:
+def build_wos_categories_edges(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Uses WC (WoS Categories)"""
     df_temp = df.copy()
     
@@ -214,7 +244,7 @@ def build_wos_categories_edges(df: pd.DataFrame) -> pd.DataFrame:
     return build_generic_edges(df_temp, "WC_CLEAN")
 
 
-def build_co_affiliation_edges(df: pd.DataFrame) -> pd.DataFrame:
+def build_co_affiliation_edges(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Uses C1 (Addresses) -> extracts institution name."""
     def extract_affiliations(row):
         items = row.get("C1", [])
@@ -237,7 +267,7 @@ def build_co_affiliation_edges(df: pd.DataFrame) -> pd.DataFrame:
     return build_generic_edges(df_temp, "C1_CLEAN")
 
 
-def build_co_funding_edges(df: pd.DataFrame) -> pd.DataFrame:
+def build_co_funding_edges(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Uses FU (Funding Agency) -> extracts clean funder name."""
     def extract_funders(row):
         items = row.get("FU", [])
