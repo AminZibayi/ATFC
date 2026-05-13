@@ -15,33 +15,32 @@
       ],
       "cache": true
     },
-    "transform": {
-      "command": "uv run python -m bibliometric_pipeline.etl.transform",
+    "build-graphs": {
+      "command": "uv run python -m bibliometric_pipeline.etl.build_graphs",
       "dependsOn": ["extract"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "inputs": [
-        "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet"
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet",
+        "{projectRoot}/src/bibliometric_pipeline/etl/build_graphs.py",
+        "{projectRoot}/src/bibliometric_pipeline/graphs/builders.py"
       ],
-      "outputs": [
-        "{workspaceRoot}/data/intermediate/bibliometric-pipeline"
-      ],
+      "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
       "cache": true
     },
-    "load": {
-      "command": "uv run python -m bibliometric_pipeline.etl.load",
-      "dependsOn": ["transform"],
+    "apply-layout": {
+      "command": "uv run python -m bibliometric_pipeline.etl.apply_layout",
+      "dependsOn": ["build-graphs"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "inputs": [
-        "{workspaceRoot}/data/intermediate/bibliometric-pipeline"
+        "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs",
+        "{projectRoot}/src/bibliometric_pipeline/etl/apply_layout.py",
+        "{projectRoot}/src/bibliometric_pipeline/layout/forceatlas2.py"
       ],
-      "outputs": [
-        "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"
-      ],
+      "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
       "cache": true
     },
     "run": {
       "command": "uv run python -m bibliometric_pipeline.main",
-      "dependsOn": ["load"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "cache": false
     }
