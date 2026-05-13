@@ -3,54 +3,77 @@
   "title": "Bibliometric Pipeline Configuration",
   "description": "Configuration file for the bibliometric data processing and layout pipeline.",
   "type": "object",
-    "definitions": {
-      "graph_config": {
-        "type": "object",
-        "properties": {
-          "min_weight": {
-            "type": "integer",
-            "description": "The minimum weight (co-occurrence count) an edge must have to be kept.",
-            "default": 1
-          },
-          "remove_isolates": {
-            "type": "boolean",
-            "description": "Whether to remove nodes that have no connecting edges after pruning.",
-            "default": false
-          },
-          "layout": {
-            "type": "object",
-            "description": "Optional layout configuration. Can be used in the [default] section for global defaults or in individual graph sections for per-graph overrides.",
-            "properties": {
-              "algorithm": {
-                "type": "string",
-                "enum": ["pyforceatlas2", "fa2", "sfdp", "yifan_hu"],
-                "description": "Override the global layout algorithm for this graph type or [default] section."
-              },
-              "iterations": {
-                "type": "integer",
-                "description": "Override the global iteration count for this graph type or [default] section."
-              }
-            },
-            "additionalProperties": true
-          }
+  "definitions": {
+    "graph_config": {
+      "type": "object",
+      "properties": {
+        "min_weight": {
+          "type": "integer",
+          "description": "The minimum weight (co-occurrence count) an edge must have to be kept.",
+          "default": 1
         },
-        "additionalProperties": false
-      }
-    },
+        "remove_isolates": {
+          "type": "boolean",
+          "description": "Whether to remove nodes that have no connecting edges after pruning.",
+          "default": false
+        },
+        "layout": {
+          "type": "object",
+          "description": "Optional layout configuration. Can be used in the [default] section for global defaults or in individual graph sections for per-graph overrides.",
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": [
+                "pyforceatlas2",
+                "fa2",
+                "sfdp",
+                "yifan_hu"
+              ],
+              "description": "Override the global layout algorithm for this graph type or [default] section."
+            },
+            "iterations": {
+              "type": "integer",
+              "description": "Override the global iteration count for this graph type or [default] section."
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
   "properties": {
-    "default": { "$ref": "#/definitions/graph_config", "description": "Default graph settings" },
-    "co_author": { "$ref": "#/definitions/graph_config" },
-    "co_funding": { "$ref": "#/definitions/graph_config" },
-    "co_affiliation": { "$ref": "#/definitions/graph_config" },
-    "author_keywords": { "$ref": "#/definitions/graph_config" },
-    "wos_categories": { "$ref": "#/definitions/graph_config" },
+    "default": {
+      "$ref": "#/definitions/graph_config",
+      "description": "Default graph settings"
+    },
+    "co_author": {
+      "$ref": "#/definitions/graph_config"
+    },
+    "co_funding": {
+      "$ref": "#/definitions/graph_config"
+    },
+    "co_affiliation": {
+      "$ref": "#/definitions/graph_config"
+    },
+    "author_keywords": {
+      "$ref": "#/definitions/graph_config"
+    },
+    "wos_categories": {
+      "$ref": "#/definitions/graph_config"
+    },
     "layout": {
       "type": "object",
       "description": "Graph layout engine configuration",
       "properties": {
         "algorithm": {
           "type": "string",
-          "enum": ["pyforceatlas2", "fa2", "sfdp", "yifan_hu"],
+          "enum": [
+            "pyforceatlas2",
+            "fa2",
+            "sfdp",
+            "yifan_hu"
+          ],
           "description": "The layout algorithm to use. 'pyforceatlas2' and 'fa2' use ForceAtlas2. 'sfdp' and 'yifan_hu' use Graphviz's scalable force-directed placement (Yifan Hu's multilevel algorithm).",
           "default": "pyforceatlas2"
         },
@@ -63,14 +86,46 @@
           "type": "object",
           "description": "Parameters specific to the ForceAtlas2 engines (pyforceatlas2, fa2).",
           "properties": {
-            "scaling_ratio": { "type": "number", "default": 2.0, "description": "How much repulsion you want. More makes a more sparse graph." },
-            "gravity": { "type": "number", "default": 1.0, "description": "Attracts nodes to the center. Prevents islands from drifting away." },
-            "edge_weight_influence": { "type": "number", "default": 1.0, "description": "How much influence you give to the edges weight. 0 is \"no influence\" and 1 is \"normal\"." },
-            "jitter_tolerance": { "type": "number", "default": 1.0, "description": "How much swinging you allow. Above 1 swings more, below 1 is more precise." },
-            "barnes_hut_optimize": { "type": "boolean", "default": true, "description": "Use Barnes Hut optimization for improved speed on large graphs." },
-            "barnes_hut_theta": { "type": "number", "default": 1.2, "description": "Barnes Hut Theta parameter." },
-            "lin_log_mode": { "type": "boolean", "default": false, "description": "Switch ForceAtlas' model from lin-lin to lin-log. Makes clusters more tight." },
-            "strong_gravity_mode": { "type": "boolean", "default": false, "description": "A stronger gravity mode." }
+            "scaling_ratio": {
+              "type": "number",
+              "default": 2.0,
+              "description": "How much repulsion you want. More makes a more sparse graph."
+            },
+            "gravity": {
+              "type": "number",
+              "default": 1.0,
+              "description": "Attracts nodes to the center. Prevents islands from drifting away."
+            },
+            "edge_weight_influence": {
+              "type": "number",
+              "default": 1.0,
+              "description": "How much influence you give to the edges weight. 0 is \"no influence\" and 1 is \"normal\"."
+            },
+            "jitter_tolerance": {
+              "type": "number",
+              "default": 1.0,
+              "description": "How much swinging you allow. Above 1 swings more, below 1 is more precise."
+            },
+            "barnes_hut_optimize": {
+              "type": "boolean",
+              "default": true,
+              "description": "Use Barnes Hut optimization for improved speed on large graphs."
+            },
+            "barnes_hut_theta": {
+              "type": "number",
+              "default": 1.2,
+              "description": "Barnes Hut Theta parameter."
+            },
+            "lin_log_mode": {
+              "type": "boolean",
+              "default": false,
+              "description": "Switch ForceAtlas' model from lin-lin to lin-log. Makes clusters more tight."
+            },
+            "strong_gravity_mode": {
+              "type": "boolean",
+              "default": false,
+              "description": "A stronger gravity mode."
+            }
           },
           "additionalProperties": false
         },
@@ -78,14 +133,30 @@
           "type": "object",
           "description": "Parameters specific to the Graphviz SFDP / Yifan Hu engine.",
           "properties": {
-            "K": { "type": "number", "default": 1.0, "description": "Spring constant. The optimal rest length of edges." },
-            "overlap": { 
+            "K": {
+              "type": "number",
+              "default": 1.0,
+              "description": "Spring constant. The optimal rest length of edges."
+            },
+            "overlap": {
               "type": "string",
-              "enum": ["true", "false", "scale", "prism", "orthoxy", "orthoyx", "compress"],
+              "enum": [
+                "true",
+                "false",
+                "scale",
+                "prism",
+                "orthoxy",
+                "orthoyx",
+                "compress"
+              ],
               "description": "Algorithm to remove node overlaps. 'prism' is generally good for large graphs.",
               "default": "prism"
             },
-            "repulsiveforce": { "type": "number", "default": 1.0, "description": "The power of the repulsive force." }
+            "repulsiveforce": {
+              "type": "number",
+              "default": 1.0,
+              "description": "The power of the repulsive force."
+            }
           },
           "additionalProperties": true
         }
