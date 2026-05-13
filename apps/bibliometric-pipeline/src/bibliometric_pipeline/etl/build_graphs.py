@@ -58,12 +58,19 @@ def process_and_build_graph(df: pd.DataFrame, builder_fn, name: str, min_weight:
     print("  Computing Louvain communities...")
     partition = community_louvain.best_partition(G, weight='weight')
     
+    import numpy as np
+    
     for n in G.nodes():
         G.nodes[n]['degree'] = degrees.get(n, 0)
         G.nodes[n]['weighted_degree'] = weighted_degrees.get(n, 0)
         G.nodes[n]['betweenness_centrality'] = betweenness.get(n, 0.0)
         G.nodes[n]['community'] = partition.get(n, 0)
         G.nodes[n]['label'] = str(n)
+        
+        # Add a default 'size' attribute so graph viewers (like Gephi) can render nodes with varying sizes immediately
+        wd = float(G.nodes[n].get('paper_count', 1))
+        # Log scaling to prevent massive nodes from dwarfing the rest
+        G.nodes[n]['size'] = max(np.log1p(wd) * 10, 5.0)
         
     # Persist Artifacts
     out_dir = get_output_path("bibliometric-pipeline", "graphs")
