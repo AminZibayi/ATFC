@@ -28,10 +28,10 @@ remove_isolates = false
 [wos_categories]
 min_weight = 1
 remove_isolates = false
+layout = { algorithm = "sfdp", iterations = 50 }
 
 [layout]
-algorithm = "pyforceatlas2"
-iterations = 2000
+algorithm = "sfdp"
 
 # ForceAtlas2-specific parameters (applies to 'pyforceatlas2' and 'fa2')
 [layout.forceatlas2]
@@ -49,4 +49,3 @@ strong_gravity_mode = false
 K = 1.0
 overlap = "prism"
 repulsiveforce = 1.0
-
