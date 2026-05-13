@@ -1,3 +1,4 @@
+import os
 import networkx as nx
 import pandas as pd
 import community as community_louvain
@@ -13,7 +14,7 @@ from bibliometric_pipeline.graphs.builders import (
 )
 from bibliometric_pipeline.io.writers import write_graphml
 
-def process_and_build_graph(df: pd.DataFrame, builder_fn, name: str, min_weight: int = 2):
+def process_and_build_graph(df: pd.DataFrame, builder_fn, name: str, min_weight: int = 2, remove_isolates: bool = True):
     print(f"\nBuilding {name} graph...")
     
     # 1. Call builder
@@ -38,8 +39,9 @@ def process_and_build_graph(df: pd.DataFrame, builder_fn, name: str, min_weight:
     G.add_edges_from((row.source, row.target, {'weight': row.weight}) for row in edges_df.itertuples(index=False))
     
     # 4. Remove isolates
-    isolates = list(nx.isolates(G))
-    G.remove_nodes_from(isolates)
+    if remove_isolates:
+        isolates = list(nx.isolates(G))
+        G.remove_nodes_from(isolates)
     
     if len(G) == 0:
         print(f"  Graph {name} is empty after removing isolates.")
@@ -90,6 +92,10 @@ def run():
     print(" ETL STAGE 2: BUILD GRAPHS")
     print("=" * 70)
     
+    min_weight = int(os.environ.get("GRAPH_MIN_WEIGHT", 1))
+    remove_isolates = os.environ.get("GRAPH_REMOVE_ISOLATES", "true").lower() in ("true", "1", "yes", "t")
+    print(f"Config: min_weight={min_weight}, remove_isolates={remove_isolates}")
+    
     in_dir = get_intermediate_data_path("bibliometric-pipeline", "")
     in_path = in_dir / "records.parquet"
     if not in_path.exists():
@@ -97,11 +103,11 @@ def run():
         
     df = pd.read_parquet(in_path)
     
-    process_and_build_graph(df, build_co_author_edges, "co_author", min_weight=0)
-    process_and_build_graph(df, build_co_funding_edges, "co_funding", min_weight=0)
-    process_and_build_graph(df, build_co_affiliation_edges, "co_affiliation", min_weight=0)
-    process_and_build_graph(df, build_author_keywords_edges, "author_keywords", min_weight=0)
-    process_and_build_graph(df, build_wos_categories_edges, "wos_categories", min_weight=0)
+    process_and_build_graph(df, build_co_author_edges, "co_author", min_weight=min_weight, remove_isolates=remove_isolates)
+    process_and_build_graph(df, build_co_funding_edges, "co_funding", min_weight=min_weight, remove_isolates=remove_isolates)
+    process_and_build_graph(df, build_co_affiliation_edges, "co_affiliation", min_weight=min_weight, remove_isolates=remove_isolates)
+    process_and_build_graph(df, build_author_keywords_edges, "author_keywords", min_weight=min_weight, remove_isolates=remove_isolates)
+    process_and_build_graph(df, build_wos_categories_edges, "wos_categories", min_weight=min_weight, remove_isolates=remove_isolates)
 
 if __name__ == "__main__":
     run()
