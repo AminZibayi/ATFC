@@ -97,11 +97,11 @@ def run():
         
     df = pd.read_parquet(in_path)
     
-    process_and_build_graph(df, build_co_author_edges, "co_author", min_weight=2)
-    process_and_build_graph(df, build_co_funding_edges, "co_funding", min_weight=2)
-    process_and_build_graph(df, build_co_affiliation_edges, "co_affiliation", min_weight=2)
-    process_and_build_graph(df, build_author_keywords_edges, "author_keywords", min_weight=2)
-    process_and_build_graph(df, build_wos_categories_edges, "wos_categories", min_weight=1)
+    process_and_build_graph(df, build_co_author_edges, "co_author", min_weight=0)
+    process_and_build_graph(df, build_co_funding_edges, "co_funding", min_weight=0)
+    process_and_build_graph(df, build_co_affiliation_edges, "co_affiliation", min_weight=0)
+    process_and_build_graph(df, build_author_keywords_edges, "author_keywords", min_weight=0)
+    process_and_build_graph(df, build_wos_categories_edges, "wos_categories", min_weight=0)
 
 if __name__ == "__main__":
     run()

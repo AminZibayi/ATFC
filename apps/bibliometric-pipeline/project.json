@@ -5,18 +5,14 @@
   "sourceRoot": "apps/bibliometric-pipeline/src",
   "targets": {
     "extract": {
-      "command": "uv run python -m bibliometric_pipeline.etl.extract",
+      "command": "uv run python -u -m bibliometric_pipeline.etl.extract",
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "inputs": [
-        "{workspaceRoot}/data/raw/**"
-      ],
-      "outputs": [
-        "{workspaceRoot}/data/intermediate/bibliometric-pipeline"
-      ],
+      "inputs": ["{workspaceRoot}/data/raw/**"],
+      "outputs": ["{workspaceRoot}/data/intermediate/bibliometric-pipeline"],
       "cache": true
     },
     "build-graphs": {
-      "command": "uv run python -m bibliometric_pipeline.etl.build_graphs",
+      "command": "uv run python -u -m bibliometric_pipeline.etl.build_graphs",
       "dependsOn": ["extract"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "inputs": [
@@ -28,7 +24,7 @@
       "cache": true
     },
     "apply-layout": {
-      "command": "uv run python -m bibliometric_pipeline.etl.apply_layout",
+      "command": "uv run python -u -m bibliometric_pipeline.etl.apply_layout",
       "dependsOn": ["build-graphs"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "inputs": [
@@ -40,9 +36,8 @@
       "cache": true
     },
     "run": {
-      "command": "uv run python -m bibliometric_pipeline.main",
-      "options": { "cwd": "apps/bibliometric-pipeline" },
-      "cache": false
+      "executor": "nx:noop",
+      "dependsOn": ["apply-layout"]
     }
   }
 }
