@@ -90,9 +90,29 @@ def process_network(name, color_by="community"):
     
     # 3. Generate colors
     if color_by == "community":
-        comm_values = nodes_df['community'].fillna(0).astype(float).astype(int).tolist()
-        n_comm = max(max(comm_values) + 1, 1) if comm_values else 1
+        # Merge micro-communities
+        MIN_COMMUNITY_SIZE = 5
+        community_sizes = nodes_df['community'].value_counts()
+        small_communities = set(community_sizes[community_sizes < MIN_COMMUNITY_SIZE].index)
+
+        # Remap small communities to -1 ("Other")
+        nodes_df['community_display'] = nodes_df['community'].apply(
+            lambda c: c if c not in small_communities else -1
+        )
+
+        # Remap to contiguous integers
+        unique_comms = sorted(nodes_df['community_display'].unique())
+        comm_remap = {old: new for new, old in enumerate(unique_comms)}
+        nodes_df['community_display'] = nodes_df['community_display'].map(comm_remap)
+
+        comm_values = nodes_df['community_display'].tolist()
+        n_comm = max(comm_values) + 1 if comm_values else 1
         color_map = generate_community_colors(n_comm)
+        
+        # Override "Other" community (usually the first if it was -1) to grey
+        if -1 in unique_comms:
+            other_idx = comm_remap[-1]
+            color_map[other_idx] = "#cccccc"
     else:
         color_map = {}
         
@@ -102,7 +122,9 @@ def process_network(name, color_by="community"):
     # Base size scales
     size_scale, edge_scale, max_edge_w = 15, 0.8, 8
     
-    community_map = dict(zip(nodes_df['id'].astype(str), nodes_df['community'].fillna(0).astype(int)))
+    # Use community_display for mapping
+    display_comm_col = 'community_display' if color_by == "community" else 'community'
+    community_map = dict(zip(nodes_df['id'].astype(str), nodes_df[display_comm_col].fillna(0).astype(int)))
 
     for _, row in nodes_df.iterrows():
         node_id = str(row['id'])
@@ -124,16 +146,18 @@ def process_network(name, color_by="community"):
         
         # Color
         if color_by == "community":
-            c_val = int(float(row.get("community", 0))) if pd.notnull(row.get("community")) else 0
+            c_val = int(float(row.get("community_display", 0))) if pd.notnull(row.get("community_display")) else 0
             color = color_map.get(c_val, "#cccccc")
-            group_label = f"Community {c_val}"
+            # If it was a merged community, label it as "Other Clusters"
+            is_other = row.get('community', 0) in small_communities
+            group_label = "Other Clusters" if is_other else f"Community {int(row.get('community', 0))}"
         else:
             color = "#cccccc"
             group_label = "None"
             
         metrics = {}
         for k, v in row.items():
-            if pd.notnull(v):
+            if pd.notnull(v) and k != 'community_display': # Don't export internal helper
                 if isinstance(v, (int, float, np.integer, np.floating)):
                     metrics[k] = float(v)
                 else:
@@ -175,7 +199,7 @@ def process_network(name, color_by="community"):
         
     out_file = OUTPUT_DIR / f"{name}.json"
     with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(g6_data, f, indent=2)
+        json.dump(g6_data, f, separators=(',', ':'), ensure_ascii=False)
         
     print(f"  Exported to {out_file}")
 

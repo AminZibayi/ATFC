@@ -26,6 +26,7 @@ export function createGraph(containerId: string, data: NetworkData, config: Grap
         labelMaxWidth: 120,               // truncate long names
         labelWordWrap: false,
         labelVisibility: 'visible' as any,
+        labelFontSize: 10,
         lineWidth: 1,
         stroke: '#fff'
       }
@@ -36,12 +37,16 @@ export function createGraph(containerId: string, data: NetworkData, config: Grap
       target: String(e.target),
       data: { weight: e.weight },
       style: {
-        lineWidth: Math.max(e.width * 2, 1),
+        lineWidth: Math.max(e.width * 2, 0.5),
         stroke: e.color,
-        strokeOpacity: 0.6
+        strokeOpacity: 0.4
       }
     }))
   };
+
+  const communityCount = new Set(data.nodes.map(n => n.group_label)).size;
+  const USE_HULL = config.hullEnabled && communityCount <= 30;
+  const USE_LEGEND = communityCount <= 30;
 
   const plugins: any[] = [
     {
@@ -54,14 +59,18 @@ export function createGraph(containerId: string, data: NetworkData, config: Grap
           const metrics = model.data || {};
           html += `<strong style="display:block; margin-bottom:4px; color: #333;">${model.id}</strong>`;
           for (const [k, v] of Object.entries(metrics)) {
+            if (k === 'group_label') continue;
             html += `<div style="font-size:12px; color: #555;"><b>${k}:</b> ${v}</div>`;
           }
         }
         html += `</div>`;
         return html;
       }
-    },
-    {
+    }
+  ];
+
+  if (USE_LEGEND) {
+    plugins.push({
       type: 'legend',
       key: 'legend',
       nodeField: 'group_label',
@@ -69,14 +78,14 @@ export function createGraph(containerId: string, data: NetworkData, config: Grap
       layout: 'flex-wrap',
       itemSpacing: 8,
       titleText: 'Communities',
-    }
-  ];
+    });
+  }
 
-  if (config.hullEnabled) {
+  if (USE_HULL) {
     plugins.push({
       type: 'hull',
       key: 'community-hull',
-      members: (d: any) => d.data?.group_label,  // group by community label
+      members: (d: any) => d.data?.group_label,
       style: {
         fillOpacity: 0.08,
         strokeOpacity: 0.3,
@@ -107,31 +116,31 @@ export function createGraph(containerId: string, data: NetworkData, config: Grap
       state: {
         active: {
           stroke: '#000',
-          lineWidth: 2
+          lineWidth: 2,
+          zIndex: 10
         },
         inactive: {
-          opacity: 0.2,
-          labelOpacity: 0.2
+          opacity: 0.15,
+          labelOpacity: 0
         }
-      }
-      /* lodLevels: [
-        { zoomRange: [0, config.lodThreshold / 2], primary: true },
-        { zoomRange: [config.lodThreshold / 2, config.lodThreshold], primary: false },
-        { zoomRange: [config.lodThreshold, Infinity], primary: false }
-      ] as any */
-    },
+      },
+      lodLevels: [
+        { zoomRange: [0, 0.6], primary: true }, // zoom out: dots only
+        { zoomRange: [0.6, Infinity], primary: false } // zoom in: dots + labels
+      ]
+    } as any,
     edge: {
       type: 'line',
       style: {
-        strokeOpacity: 0.6
+        strokeOpacity: 0.4
       },
       state: {
         active: {
           strokeOpacity: 1,
-          lineWidth: (d: any) => (d.style?.lineWidth || 1) * 1.5
+          lineWidth: (d: any) => (d.style?.lineWidth || 1) * 2
         },
         inactive: {
-          strokeOpacity: 0.1
+          strokeOpacity: 0.05
         }
       }
     },
@@ -139,29 +148,44 @@ export function createGraph(containerId: string, data: NetworkData, config: Grap
       'drag-canvas',
       {
         type: 'zoom-canvas',
-        sensitivity: 0.5,    // slower zoom = more control on big graphs
+        sensitivity: 0.5,
       },
       'drag-element',
       {
-        type: 'hover-activate',
-        enable: true,
-        degree: 1,        // highlight 1-hop neighborhood
-        inactiveState: 'inactive',
-        activeState: 'active',
-      },
-      {
         type: 'click-select',
-        multiple: true,   // Ctrl+click for multi-select
-      },
-      {
-        type: 'brush-select',
-        trigger: 'shift',
+        multiple: true,
       }
     ],
     plugins: plugins
   });
 
   graph.render();
+
+  // Click-based highlight logic instead of hover-activate
+  graph.on('node:click', (evt: any) => {
+    const nodeId = evt.itemId;
+    if (!nodeId) return;
+    
+    const neighbors = new Set(
+      graph.getNeighborNodesData(nodeId).map((n: any) => n.id)
+    );
+    
+    graph.getNodeData().forEach((n: any) => {
+      const state = (neighbors.has(n.id) || n.id === nodeId) ? 'active' : 'inactive';
+      graph.setElementState(n.id, state);
+    });
+
+    // Also highlight edges
+    graph.getEdgeData().forEach((e: any) => {
+        const isActive = (e.source === nodeId || e.target === nodeId);
+        graph.setElementState(e.id, isActive ? 'active' : 'inactive');
+    });
+  });
+
+  graph.on('canvas:click', () => {
+    graph.getNodeData().forEach((n: any) => graph.setElementState(n.id, []));
+    graph.getEdgeData().forEach((e: any) => graph.setElementState(e.id, []));
+  });
   
   // Set the title
   const titleEl = document.getElementById('network-title');

@@ -125,17 +125,32 @@ TS=(
 ## Analysis Pipeline
 
 ```
-WoS Plain-Text Export ──► EXTRACT (Parquet) ──► BUILD GRAPHS (GraphML & Parquet) ──► APPLY LAYOUT (ForceAtlas2/SFDP)
+WoS Plain-Text Export ──► EXTRACT ──► BUILD GRAPHS ──► ENRICH GRAPHS ──► APPLY LAYOUT ──► EXPORT G6 DATA
 ```
 
 1. **Extract** — Parse raw WOS plain-text export into structured records (handling continuation lines and split fields).
-2. **Build Graphs** — Fast, vectorized extraction of nodes (including `paper_count`) and edge pairs (filtered by minimum weight) for five distinct graph types. Construct NetworkX graphs, compute centrality and Louvain community metrics, and write structural data to GraphML and rich metadata to Parquet.
-3. **Apply Layout** — Isolate the heavy layout computation. Computes physical coordinates using either ForceAtlas2 (`pyforceatlas2` / `fa2`) or Graphviz's SFDP / Yifan Hu algorithm. Configurable via `config.toml` (with full IDE JSON-schema support).
+2. **Build Graphs** — Fast, vectorized extraction of nodes (including `paper_count`) and edge pairs (filtered by minimum weight) for five distinct graph types.
+3. **Enrich Graphs** — Perform deeper statistical analysis on the built networks. Computes Louvain community partitions, betweenness centrality (sampled for large graphs), and weighted degree.
+4. **Apply Layout** — Isolate the heavy layout computation. Computes physical coordinates using either ForceAtlas2 (`pyforceatlas2` / `fa2`) or Graphviz's SFDP / Yifan Hu algorithm. Configurable via `config.toml`.
    - **Dynamic Iterations:** Automatically scales iteration count based on graph size if not explicitly set.
    - **Warm Starts:** Loads existing coordinates from previous runs as a starting position to accelerate convergence by up to 10x.
    - **Isolate Handling:** Strips disconnected nodes before layout to optimize performance and reattaches them at fixed positions afterward.
    - **Per-Graph Overrides:** Allows independent algorithm and iteration settings for each graph type.
-   - Updates the generated GraphML and Parquet files with `x` and `y` coordinates.
+5. **Export G6 Data** — Prepare optimized JSON files for the interactive frontend.
+   - **Community Merging:** Merges micro-communities (size < 5) into an "Other Clusters" category to ensure a legible visualization and legend.
+   - **Compact JSON:** Exports minified JSON artifacts to reduce bundle size by ~75% and improve browser parsing performance.
+
+## Interactive Visualization (G6)
+
+The project includes a high-performance interactive visualization dashboard powered by **AntV G6 v5** and **WebGL**.
+
+- **WebGL Rendering:** Native WebGL support allows for fluid interaction with networks exceeding 4,000 nodes and 10,000 edges at 60fps.
+- **Level-of-Detail (LOD):** Labels are automatically hidden when zoomed out and fade in as you zoom into specific clusters, preventing visual clutter.
+- **Interactive Highlighting:** Click any node to instantly highlight its 1-hop neighborhood and filter out non-neighboring elements.
+- **Community Hulls:** Automatically generates convex shapes around major communities to visualize cluster boundaries.
+- **Search & Filter:** Find specific entities (authors, institutions, keywords) instantly and focus the camera on their position in the network.
+- **Static Export:** Integrated high-resolution PNG export for generating figures for research publications.
+
 
 ## Available Analyses
 
