@@ -32,11 +32,25 @@ All tasks must be run through Nx to ensure proper caching and dependency resolut
 
 ### Setup
 
-Install all dependencies (Node and Python) from the workspace root:
+1. **Install Base Dependencies:** Install all Node.js and Python packages via the workspace root:
 
-```bash
-pnpm install
-```
+   ```bash
+   pnpm install
+   ```
+
+2. **System Requirements (Graphviz):** If you intend to use the Yifan Hu / SFDP layout algorithms (`algorithm = "sfdp"` or `"yifan_hu"`), you must install the Graphviz system binaries. Python's `pydot` cannot run these layouts without the underlying OS executables:
+
+   - **Windows:** `winget install Graphviz.Graphviz`
+   - **macOS:** `brew install graphviz`
+   - **Linux:** `sudo apt-get install graphviz`
+
+   *(Note: The pipeline automatically attempts to locate `C:\Program Files\Graphviz\bin` on Windows. Ensure it is added to your PATH if installed elsewhere).*
+
+### Troubleshooting
+
+- **`FileNotFoundError: [WinError 2] "sfdp" not found in path`**: Your system is missing Graphviz or it is not in your environment's PATH. See step 2 above.
+- **`pyforceatlas2 not found. Falling back to fa2-modified`**: The fast Cython-compiled `pyforceatlas2` engine could not be installed/loaded (often due to missing C++ build tools on Windows). The pipeline will safely fall back to the slower pure-Python `fa2-modified` engine.
+- **Pydot Encoding Errors**: Older Graphviz binaries sometimes crash with Unicode node names (like `charmap codec can't encode character`). The layout pipeline handles this automatically by isolating topological data with ASCII-safe node aliases before calling SFDP.
 
 ### Full Pipeline Execution
 
