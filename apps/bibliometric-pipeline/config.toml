@@ -7,31 +7,32 @@
 
 [default]
 min_weight = 1
-remove_isolates = false
+remove_isolates = true
+layout = { algorithm = "pyforceatlas2" }
 
 [co_author]
 min_weight = 2
-remove_isolates = false
+remove_isolates = true
 
 [co_funding]
 min_weight = 1
-remove_isolates = false
+remove_isolates = true
 
 [co_affiliation]
 min_weight = 2
-remove_isolates = false
+remove_isolates = true
 
 [author_keywords]
 min_weight = 2
-remove_isolates = false
+remove_isolates = true
 
 [wos_categories]
 min_weight = 1
-remove_isolates = false
+remove_isolates = true
 layout = { algorithm = "sfdp", iterations = 50 }
 
 [layout]
-algorithm = "sfdp"
+# iterations omitted to enable dynamic scaling based on graph size
 
 # ForceAtlas2-specific parameters (applies to 'pyforceatlas2' and 'fa2')
 [layout.forceatlas2]
