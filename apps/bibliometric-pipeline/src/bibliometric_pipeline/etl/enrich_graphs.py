@@ -18,24 +18,42 @@ def enrich(name: str):
     G = nx.read_graphml(graphml_path)
     nodes_df = pd.read_parquet(parquet_path)
 
-    # Louvain community detection
-    partition = community_louvain.best_partition(G, weight='weight', random_state=42)
-    
-    # Betweenness centrality (sampled for speed on large graphs)
-    k = min(500, len(G))
-    betweenness = nx.betweenness_centrality(G, k=k, weight='weight', normalized=True)
-    
-    # Weighted degree
-    weighted_deg = dict(G.degree(weight='weight'))
+    # Metrics are already computed during graph building and persisted to GraphML
+    # and parquet. Reuse those values here instead of recomputing them.
+    graph_attrs = {str(node_id): attrs for node_id, attrs in G.nodes(data=True)}
 
     # Write back to parquet
     nodes_df['id'] = nodes_df['id'].astype(str)
-    nodes_df['community'] = nodes_df['id'].map(partition).fillna(0).astype(int)
-    nodes_df['betweenness'] = nodes_df['id'].map(betweenness).fillna(0)
-    nodes_df['weighted_degree'] = nodes_df['id'].map(weighted_deg).fillna(0)
+
+    community_map = {node_id: attrs.get('community') for node_id, attrs in graph_attrs.items()}
+    weighted_degree_map = {node_id: attrs.get('weighted_degree') for node_id, attrs in graph_attrs.items()}
+    betweenness_map = {
+        node_id: attrs.get('betweenness_centrality', attrs.get('betweenness'))
+        for node_id, attrs in graph_attrs.items()
+    }
+
+    if 'community' in nodes_df.columns:
+        nodes_df['community'] = nodes_df['community'].fillna(nodes_df['id'].map(community_map)).fillna(0).astype(int)
+    else:
+        nodes_df['community'] = nodes_df['id'].map(community_map).fillna(0).astype(int)
+
+    if 'weighted_degree' in nodes_df.columns:
+        nodes_df['weighted_degree'] = nodes_df['weighted_degree'].fillna(nodes_df['id'].map(weighted_degree_map)).fillna(0)
+    else:
+        nodes_df['weighted_degree'] = nodes_df['id'].map(weighted_degree_map).fillna(0)
+
+    # Keep the legacy parquet column name for compatibility, but source it from
+    # the already-persisted canonical betweenness_centrality metric.
+    if 'betweenness' in nodes_df.columns:
+        nodes_df['betweenness'] = nodes_df['betweenness'].fillna(nodes_df['id'].map(betweenness_map)).fillna(0)
+    elif 'betweenness_centrality' in nodes_df.columns:
+        nodes_df['betweenness'] = nodes_df['betweenness_centrality'].fillna(nodes_df['id'].map(betweenness_map)).fillna(0)
+    else:
+        nodes_df['betweenness'] = nodes_df['id'].map(betweenness_map).fillna(0)
+
     nodes_df.to_parquet(parquet_path, index=False)
-    
-    n_communities = len(set(partition.values()))
+
+    n_communities = len({value for value in community_map.values() if value is not None})
     print(f"  {name}: {len(G)} nodes, {n_communities} communities detected")
 
 def run():
