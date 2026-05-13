@@ -52,7 +52,23 @@ def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None, p
             positions = fa2.forceatlas2_networkx_layout(G_work, pos=pos, iterations=iterations)
         except ImportError:
             print("  pyforceatlas2 not found. Falling back to fa2-modified.")
-            algorithm = "fa2"
+            from fa2_modified import ForceAtlas2
+            fa2_kwargs = {
+                "outboundAttractionDistribution": kwargs.get("outbound_attraction_distribution", True),
+                "linLogMode": kwargs.get("lin_log_mode", False),
+                "adjustSizes": kwargs.get("adjust_sizes", False),
+                "edgeWeightInfluence": kwargs.get("edge_weight_influence", 1.0),
+                "jitterTolerance": kwargs.get("jitter_tolerance", 1.0),
+                "barnesHutOptimize": kwargs.get("barnes_hut_optimize", True),
+                "barnesHutTheta": kwargs.get("barnes_hut_theta", 1.2),
+                "multiThreaded": kwargs.get("multi_threaded", False),
+                "scalingRatio": kwargs.get("scaling_ratio", 2.0),
+                "strongGravityMode": kwargs.get("strong_gravity_mode", False),
+                "gravity": kwargs.get("gravity", 1.0),
+                "verbose": False,
+            }
+            fa2 = ForceAtlas2(**fa2_kwargs)
+            positions = fa2.forceatlas2_networkx_layout(G_work, pos=pos, iterations=iterations)
             
     elif algorithm == "fa2":
         from fa2_modified import ForceAtlas2
