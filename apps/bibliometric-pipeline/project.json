@@ -7,7 +7,10 @@
     "extract": {
       "command": "uv run python -u -m bibliometric_pipeline.etl.extract",
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "inputs": ["{workspaceRoot}/data/raw/**"],
+      "inputs": [
+        "{workspaceRoot}/data/raw/**",
+        "{projectRoot}/src/bibliometric_pipeline/etl/extract.py"
+      ],
       "outputs": ["{workspaceRoot}/data/intermediate/bibliometric-pipeline"],
       "cache": true
     },

@@ -16,16 +16,23 @@ def parse_wos_text_file(filepath: Path) -> pd.DataFrame:
             if not line:
                 continue
                 
-            if line.strip() == 'ER':
+            stripped = line.strip()
+            if stripped == 'ER':
                 if 'UT' in current_record:
                     records.append(current_record)
                 current_record = {}
                 current_tag = None
                 continue
+            
+            if stripped == 'EF':
+                break
+                
+            if line.startswith(('FN ', 'VR ')):
+                continue
                 
             # Check if continuation line (WOS continuation: exactly 3 spaces)
             if line.startswith('   '):
-                val = line.strip()
+                val = stripped
                 if current_tag and val:
                     if current_tag in line_list_tags:
                         current_record[current_tag].append(val)
@@ -33,8 +40,8 @@ def parse_wos_text_file(filepath: Path) -> pd.DataFrame:
                         current_record[current_tag] += ' ' + val
                 continue
                 
-            # New tag
-            if len(line) > 2 and line[2] == ' ':
+            # New tag: exactly 2 chars, then a space
+            if len(line) >= 3 and line[2] == ' ' and line[0:2] != '  ':
                 tag = line[:2]
                 val = line[3:].strip()
                 current_tag = tag
