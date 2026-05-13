@@ -1,3 +1,5 @@
+#: schema ./config.schema.json
+
 # Pipeline Configuration for Graph Building
 # This file allows you to configure filtering thresholds independently for each graph type.
 # min_weight: The minimum weight (co-occurrence count) an edge must have to be kept.
