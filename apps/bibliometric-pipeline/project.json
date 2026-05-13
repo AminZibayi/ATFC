@@ -30,7 +30,7 @@
       "inputs": [
         "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs",
         "{projectRoot}/src/bibliometric_pipeline/etl/apply_layout.py",
-        "{projectRoot}/src/bibliometric_pipeline/layout/forceatlas2.py"
+        "{projectRoot}/src/bibliometric_pipeline/layout/compute.py"
       ],
       "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
       "cache": true

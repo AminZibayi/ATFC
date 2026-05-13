@@ -5,6 +5,11 @@
       "type": "local",
       "command": ["npx", "nx", "mcp"],
       "enabled": true
+    },
+    "tavily-mcp": {
+      "type": "remote",
+      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey=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",
+      "enabled": true
     }
   },
   "permission": {

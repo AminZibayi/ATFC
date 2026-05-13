@@ -1,12 +1,13 @@
 import networkx as nx
 import pandas as pd
+import argparse
 from pathlib import Path
 
 from shared_python.paths import get_output_path
-from bibliometric_pipeline.layout.forceatlas2 import compute_forceatlas2_layout
+from bibliometric_pipeline.layout.compute import compute_layout
 from bibliometric_pipeline.io.writers import write_graphml
 
-def process_and_apply_layout(name: str):
+def process_and_apply_layout(name: str, algorithm: str = None, iterations: int = None):
     print(f"\nApplying layout to {name} graph...")
     out_dir = get_output_path("bibliometric-pipeline", "graphs")
     
@@ -19,8 +20,8 @@ def process_and_apply_layout(name: str):
         
     G = nx.read_graphml(graphml_path)
     
-    print("  Computing ForceAtlas2 layout...")
-    compute_forceatlas2_layout(G, iterations=2000)
+    print("  Computing layout...")
+    compute_layout(G, algorithm=algorithm, iterations=iterations)
     
     # Save the updated GraphML with x and y coordinates
     layout_graphml_path = out_dir / f"{name}_layout.graphml"
@@ -46,8 +47,14 @@ def process_and_apply_layout(name: str):
         print(f"  Warning: Parquet file not found for {name}, couldn't update coordinates.")
 
 def run():
+    parser = argparse.ArgumentParser(description="Apply layout to bibliometric graphs.")
+    parser.add_argument("--algorithm", type=str, default="pyforceatlas2", choices=["pyforceatlas2", "fa2", "sfdp", "yifan_hu"], help="Layout algorithm to use (default: pyforceatlas2)")
+    parser.add_argument("--iterations", type=int, default=2000, help="Number of iterations for the layout algorithm (default: 2000)")
+    args = parser.parse_args()
+
     print("=" * 70)
     print(" ETL STAGE 3: APPLY LAYOUT")
+    print(f" Algorithm: {args.algorithm}, Iterations: {args.iterations}")
     print("=" * 70)
     
     graphs = [
@@ -59,7 +66,7 @@ def run():
     ]
     
     for g in graphs:
-        process_and_apply_layout(g)
+        process_and_apply_layout(g, algorithm=args.algorithm, iterations=args.iterations)
 
 if __name__ == "__main__":
     run()
