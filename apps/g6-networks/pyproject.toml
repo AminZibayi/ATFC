@@ -10,6 +10,7 @@ dependencies = [
     "matplotlib",
     "shared-python",
     "scipy>=1.17.1",
+    "pyarrow>=24.0.0",
 ]
 
 [tool.uv.sources]

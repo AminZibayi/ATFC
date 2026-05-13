@@ -18,7 +18,7 @@ import matplotlib.colors as mcolors
 from shared_python.paths import get_output_path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-INPUT_DIR = get_output_path("bibliometric-pipeline", "temp").parent
+INPUT_DIR = get_output_path("bibliometric-pipeline", "graphs")
 OUTPUT_DIR = get_output_path("g6-networks", "")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -35,26 +35,36 @@ print("=" * 70)
 def hex_color(color_tuple, alpha=1.0):
     return mcolors.to_hex(color_tuple)
 
-def process_network(name, node_col, color_by="community"):
+def process_network(name, color_by="community"):
     print(f"\nProcessing {name} network...")
     
     # 1. Load data
-    graph_file = INPUT_DIR / f"02_{name}_graph.graphml"
-    nodes_file = INPUT_DIR / f"{name}_nodes.xlsx"
+    graph_file = INPUT_DIR / f"{name}_layout.graphml"
+    nodes_file = INPUT_DIR / f"{name}_nodes.parquet"
     
+    if not graph_file.exists():
+        print(f"  Skipping {name}, graphml not found at {graph_file}.")
+        return
+        
     G = nx.read_graphml(graph_file)
-    nodes_df = pd.read_excel(nodes_file)
+    
+    if not nodes_file.exists():
+        print(f"  Skipping {name}, nodes parquet not found at {nodes_file}.")
+        return
+        
+    nodes_df = pd.read_parquet(nodes_file)
     
     print(f"  Original graph: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
     
     # 2. Filter nodes and edges
     if MAX_NODES and G.number_of_nodes() > MAX_NODES:
-        # Sort nodes by weighted degree
-        top_nodes = nodes_df.sort_values("weighted_degree", ascending=False).head(MAX_NODES)[node_col].tolist()
-        G = G.subgraph(top_nodes).copy()
+        # Sort nodes by weighted_degree from the dataframe
+        if 'weighted_degree' in nodes_df.columns:
+            top_nodes = nodes_df.sort_values("weighted_degree", ascending=False).head(MAX_NODES)['id'].astype(str).tolist()
+            G = G.subgraph(top_nodes).copy()
         
     if MIN_EDGE_WEIGHT > 0:
-        edges_to_remove = [(u, v) for u, v, d in G.edges(data=True) if d.get("weight", 0) < MIN_EDGE_WEIGHT]
+        edges_to_remove = [(u, v) for u, v, d in G.edges(data=True) if float(d.get("weight", 0)) < MIN_EDGE_WEIGHT]
         G.remove_edges_from(edges_to_remove)
         
     # Remove isolates created by edge filtering
@@ -63,71 +73,72 @@ def process_network(name, node_col, color_by="community"):
     
     print(f"  Filtered graph: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
     
-    # 3. Compute layout
-    pos = nx.spring_layout(G, seed=42, iterations=150, k=1.5 / np.sqrt(max(G.number_of_nodes(), 1)))
+    if G.number_of_nodes() == 0:
+        print(f"  Graph {name} is empty after filtering.")
+        return
+
+    # Update nodes_df to only include nodes present in the filtered graph
+    nodes_df['id'] = nodes_df['id'].astype(str)
+    nodes_df = nodes_df[nodes_df['id'].isin(set(G.nodes()))]
     
-    # 4. Generate colors
+    # 3. Generate colors
     if color_by == "community":
-        comm_values = [int(float(G.nodes[n].get("community", 0))) for n in G.nodes()]
+        comm_values = nodes_df['community'].fillna(0).astype(float).astype(int).tolist()
         n_comm = max(max(comm_values) + 1, 1) if comm_values else 1
         comm_colors = plt.cm.tab20(np.linspace(0, 1, max(n_comm, 1)))
         color_map = {c: hex_color(comm_colors[c % 20]) for c in set(comm_values)}
-    elif color_by == "research_area":
-        # Group top 14 areas, others to "Other"
-        areas = [str(G.nodes[n].get("primary_research_area", "Unclassified")) for n in G.nodes()]
-        area_counts = pd.Series(areas).value_counts()
-        top_areas = area_counts.head(14).index.tolist()
-        
-        area_cmap = plt.cm.Set3(np.linspace(0, 1, 15))
-        color_map = {area: hex_color(area_cmap[i]) for i, area in enumerate(top_areas)}
-        color_map["Other"] = hex_color((0.8, 0.8, 0.8, 1.0)) # Gray for other
     else:
         color_map = {}
         
-    # 5. Build G6 JSON
+    # 4. Build G6 JSON
     g6_data = {"nodes": [], "edges": []}
     
-    # Collect node degrees for scaling
-    wd_values = [float(G.nodes[n].get("weighted_degree", 1)) for n in G.nodes()]
-    max_wd = max(wd_values) if wd_values else 1
+    # Base size scales
+    size_scale, edge_scale, max_edge_w = 15, 0.8, 8
     
-    # Base size scales (adjusted for light theme and better visibility)
-    if name == "institutional": size_scale, edge_scale, max_edge_w = 40, 0.8, 8
-    elif name == "funding": size_scale, edge_scale, max_edge_w = 30, 0.8, 8
-    else: size_scale, edge_scale, max_edge_w = 10, 0.4, 6 # Journal
-    
-    for n in G.nodes():
-        node_data = dict(G.nodes[n])
-        x, y = pos[n]
-        wd = float(node_data.get("weighted_degree", 1))
+    for _, row in nodes_df.iterrows():
+        node_id = str(row['id'])
+        # In case node isn't in graph due to filtering
+        if not G.has_node(node_id): continue
+            
+        x = float(row.get('x', np.random.rand()))
+        y = float(row.get('y', np.random.rand()))
         
+        # We can use paper_count for size if available, otherwise weighted_degree
+        if 'paper_count' in row and pd.notnull(row['paper_count']):
+            wd = float(row['paper_count'])
+        else:
+            wd = float(row.get("weighted_degree", 1))
+            
         # Size
         size = np.log1p(wd) * size_scale
         size = max(size, 8) # minimum size
         
         # Color
         if color_by == "community":
-            c_val = int(float(node_data.get("community", 0)))
+            c_val = int(float(row.get("community", 0))) if pd.notnull(row.get("community")) else 0
             color = color_map.get(c_val, "#cccccc")
             group_label = f"Community {c_val}"
-        elif color_by == "research_area":
-            area = str(node_data.get("primary_research_area", "Unclassified"))
-            mapped_area = area if area in color_map else "Other"
-            color = color_map.get(mapped_area, "#cccccc")
-            group_label = mapped_area
-            node_data["primary_research_area_mapped"] = mapped_area
         else:
             color = "#cccccc"
             group_label = "None"
             
+        metrics = {}
+        for k, v in row.items():
+            if pd.notnull(v):
+                if isinstance(v, (int, float, np.integer, np.floating)):
+                    metrics[k] = float(v)
+                else:
+                    metrics[k] = str(v)
+                    
         g6_data["nodes"].append({
-            "id": str(n),
+            "id": node_id,
             "x": float(x * 1000), # Scale up coordinates for G6 canvas
             "y": float(y * 1000),
             "size": float(size),
             "color": color,
             "group_label": group_label,
-            "metrics": {k: (float(v) if isinstance(v, (int, float, np.integer, np.floating)) else str(v)) for k, v in node_data.items()}
+            "metrics": metrics
         })
         
     for u, v, d in G.edges(data=True):
@@ -135,9 +146,11 @@ def process_network(name, node_col, color_by="community"):
         width = min(np.log1p(weight) * edge_scale, max_edge_w)
         width = max(width, 0.5)
         
-        if name == "institutional": edge_color = "#4cc9f0"
-        elif name == "funding": edge_color = "#f72585"
-        else: edge_color = "#4361ee"
+        # Use different colors for different graphs just for aesthetics
+        if name == "co_affiliation": edge_color = "#4cc9f0"
+        elif name == "co_funding": edge_color = "#f72585"
+        elif name == "co_author": edge_color = "#4361ee"
+        else: edge_color = "#b5179e"
         
         g6_data["edges"].append({
             "source": str(u),
@@ -153,9 +166,12 @@ def process_network(name, node_col, color_by="community"):
         
     print(f"  Exported to {out_file}")
 
-process_network("institutional", "institution", "community")
-process_network("funding", "funding_org", "community")
-process_network("journal", "journal", "research_area")
+# Process the new graphs
+process_network("co_author", "community")
+process_network("co_funding", "community")
+process_network("co_affiliation", "community")
+process_network("author_keywords", "community")
+process_network("wos_categories", "community")
 
 print("\n" + "=" * 70)
 print(" PHASE 4a COMPLETE")

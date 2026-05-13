@@ -6,7 +6,7 @@
   "targets": {
     "export-data": {
       "command": "uv run python export_g6_data.py",
-      "dependsOn": ["bibliometric-pipeline:build"],
+      "dependsOn": ["bibliometric-pipeline:apply-layout"],
       "options": { "cwd": "apps/g6-networks" },
       "inputs": ["{projectRoot}/export_g6_data.py", "{projectRoot}/**/*.py"],
       "outputs": ["{workspaceRoot}/dist/apps/g6-networks/data"],
