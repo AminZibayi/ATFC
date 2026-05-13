@@ -16,6 +16,7 @@
     "bash": {
       "*": "allow",
       "websearch": "allow",
+      "codesearch": "allow",
       "question": "allow",
       "Stop-Process*": "ask",
       "Kill-Process*": "ask",
