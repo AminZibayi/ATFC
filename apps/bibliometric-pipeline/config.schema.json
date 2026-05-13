@@ -4,6 +4,22 @@
   "description": "Configuration file for the bibliometric data processing and layout pipeline.",
   "type": "object",
   "definitions": {
+    "layout_override": {
+      "type": "object",
+      "description": "Optional per-section layout override. Only 'algorithm' and 'iterations' are supported here.",
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": ["pyforceatlas2", "fa2", "sfdp", "yifan_hu"],
+          "description": "Override the global layout algorithm for this graph type."
+        },
+        "iterations": {
+          "type": "integer",
+          "description": "Override the global iteration count for this graph type."
+        }
+      },
+      "additionalProperties": false
+    },
     "graph_config": {
       "type": "object",
       "properties": {
@@ -18,25 +34,7 @@
           "default": false
         },
         "layout": {
-          "type": "object",
-          "description": "Optional layout configuration. Can be used in the [default] section for global defaults or in individual graph sections for per-graph overrides.",
-          "properties": {
-            "algorithm": {
-              "type": "string",
-              "enum": [
-                "pyforceatlas2",
-                "fa2",
-                "sfdp",
-                "yifan_hu"
-              ],
-              "description": "Override the global layout algorithm for this graph type or [default] section."
-            },
-            "iterations": {
-              "type": "integer",
-              "description": "Override the global iteration count for this graph type or [default] section."
-            }
-          },
-          "additionalProperties": true
+          "$ref": "#/definitions/layout_override"
         }
       },
       "additionalProperties": false
@@ -45,7 +43,7 @@
   "properties": {
     "default": {
       "type": "object",
-      "description": "Default graph settings",
+      "description": "Default graph settings applied to all graph types unless overridden.",
       "properties": {
         "min_weight": {
           "type": "integer",
@@ -58,25 +56,7 @@
           "default": false
         },
         "layout": {
-          "type": "object",
-          "description": "Optional layout configuration for global defaults.",
-          "properties": {
-            "algorithm": {
-              "type": "string",
-              "enum": [
-                "pyforceatlas2",
-                "fa2",
-                "sfdp",
-                "yifan_hu"
-              ],
-              "description": "Override the global layout algorithm."
-            },
-            "iterations": {
-              "type": "integer",
-              "description": "Override the global iteration count."
-            }
-          },
-          "additionalProperties": true
+          "$ref": "#/definitions/layout_override"
         }
       },
       "additionalProperties": false
@@ -98,68 +78,31 @@
     },
     "layout": {
       "type": "object",
-      "description": "Graph layout engine configuration",
+      "description": "Global layout engine configuration.",
       "properties": {
         "algorithm": {
           "type": "string",
-          "enum": [
-            "pyforceatlas2",
-            "fa2",
-            "sfdp",
-            "yifan_hu"
-          ],
-          "description": "The layout algorithm to use. 'pyforceatlas2' and 'fa2' use ForceAtlas2. 'sfdp' and 'yifan_hu' use Graphviz's scalable force-directed placement (Yifan Hu's multilevel algorithm).",
+          "enum": ["pyforceatlas2", "fa2", "sfdp", "yifan_hu"],
+          "description": "The layout algorithm to use.",
           "default": "pyforceatlas2"
         },
         "iterations": {
           "type": "integer",
-          "description": "Number of iterations or maxiter for the layout algorithm. Omit to enable dynamic scaling based on graph size.",
+          "description": "Number of iterations. Omit to enable dynamic scaling based on graph size.",
           "default": 2000
         },
         "forceatlas2": {
           "type": "object",
           "description": "Parameters specific to the ForceAtlas2 engines (pyforceatlas2, fa2).",
           "properties": {
-            "scaling_ratio": {
-              "type": "number",
-              "default": 2.0,
-              "description": "How much repulsion you want. More makes a more sparse graph."
-            },
-            "gravity": {
-              "type": "number",
-              "default": 1.0,
-              "description": "Attracts nodes to the center. Prevents islands from drifting away."
-            },
-            "edge_weight_influence": {
-              "type": "number",
-              "default": 1.0,
-              "description": "How much influence you give to the edges weight. 0 is \"no influence\" and 1 is \"normal\"."
-            },
-            "jitter_tolerance": {
-              "type": "number",
-              "default": 1.0,
-              "description": "How much swinging you allow. Above 1 swings more, below 1 is more precise."
-            },
-            "barnes_hut_optimize": {
-              "type": "boolean",
-              "default": true,
-              "description": "Use Barnes Hut optimization for improved speed on large graphs."
-            },
-            "barnes_hut_theta": {
-              "type": "number",
-              "default": 1.2,
-              "description": "Barnes Hut Theta parameter."
-            },
-            "lin_log_mode": {
-              "type": "boolean",
-              "default": false,
-              "description": "Switch ForceAtlas' model from lin-lin to lin-log. Makes clusters more tight."
-            },
-            "strong_gravity_mode": {
-              "type": "boolean",
-              "default": false,
-              "description": "A stronger gravity mode."
-            }
+            "scaling_ratio": { "type": "number", "default": 2.0 },
+            "gravity": { "type": "number", "default": 1.0 },
+            "edge_weight_influence": { "type": "number", "default": 1.0 },
+            "jitter_tolerance": { "type": "number", "default": 1.0 },
+            "barnes_hut_optimize": { "type": "boolean", "default": true },
+            "barnes_hut_theta": { "type": "number", "default": 1.2 },
+            "lin_log_mode": { "type": "boolean", "default": false },
+            "strong_gravity_mode": { "type": "boolean", "default": false }
           },
           "additionalProperties": false
         },
@@ -167,30 +110,13 @@
           "type": "object",
           "description": "Parameters specific to the Graphviz SFDP / Yifan Hu engine.",
           "properties": {
-            "K": {
-              "type": "number",
-              "default": 1.0,
-              "description": "Spring constant. The optimal rest length of edges."
-            },
+            "K": { "type": "number", "default": 1.0 },
             "overlap": {
               "type": "string",
-              "enum": [
-                "true",
-                "false",
-                "scale",
-                "prism",
-                "orthoxy",
-                "orthoyx",
-                "compress"
-              ],
-              "description": "Algorithm to remove node overlaps. 'prism' is generally good for large graphs.",
+              "enum": ["true", "false", "scale", "prism", "orthoxy", "orthoyx", "compress"],
               "default": "prism"
             },
-            "repulsiveforce": {
-              "type": "number",
-              "default": 1.0,
-              "description": "The power of the repulsive force."
-            }
+            "repulsiveforce": { "type": "number", "default": 1.0 }
           },
           "additionalProperties": true
         }

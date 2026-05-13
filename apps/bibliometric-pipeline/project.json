@@ -16,7 +16,6 @@
       "dependsOn": ["extract"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "inputs": [
-        "{projectRoot}/config.toml",
         "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet",
         "{projectRoot}/src/bibliometric_pipeline/etl/build_graphs.py",
         "{projectRoot}/src/bibliometric_pipeline/graphs/builders.py"
