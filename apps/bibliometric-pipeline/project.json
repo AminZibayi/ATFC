@@ -21,7 +21,8 @@
       "inputs": [
         "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet",
         "{projectRoot}/src/bibliometric_pipeline/etl/build_graphs.py",
-        "{projectRoot}/src/bibliometric_pipeline/graphs/builders.py"
+        "{projectRoot}/src/bibliometric_pipeline/graphs/builders.py",
+        "{projectRoot}/config.toml"
       ],
       "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
       "cache": true
@@ -32,7 +33,8 @@
       "options": { "cwd": "apps/bibliometric-pipeline" },
       "inputs": [
         "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs",
-        "{projectRoot}/src/bibliometric_pipeline/etl/enrich_graphs.py"
+        "{projectRoot}/src/bibliometric_pipeline/etl/enrich_graphs.py",
+        "{projectRoot}/config.toml"
       ],
       "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
       "cache": true
