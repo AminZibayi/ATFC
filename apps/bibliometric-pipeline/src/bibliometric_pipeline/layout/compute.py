@@ -8,7 +8,7 @@ def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None, p
     if len(G) == 0:
         return
         
-    algorithm = algorithm or os.environ.get("LAYOUT_ALGORITHM", "pyforceatlas2").lower()
+    algorithm = (algorithm or "pyforceatlas2").lower()
     
     # Handle isolates: remove for layout to avoid wasted computation,
     # then reattach them at a neutral position afterward.
