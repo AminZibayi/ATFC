@@ -16,7 +16,7 @@ WORKSPACE_ROOT = get_workspace_root()
 DATA_DIR = WORKSPACE_ROOT / "data"
 
 
-def get_raw_data_path(filename: str = "") -> Path:
+def get_raw_data_path(filename: str) -> Path:
     return DATA_DIR / "raw" / filename
 
 def get_raw_dir() -> Path:
