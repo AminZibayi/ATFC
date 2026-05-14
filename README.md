@@ -32,41 +32,56 @@ All tasks must be run through Nx to ensure proper caching and dependency resolut
 
 ### Setup
 
-Install all dependencies (Node and Python) from the workspace root:
+1. **Install Base Dependencies:** Install all Node.js and Python packages via the workspace root:
 
-```bash
-pnpm install
-```
+   ```bash
+   pnpm install
+   ```
+
+2. **System Requirements (Graphviz):** If you intend to use the Yifan Hu / SFDP layout algorithms (`algorithm = "sfdp"` or `"yifan_hu"`), you must install the Graphviz system binaries. Python's `pydot` cannot run these layouts without the underlying OS executables:
+
+   - **Windows:** `winget install Graphviz.Graphviz`
+   - **macOS:** `brew install graphviz`
+   - **Linux:** `sudo apt-get install graphviz`
+
+   *(Note: The pipeline automatically attempts to locate `C:\Program Files\Graphviz\bin` on Windows. Ensure it is added to your PATH if installed elsewhere).*
+
+### Troubleshooting
+
+- **`FileNotFoundError: [WinError 2] "sfdp" not found in path`**: Your system is missing Graphviz or it is not in your environment's PATH. See step 2 above.
+- **`pyforceatlas2 not found. Falling back to fa2-modified`**: The fast Cython-compiled `pyforceatlas2` engine could not be installed/loaded (often due to missing C++ build tools on Windows). The pipeline will safely fall back to the slower pure-Python `fa2-modified` engine.
+- **Pydot Encoding Errors**: Older Graphviz binaries sometimes crash with Unicode node names (like `charmap codec can't encode character`). The layout pipeline handles this automatically by isolating topological data with ASCII-safe node aliases before calling SFDP.
 
 ### Full Pipeline Execution
 
-Run the entire pipeline (Extract → Build Networks → Visualize → Export G6 Data → Build Vite App) in one command:
+Run the entire ETL pipeline:
 
 ```bash
-pnpm nx run-many -t extract build visualize export-data build
+pnpm nx run bibliometric-pipeline:run
 ```
 
 ### Individual Targets
 
 ```bash
-# 1. Extract raw WoS data into canonicalized CSVs
+# 1. Extract raw WoS plain-text into Parquet format
 pnpm nx run bibliometric-pipeline:extract
 
-# 2. Build institutional, funding, and journal graphs (GraphML, Excel metrics)
-pnpm nx run bibliometric-pipeline:build
+# 2. Build 5 graph types, compute metrics, and export GraphML/Parquet
+# You can configure graph pruning via apps/bibliometric-pipeline/config.toml
+# You can adjust min_weight and remove_isolates for each graph independently in that file.
+pnpm nx run bibliometric-pipeline:build-graphs
 
-# 3. Generate static plots and interactive HTML networks
-pnpm nx run bibliometric-pipeline:visualize
+# 3. Enrich graphs with additional metrics (in-place update, not cached)
+pnpm nx run bibliometric-pipeline:enrich-graphs
 
-# 4. Export graph data to JSON for the G6 frontend
-pnpm nx run g6-networks:export-data
-
-# 5. Build the Vite frontend application
-pnpm nx run g6-networks:build
-
-# 6. Serve the interactive G6 visualization locally
-pnpm nx serve g6-networks
+# 4. Apply graph layout (ForceAtlas2 or Yifan Hu / SFDP)
+# You can customize the engine (pyforceatlas2, sfdp, etc) and iterations
+# via apps/bibliometric-pipeline/config.toml
+# This stage performs in-place updates and is not cached to prevent Nx cache conflicts.
+pnpm nx run bibliometric-pipeline:apply-layout
 ```
+
+**Note on Nx Caching:** The `enrich-graphs` and `apply-layout` stages perform in-place updates on files created by `build-graphs`. To prevent Nx cache restoration from overwriting these updates, caching is disabled for these two stages.
 
 ## Datasets
 
@@ -116,24 +131,39 @@ TS=(
 ## Analysis Pipeline
 
 ```
-
-WoS Search ──► Data Extraction ──► Network Graph Building ──► Visualization
-
+WoS Plain-Text Export ──► EXTRACT ──► BUILD GRAPHS ──► ENRICH GRAPHS ──► APPLY LAYOUT ──► EXPORT G6 DATA
 ```
 
-1. **Data Collection** — WoS search for Blockchain and AI literature
-2. **Data Extraction** — Cleaned entity lists extracted for institutions, funding organizations, and journals
-3. **Graph Building** — Creation of institutional collaboration networks, funding co-occurrence networks, and journal relationship networks
-4. **Visualization** — Generation of static plots and interactive G6-based HTML networks
+1. **Extract** — Parse raw WOS plain-text export into structured records (handling continuation lines and split fields).
+2. **Build Graphs** — Fast, vectorized extraction of nodes (including `paper_count`) and edge pairs (filtered by minimum weight) for five distinct graph types.
+3. **Enrich Graphs** — Perform deeper statistical analysis on the built networks. Computes Louvain community partitions, betweenness centrality (sampled for large graphs), and weighted degree.
+4. **Apply Layout** — Isolate the heavy layout computation. Computes physical coordinates using either ForceAtlas2 (`pyforceatlas2` / `fa2`) or Graphviz's SFDP / Yifan Hu algorithm. Configurable via `config.toml`.
+   - **Dynamic Iterations:** Automatically scales iteration count based on graph size if not explicitly set.
+   - **Warm Starts:** Loads existing coordinates from previous runs as a starting position to accelerate convergence by up to 10x.
+   - **Isolate Handling:** Strips disconnected nodes before layout to optimize performance and reattaches them at fixed positions afterward.
+   - **Per-Graph Overrides:** Allows independent algorithm and iteration settings for each graph type.
+5. **Export G6 Data** — Prepare optimized JSON files for the interactive frontend.
+   - **Community Merging:** Merges micro-communities (size < 5) into an "Other Clusters" category to ensure a legible visualization and legend.
+   - **Compact JSON:** Exports minified JSON artifacts to reduce bundle size by ~75% and improve browser parsing performance.
+
+## Interactive Visualization (G6)
+
+The project includes a high-performance interactive visualization dashboard powered by **AntV G6 v5** and **WebGL**.
+
+- **WebGL Rendering:** Native WebGL support allows for fluid interaction with networks exceeding 4,000 nodes and 10,000 edges at 60fps.
+- **Level-of-Detail (LOD):** Labels are automatically hidden when zoomed out and fade in as you zoom into specific clusters, preventing visual clutter.
+- **Interactive Highlighting:** Click any node to instantly highlight its 1-hop neighborhood and filter out non-neighboring elements.
+- **Community Hulls:** Automatically generates convex shapes around major communities to visualize cluster boundaries.
+- **Search & Filter:** Find specific entities (authors, institutions, keywords) instantly and focus the camera on their position in the network.
+- **Static Export:** Integrated high-resolution PNG export for generating figures for research publications.
+
 
 ## Available Analyses
 
 With this pipeline, the following analyses are supported:
 
-- **Institutional collaboration networks** — Maps academic relationships and central hubs
-- **Funding landscape mapping** — Identifies major funding organizations and co-funding structures
-- **Journal relationship networks** — Tracks where the research is primarily published
-- **Citation analysis** — Using Times Cited, Cited References, and Cited Reference Count metrics
-- **Co-authorship networks** — From Authors, Addresses, and Affiliations fields
-- **Keyword co-occurrence networks** — Based on Author Keywords and Keywords Plus
-- **Interdisciplinary analysis** — Cross-tabulate research with WoS categories
+- **Co-authorship networks** (`co_author`)
+- **Funding landscape mapping** (`co_funding`)
+- **Institutional collaboration networks** (`co_affiliation`)
+- **Keyword co-occurrence networks** (`author_keywords`)
+- **Interdisciplinary analysis** (`wos_categories`)

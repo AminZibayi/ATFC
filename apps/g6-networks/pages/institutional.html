@@ -5,30 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Institutional Collaboration Network</title>
     <style>
-      body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; }
-      #container { width: 100vw; height: 100vh; background-color: #ffffff; }
-      .overlay { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-      h1 { margin: 0 0 10px 0; font-size: 16px; color: #333; }
-      .controls { margin-top: 10px; font-size: 14px; }
-      .controls a { color: #4cc9f0; text-decoration: none; font-weight: bold; }
-      .controls a:hover { text-decoration: underline; }
-      input, button { padding: 4px 8px; border: 1px solid #ccc; border-radius: 2px; }
+      body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: sans-serif; transition: background-color 0.3s; }
+      body.dark-mode { background-color: #1a1a1a; color: #f0f0f0; }
+      #container { width: 100vw; height: 100vh; background-color: transparent; }
+      .overlay { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 15px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; transition: background-color 0.3s, color 0.3s; }
+      body.dark-mode .overlay { background: rgba(30,30,30,0.9); color: #f0f0f0; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+      h1 { margin: 0 0 10px 0; font-size: 18px; }
+      .network-nav { margin-bottom: 15px; font-size: 14px; }
+      .network-nav a { color: #4361ee; text-decoration: none; padding: 0 4px; }
+      body.dark-mode .network-nav a { color: #4cc9f0; }
+      .network-nav a:hover { text-decoration: underline; }
+      .controls { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+      input, button { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; background: #fff; cursor: pointer; transition: all 0.2s; }
+      body.dark-mode input, body.dark-mode button { background: #333; border-color: #555; color: #f0f0f0; }
+      button:hover { background: #f0f0f0; }
+      body.dark-mode button:hover { background: #444; }
+      .node-info-panel { margin-top: 10px; font-size: 13px; max-width: 300px; max-height: 200px; overflow-y: auto; }
     </style>
   </head>
   <body>
     <div id="container"></div>
     <div class="overlay">
-      <h1>Institutional Collaboration Network</h1>
-      <div class="controls">
-        <span>Institutional</span> |
+      <h1 id="network-title">Institutional Collaboration Network</h1>
+      <nav class="network-nav">
+        <a href="institutional.html">Institutions</a> |
         <a href="funding.html">Funding</a> |
-        <a href="journal.html">Journal</a>
-      </div>
-      <div class="controls" style="margin-top: 10px;">
-        <input type="text" id="searchInput" placeholder="Search institution..." />
+        <a href="journal.html">Journal</a> |
+        <a href="author_keywords.html">Keywords</a> |
+        <a href="wos_categories.html">Categories</a>
+      </nav>
+      <div class="controls">
+        <input id="searchInput" placeholder="Search..." />
         <button id="searchBtn">Find</button>
+        <button id="darkToggle">🌙</button>
+        <button id="resetBtn">Reset View</button>
+        <button id="exportBtn">Export PNG</button>
       </div>
+      <div id="nodeInfo" class="node-info-panel"></div>
     </div>
+    <script>
+      document.getElementById('darkToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        if (window.__graph) {
+          window.__graph.fitView();
+        }
+      });
+    </script>
     <script type="module" src="../src/networks/institutional.ts"></script>
   </body>
 </html>

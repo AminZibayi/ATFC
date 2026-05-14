@@ -32,6 +32,8 @@ data/outputs/*
 **/**/coverage
 
 /materials/course/book
+/materials/drafts
 
 .nx
 dist
+.env

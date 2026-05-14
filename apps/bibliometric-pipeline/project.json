@@ -5,24 +5,54 @@
   "sourceRoot": "apps/bibliometric-pipeline/src",
   "targets": {
     "extract": {
-      "command": "uv run python -m bibliometric_pipeline.extract",
+      "command": "uv run python -u -m bibliometric_pipeline.etl.extract",
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/data"],
+      "inputs": [
+        "{workspaceRoot}/data/raw/**",
+        "{projectRoot}/src/bibliometric_pipeline/etl/extract.py"
+      ],
+      "outputs": ["{workspaceRoot}/data/intermediate/bibliometric-pipeline"],
       "cache": true
     },
-    "build": {
-      "command": "uv run python -m bibliometric_pipeline.build",
+    "build-graphs": {
+      "command": "uv run python -u -m bibliometric_pipeline.etl.build_graphs",
       "dependsOn": ["extract"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/data"],
+      "inputs": [
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet",
+        "{projectRoot}/src/bibliometric_pipeline/etl/build_graphs.py",
+        "{projectRoot}/src/bibliometric_pipeline/graphs/builders.py",
+        "{projectRoot}/config.toml"
+      ],
+      "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
       "cache": true
     },
-    "visualize": {
-      "command": "uv run python -m bibliometric_pipeline.visualize",
-      "dependsOn": ["build"],
+    "enrich-graphs": {
+      "command": "uv run python -u -m bibliometric_pipeline.etl.enrich_graphs",
+      "dependsOn": ["build-graphs"],
       "options": { "cwd": "apps/bibliometric-pipeline" },
-      "outputs": ["{workspaceRoot}/dist/apps/bibliometric-pipeline/plots"],
-      "cache": true
+      "inputs": [
+        "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs",
+        "{projectRoot}/src/bibliometric_pipeline/etl/enrich_graphs.py",
+        "{projectRoot}/config.toml"
+      ],
+      "cache": false
+    },
+    "apply-layout": {
+      "command": "uv run python -u -m bibliometric_pipeline.etl.apply_layout",
+      "dependsOn": ["enrich-graphs"],
+      "options": { "cwd": "apps/bibliometric-pipeline" },
+      "inputs": [
+        "{projectRoot}/config.toml",
+        "{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs",
+        "{projectRoot}/src/bibliometric_pipeline/etl/apply_layout.py",
+        "{projectRoot}/src/bibliometric_pipeline/layout/compute.py"
+      ],
+      "cache": false
+    },
+    "run": {
+      "executor": "nx:noop",
+      "dependsOn": ["apply-layout"]
     }
   }
 }

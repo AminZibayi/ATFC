@@ -5,12 +5,18 @@
       "type": "local",
       "command": ["npx", "nx", "mcp"],
       "enabled": true
+    },
+    "tavily-mcp": {
+      "type": "remote",
+      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}",
+      "enabled": true
     }
   },
   "permission": {
     "bash": {
       "*": "allow",
       "websearch": "allow",
+      "codesearch": "allow",
       "question": "allow",
       "Stop-Process*": "ask",
       "Kill-Process*": "ask",

@@ -7,11 +7,16 @@ dependencies = [
     "pandas",
     "numpy",
     "networkx",
-    "matplotlib",
-    "plotly",
-    "openpyxl",
     "shared-python",
     "scipy>=1.17.1",
+    "pyarrow",
+    "fa2-modified",
+    "pyforceatlas2",
+    "igraph",
+    "graphviz",
+    "pydot",
+    "lxml",
+    "python-louvain",
 ]
 
 [tool.uv.sources]
