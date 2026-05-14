@@ -71,11 +71,17 @@ pnpm nx run bibliometric-pipeline:extract
 # You can adjust min_weight and remove_isolates for each graph independently in that file.
 pnpm nx run bibliometric-pipeline:build-graphs
 
-# 3. Apply graph layout (ForceAtlas2 or Yifan Hu / SFDP)
+# 3. Enrich graphs with additional metrics (in-place update, not cached)
+pnpm nx run bibliometric-pipeline:enrich-graphs
+
+# 4. Apply graph layout (ForceAtlas2 or Yifan Hu / SFDP)
 # You can customize the engine (pyforceatlas2, sfdp, etc) and iterations
 # via apps/bibliometric-pipeline/config.toml
+# This stage performs in-place updates and is not cached to prevent Nx cache conflicts.
 pnpm nx run bibliometric-pipeline:apply-layout
 ```
+
+**Note on Nx Caching:** The `enrich-graphs` and `apply-layout` stages perform in-place updates on files created by `build-graphs`. To prevent Nx cache restoration from overwriting these updates, caching is disabled for these two stages.
 
 ## Datasets
 
