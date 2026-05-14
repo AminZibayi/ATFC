@@ -36,8 +36,7 @@
         "{projectRoot}/src/bibliometric_pipeline/etl/enrich_graphs.py",
         "{projectRoot}/config.toml"
       ],
-      "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
-      "cache": true
+      "cache": false
     },
     "apply-layout": {
       "command": "uv run python -u -m bibliometric_pipeline.etl.apply_layout",
@@ -49,8 +48,7 @@
         "{projectRoot}/src/bibliometric_pipeline/etl/apply_layout.py",
         "{projectRoot}/src/bibliometric_pipeline/layout/compute.py"
       ],
-      "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/graphs"],
-      "cache": true
+      "cache": false
     },
     "run": {
       "executor": "nx:noop",
