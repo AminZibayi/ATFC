@@ -1,9 +1,16 @@
 import math
 import os
 import shutil
+from typing import Optional
 import networkx as nx
 
-def compute_layout(G: nx.Graph, algorithm: str = None, iterations: int = None, pos: dict = None, **kwargs) -> None:
+def compute_layout(
+    G: nx.Graph,
+    algorithm: Optional[str] = None,
+    iterations: Optional[int] = None,
+    pos: Optional[dict] = None,
+    **kwargs,
+) -> None:
     """Computes layout using the specified algorithm and adds 'x', 'y' node attributes."""
     if len(G) == 0:
         return
