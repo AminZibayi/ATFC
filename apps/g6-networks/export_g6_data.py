@@ -131,8 +131,10 @@ def process_network(name, color_by="community"):
         # In case node isn't in graph due to filtering
         if not G.has_node(node_id): continue
             
-        x = float(row.get('x', np.random.rand()))
-        y = float(row.get('y', np.random.rand()))
+        x_val = row.get('x')
+        y_val = row.get('y')
+        x = float(x_val) if pd.notnull(x_val) else 0.0
+        y = float(y_val) if pd.notnull(y_val) else 0.0
         
         # We can use paper_count for size if available, otherwise weighted_degree
         if 'paper_count' in row and pd.notnull(row['paper_count']):
