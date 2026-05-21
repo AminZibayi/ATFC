@@ -79,6 +79,11 @@ pnpm nx run bibliometric-pipeline:enrich-graphs
 # via apps/bibliometric-pipeline/config.toml
 # This stage performs in-place updates and is not cached to prevent Nx cache conflicts.
 pnpm nx run bibliometric-pipeline:apply-layout
+
+# 5. Compute Interdisciplinarity & Diversity Metrics (Stirling Index)
+# Computes Variety (N), Shannon (H), Simpson (I), and Stirling (Δ) indices.
+# Outputs to data/outputs/bibliometric-pipeline/metrics/diversity_metrics.csv
+pnpm nx run bibliometric-pipeline:diversity
 ```
 
 **Note on Nx Caching:** The `enrich-graphs` and `apply-layout` stages perform in-place updates on files created by `build-graphs`. To prevent Nx cache restoration from overwriting these updates, caching is disabled for these two stages.
@@ -167,3 +172,4 @@ With this pipeline, the following analyses are supported:
 - **Institutional collaboration networks** (`co_affiliation`)
 - **Keyword co-occurrence networks** (`author_keywords`)
 - **Interdisciplinary analysis** (`wos_categories`)
+- **Diversity & Interdisciplinarity Metrics** (Variety, Shannon, Simpson, and Stirling indices across units of analysis)
