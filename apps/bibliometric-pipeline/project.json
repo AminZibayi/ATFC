@@ -50,9 +50,21 @@
       ],
       "cache": false
     },
+    "diversity": {
+      "command": "uv run python -u -m bibliometric_pipeline.etl.diversity",
+      "dependsOn": ["extract"],
+      "options": { "cwd": "apps/bibliometric-pipeline" },
+      "inputs": [
+        "{workspaceRoot}/data/intermediate/bibliometric-pipeline/records.parquet",
+        "{projectRoot}/src/bibliometric_pipeline/etl/diversity.py",
+        "{projectRoot}/src/bibliometric_pipeline/metrics/diversity.py"
+      ],
+      "outputs": ["{workspaceRoot}/data/outputs/bibliometric-pipeline/metrics"],
+      "cache": true
+    },
     "run": {
       "executor": "nx:noop",
-      "dependsOn": ["apply-layout"]
+      "dependsOn": ["apply-layout", "diversity"]
     }
   }
 }
