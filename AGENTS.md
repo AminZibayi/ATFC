@@ -53,7 +53,7 @@ Technology Forecasting/
 ## Workflow Guidance
 
 1. **Developing Python Pipelines**:
-   Add a target to `apps/bibliometric-pipeline/project.json`. Map it to a module execution `uv run python -m bibliometric_pipeline.etl.my_module`.
+   Add a target to `apps/**/project.json` or `libs/**/project.json`. Map it to a module execution `uv run python -m app_name.my_module`.
 2. **Developing G6 Visualizations**:
    Add the JSON extraction target to `apps/g6-networks/project.json` and a `build` target executing Vite.
 3. **Accessing Data**:
